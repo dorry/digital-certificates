@@ -44,13 +44,13 @@ exports.query = async function(name,functionName, certificateID) {
 
         // Create a new gateway for connecting to our peer node.
         const gateway = new Gateway();
-        await gateway.connect(ccpPath, { wallet, identity: name, discovery: { enabled: true, asLocalhost: true } });
+        await gateway.connect(ccpPath, { wallet, identity: name, discovery: { enabled: true, asLocalhost: false } });
 
         // Get the network (channel) our contract is deployed to.
         const network = await gateway.getNetwork('unichannel');
 
         // Get the contract from the network.
-        const contract = network.getContract('mycc');
+        const contract = network.getContract('chaincode');
 
         // Evaluate the specified transaction.
 

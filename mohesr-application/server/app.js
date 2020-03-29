@@ -12,8 +12,8 @@ let invoke = require('./invoke.js');
 let query = require('./query.js');
 
 
-// invoke.addCertificate('admin','42','bombo','2','fair');
-// query.query('admin','readCertificate','12345');
+// invoke.addCertificate('appadmin','42','bombo','2','fair');
+// query.query('appadmin','readCertificate','12345');
 
 const app = express();
 app.use(morgan('combined'));
@@ -21,11 +21,13 @@ app.use(morgan('combined'));
 
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(cors());
+
+
 app.post('/readCertificate', async (req, res) => {
 
   // res.send('hello world');
   try{
-  let response =  await query.query( 'admin','readCertificate',req.body.key);
+  let response =  await query.query( 'appadmin','readCertificate',req.body.key);
   let parsedResponse = await JSON.parse(response);
   res.send(parsedResponse);}
 
@@ -38,7 +40,7 @@ app.post('/readCertificate', async (req, res) => {
 
     // res.send('hello world');
     try{
-    let response =  await invoke.addCertificate( 'admin',req.body.certificateId, req.body.name,req.body.gpa, req.body.grade, req.body.screenshot);
+    let response =  await invoke.addCertificate( 'appadmin',req.body.certificateId, req.body.name,req.body.gpa, req.body.grade, req.body.screenshot);
     // let parsedResponse = await JSON.parse(response);
     res.send(response);}
   
@@ -52,7 +54,7 @@ app.post('/readCertificate', async (req, res) => {
 
     // res.send('hello world');
     try{
-    let response =  await query.query( 'admin','validateCertificate',req.body.key);
+    let response =  await query.query( 'appadmin','validateCertificate',req.body.key);
     res.send(response);}
   
     catch(error){
