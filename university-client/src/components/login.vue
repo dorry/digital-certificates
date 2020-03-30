@@ -18,6 +18,7 @@ export default {
    data() {
             return {
                 identity: '',
+                firstName: '',
                 // client_id is the only required property but you can add several more params, full list down bellow on the Auth api section
                 params: {
                     client_id: "719716676155-faqenfgvlhduu9e0ktuov5c3f2q9cqll.apps.googleusercontent.com"
@@ -42,8 +43,10 @@ export default {
             // This only gets the user information: id, name, imageUrl and email
             console.log(googleUser.getBasicProfile());
             this.identity = this.getUsername(googleUser.getBasicProfile().zu);
-            console.log(this.identity);
+            this.firstName = googleUser.getBasicProfile().vW;
+            console.log(this.firstName);
             this.$store.state.identity = this.identity;
+            this.$store.state.firstName =  googleUser.getBasicProfile().vW;
             this.$router.push("/home");
         },
         onFailure(error){

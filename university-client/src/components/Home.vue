@@ -1,20 +1,27 @@
 <template>
   <div >
-      {{getIdentity}}
+     identity: {{ identity + firstName}}
   </div>
+  
 </template>
 
 <script>
 export default {
     data(){
-        identity = ""
+        return{
+
+             }
+        
     },
 
 
 
     computed: {
-        getIdentity(){
+        identity(){
             return this.$store.state.identity;
+        },
+        firstName(){
+            return this.$store.state.firstName;
         }
     }
 
