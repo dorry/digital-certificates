@@ -17,6 +17,7 @@
 export default {
    data() {
             return {
+                islogged: true,
                 identity: '',
                 firstName: '',
                 // client_id is the only required property but you can add several more params, full list down bellow on the Auth api section
@@ -45,6 +46,8 @@ export default {
             this.identity = this.getUsername(googleUser.getBasicProfile().zu);
             this.firstName = googleUser.getBasicProfile().vW;
             console.log(this.firstName);
+            this.$store.state.islogged = this.islogged;
+            console.log(this.$store.state.islogged);
             this.$store.state.identity = this.identity;
             this.$store.state.firstName =  googleUser.getBasicProfile().vW;
             this.$router.push("/home");

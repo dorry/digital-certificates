@@ -1,6 +1,24 @@
 <template>
-
-
+<div  class = "parent-container">
+    <div class = "login-container">
+    <div class="login-content">
+    <h2 class="h4 mb-4">Please fill the certificate information</h2>
+    <b-form class="text-center border border-light p-5">
+    <b-input class="form-control mb-4" v-model="certificateId" id="inline-form-input-nid" placeholder="National ID"></b-input>
+    <b-input class="form-control mb-4" v-model="gpa" id="inline-form-input-username" placeholder="GPA"></b-input>
+    <b-input class="form-control mb-4" v-model="grade" id="inline-form-input-username" placeholder="Grade"></b-input>
+    <vue-base64-file-upload    
+         accept="image/png,image/jpeg"
+        :max-size="customImageMaxSize"
+        @size-exceeded="onSizeExceeded"
+        @file="onFile"
+        @load="onLoad" />
+        <br>
+    <b-button @click="addCertificate()" id="submitbtn" class="btn btn-info btn-block" type="submit" variant="primary">Save</b-button>
+    </b-form>
+    </div>
+    </div>
+</div>
 </template>
 
 
@@ -46,8 +64,28 @@ export default {
 
 }
 </script>
-
 <style>
 
-  
+.login-container{
+height: auto;
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #343A40;
+    border-radius: 5%;
+}
+.parent-container{
+    margin-top: 50px;
+    width: 100vw;
+    height: auto;
+     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-content{
+    text-align: center;
+    color:white;
+}
 </style>

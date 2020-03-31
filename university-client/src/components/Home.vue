@@ -1,6 +1,6 @@
 <template>
   <div >
-     identity: {{ identity + firstName}}
+     identity: {{ identity + firstName + islogged }}
   </div>
   
 </template>
@@ -14,9 +14,10 @@ export default {
         
     },
 
-
-
     computed: {
+        identity(){
+            return this.$store.state.islogged;
+        },
         identity(){
             return this.$store.state.identity;
         },
