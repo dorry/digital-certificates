@@ -13,7 +13,7 @@ class CertificateContract extends Contract {
         return (!!buffer && buffer.length > 0);
     }
 
-    async addCertificate(ctx, certificateId, name1 , gpa1, grade1,screenshot1) {
+    async addCertificate(ctx, certificateId, name1 , gpa1, grade1,faculty1, university1, screenshot1) {
         const exists = await this.certificateExists(ctx, certificateId);
         if (exists) {
             throw new Error(`The certificate ${certificateId} already exists`);
@@ -23,6 +23,8 @@ class CertificateContract extends Contract {
             name:name1,
             gpa:gpa1,
             grade:grade1,
+            faculty:faculty1,
+            university:university1,
             screenshot:screenshot1,
             transaction_month: d.getMonth()+1,
             transaction_year: d.getFullYear()
@@ -87,7 +89,7 @@ class CertificateContract extends Contract {
 
 
 
-    async addExpiredCertificate(ctx, certificateId,name1,gpa1,grade1){
+    async addExpiredCertificate(ctx, certificateId, name1 , gpa1, grade1,faculty1, university1, screenshot1){
         const exists = await this.certificateExists(ctx, certificateId);
         if (exists) {
             throw new Error(`The certificate ${certificateId} already exists`);
@@ -97,22 +99,36 @@ class CertificateContract extends Contract {
             name:name1,
             gpa:gpa1,
             grade:grade1,
-            transaction_month: 2,
-            transaction_year: 2018
+            faculty:faculty1,
+            university:university1,
+            screenshot:screenshot1,
+            transaction_month: d.getMonth()+1,
+            transaction_year: d.getFullYear()
             }; 
         
         const buffer = Buffer.from(JSON.stringify(cert));
         await ctx.stub.putState(certificateId, Buffer.from(JSON.stringify(cert)));
     }
 
-    async updateCertificate(ctx, certificateId, newValue) {
+    async updateCertificate(ctx, certificateId, name1 , gpa1, grade1,faculty1, university1, screenshot1) {
         const exists = await this.certificateExists(ctx, certificateId);
         if (!exists) {
             throw new Error(`The certificate ${certificateId} does not exist`);
         }
-        const asset = { value: newValue };
-        const buffer = Buffer.from(JSON.stringify(asset));
-        await ctx.stub.putState(certificateId, buffer);
+        var d = new Date();
+        let cert={
+            name:name1,
+            gpa:gpa1,
+            grade:grade1,
+            faculty:faculty1,
+            university:university1,
+            screenshot:screenshot1,
+            transaction_month: d.getMonth()+1,
+            transaction_year: d.getFullYear()
+            }; 
+
+        await ctx.stub.putState(certificateId, Buffer.from(JSON.stringify(cert)));
+
     }
 
     async deleteCertificate(ctx, certificateId) {
@@ -122,6 +138,31 @@ class CertificateContract extends Contract {
         }
         await ctx.stub.deleteState(certificateId);
     }
+
+    async readByObjectType(ctx, objectType) {
+
+        let queryString = {
+          selector: {
+            type: objectType
+          }
+        };
+    
+        let queryResults = await this.readCertificate(ctx, JSON.stringify(queryString));
+        return queryResults;
+    
+      }
+
+      async readAll(ctx, objectType) {
+
+        let queryString = {
+          selector: {}
+        };
+    
+        let queryResults = await this.readCertificate(ctx, JSON.stringify(queryString));
+        return queryResults;
+    
+      }
+    
 
 }
 
