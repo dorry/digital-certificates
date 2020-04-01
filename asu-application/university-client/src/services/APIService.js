@@ -40,4 +40,9 @@ export default {
     }) 
   },
 
+  registerUser(identity) {
+    return Api().post('registeruser', {
+      identity: identity
+    }) 
+  },
 }
