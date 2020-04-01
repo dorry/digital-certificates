@@ -1,20 +1,5 @@
 <template>
     <div id="container">
-<ul>
-  <li><a href="#1">استراتيجية الوزارة</a></li>
-  <li><a href="#2" >المركز الاعلامي</a></li>
-  <li><a href="#3">مركز المعلومات</a></li>
-  <li><a href="#4">الخدمات</a></li>
-  <li><a href="#5">البحث العلمي</a></li>
-  <li><a href="#6">مؤسسات التعليم العالي</a></li>
-  <li><a href="#7"> التعليم العالي</a></li>
-  <li><a href="#8">الوزارة</a></li>
-  <li><a href="HomePage.html">الرئيسية</a></li>
-
-
-  <li style="float:right"><img src="../assets/flagg.png" alt="Egypt" style="width:200px;height:200px;border:0;margin-left:-36px;"></li>
-</ul>
-<img src="../assets/grad.png" alt="grad" id="img1">
 <div id="ContainerCheckCertificate">
 <h1 style="text-align: right;"> تحديد هوية</h1>
 </div>

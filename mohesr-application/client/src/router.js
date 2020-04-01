@@ -1,22 +1,43 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Home from './components/Home'
 import Identification from './components/Identification'
 import Validation from './components/Validation'
-
+import Login from './components/login'
+import Publics from './components/PublicUnis'
+import ASU from './components/University'
 Vue.use(Router)
 
 export default new Router({
     mode:'history',
   routes: [
-    {path: '',
+    {
+    path: '/',
+    name:'Home',
+    component : Home
+    },
+    {path: '/identification',
     name:'Identification',
     component : Identification
-
+    },
+    {path: '/publicunis',
+    name:'Publicunis',
+    component : Publics
     },
     {
-        path: '/validation',
-        name: 'Validation',
-        component: Validation
-      },
+    path: '/university',
+    name:'ASU',
+    component : ASU
+    },
+    {
+    path: '/login',
+    name:'Login',
+    component : Login
+    },
+    {
+    path: '/validation',
+    name: 'Validation',
+    component: Validation
+    },
   ]
 })
