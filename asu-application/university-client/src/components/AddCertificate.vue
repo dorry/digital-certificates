@@ -7,6 +7,9 @@
     <b-input class="form-control mb-4" v-model="certificateId" id="inline-form-input-nid" placeholder="National ID"></b-input>
     <b-input class="form-control mb-4" v-model="gpa" id="inline-form-input-username" placeholder="GPA"></b-input>
     <b-input class="form-control mb-4" v-model="grade" id="inline-form-input-username" placeholder="Grade"></b-input>
+    <b-form-select class="form-control mb-4"  id="inline-form-input-nid" v-model="selected" :options="options"></b-form-select>
+
+    
     <vue-base64-file-upload    
          accept="image/png,image/jpeg"
         :max-size="customImageMaxSize"
@@ -29,6 +32,17 @@ import APIService from "../services/APIService";
 export default {
     data(){
         return{
+          selected :'Faculty',
+          options: 
+          [
+            { value: 'Faculty', text: 'Choose Faculty' },
+            { value: 'Business', text: 'Business' },
+            { value: 'Electronics', text: 'Electronics' },
+            { value: 'Mass Communication', text: 'Mass Communication'},
+            { value: 'Pharmacy', text: 'Pharmacy' },
+            { value: 'Medical', text: 'Medical' },
+            { value: 'Pharmacy', text: 'Pharmacy' },       
+          ],
             gpa:"",
             certificateId:"",
             name:"",

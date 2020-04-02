@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import AddCertificate from './components/AddCertificate'
 import Login from './components/Login'
 import Home from './components/Home'
-
+import university from './components/University'
 Vue.use(Router)
 
 export default new Router({
@@ -17,6 +17,12 @@ export default new Router({
     {path: '/home',
     name:'Home',
     component : Home
+    },
+    {
+      path:'/university',
+      name:'Uni',
+      component: university
+      
     },
     {path: '/addcert',
     name:'AddCertificate',

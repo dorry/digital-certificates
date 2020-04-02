@@ -5,7 +5,7 @@ import Identification from './components/Identification'
 import Validation from './components/Validation'
 import Login from './components/login'
 import Publics from './components/PublicUnis'
-import ASU from './components/University'
+import Uni from './components/University'
 Vue.use(Router)
 
 export default new Router({
@@ -26,8 +26,8 @@ export default new Router({
     },
     {
     path: '/university',
-    name:'ASU',
-    component : ASU
+    name:'Uni',
+    component : Uni
     },
     {
     path: '/login',
