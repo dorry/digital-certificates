@@ -1,5 +1,4 @@
 <template>
-
     <div id="container">
     <div>
 <h1 style="text-align: right;    position: relative;">التحقق من صحة الشهادة</h1>
@@ -53,7 +52,6 @@ export default {
   },
 
   methods:{
-
     async validate(){
     console.log(this.identity);
     const apiResponse = await APIService.validateCertificate(this.validationKey);
@@ -61,16 +59,11 @@ export default {
      if(apiResponse.data=="Valid certificate"){
        const apiResponse = await APIService.readCertificate(this.validationKey);
        console.log(apiResponse.data);
-       this.certificateData=apiResponse.data;
-       
-       
+       this.certificateData=apiResponse.data; 
      }
      else{
-
      }
-
    },
-
     notEmptyObject(){
       return Object.keys(this.certificateData).length>0;
       console.log(this.certificateData);
