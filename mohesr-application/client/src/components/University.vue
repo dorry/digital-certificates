@@ -6,12 +6,10 @@
       :per-page="perPage"
       aria-controls="my-table"
     ></b-pagination>
-
     <p class="mt-3">Current Page: {{ currentPage }}</p>
     <b-table 
-      @row-clicked="myRowClickHandler"
       id="my-table"
-      :items="items" 
+      :newitems="newitems" 
       :per-page="perPage"
       :current-page="currentPage"
       small
@@ -20,28 +18,31 @@
   </div>
 </template>
 <script>
+import APIService from "../services/APIService";
+
 export default {
   methods: {
-  myRowClickHandler(record, index) {
-    alert("Viewed ");
-    // 'record' will be the row data from items
-    // `index` will be the visible row number (available in the v-model 'shownItems')
-    log(record); // This will be the item data for the row
-  }
+    async query(){
+    const apiResponse = await APIService.queryAll("appadmin");
+    console.log(apiResponse.data);
+       console.log(apiResponse.data);
+       this.items=apiResponse.data;
+   },
+
 },
+  //created de bt5ly el function tfire lama el page tload
+  created: function(){
+        alert("triggered");
+        this.query()
+    },
  data() {
     return {
      perPage: 5,
      currentPage: 1,
-     items: [
-          { ID: 1, Name: 'Alley Mostafa El Dorry El Gamed', GPA: 4.0 , Grade: "a" , Faculty: "CS" },
-          { ID: 1, Name: 'Alley Mostafa El Dorry El Gamed', GPA: 4.0 , Grade: "a" , Faculty: "CS" },
-          { ID: 1, Name: 'Alley Mostafa El Dorry El Gamed', GPA: 4.0 , Grade: "a" , Faculty: "CS" },
-          { ID: 1, Name: 'Alley Mostafa El Dorry El Gamed', GPA: 4.0 , Grade: "a" , Faculty: "CS" },
-          { ID: 1, Name: 'Alley Mostafa El Dorry El Gamed', GPA: 4.0 , Grade: "a" , Faculty: "CS" },
-          { ID: 1, Name: 'Alley Mostafa El Dorry El Gamed', GPA: 4.0 , Grade: "a" , Faculty: "CS" },
-
-        ]
+     newitems:[
+    
+     ],
+     items: []
       }
     },
     computed: {

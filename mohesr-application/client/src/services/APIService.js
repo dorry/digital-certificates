@@ -2,16 +2,20 @@ import Api from './api'
 
 export default {
 
-//   queryAll() {
-//     return Api().get('queryAll')
-//   },
+    queryAll(username) {
+     return Api().get('queryAll',{ 
+       username: username,
+     })
+    },
 
   addCertificate(certificateId, name , gpa, grade) {
     return Api().post('addCertificate', {
         certificateId: certificateId,
         name: name,
         gpa: gpa,
-        grade: grade
+        grade: grade,
+        faculty: faculty,
+        university: university
     }) 
   },
 //   registerVoter(voterId, registrarId, firstName, lastName) {
