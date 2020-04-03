@@ -25,58 +25,86 @@ app.use(cors());
 
 app.post('/readCertificate', async (req, res) => {
 
+// res.send('hello world');
+try{
+let response =  await query.query( 'appadmin','readCertificate',req.body.key);
+let parsedResponse = await JSON.parse(response);
+res.send(parsedResponse);}
+
+catch(error){
+res.send(error);
+}
+
+});
+app.post('/addCertificate', async (req, res) => {
+
+// res.send('hello world');
+try{
+let response =  await invoke.addCertificate( 'appadmin',req.body.certificateId, req.body.name,req.body.gpa, req.body.grade, req.body.screenshot);
+// let parsedResponse = await JSON.parse(response);
+res.send(response);}
+
+catch(error){
+  res.send(error);
+}
+
+});
+
+app.post('/validateCertificate', async (req, res) => {
+
+// res.send('hello world');
+try{
+let response =  await query.query( 'appadmin','validateCertificate',req.body.key);
+res.send(response);}
+
+catch(error){
+  res.send(error);
+}
+
+});
+
+app.post('/checkWallet', async (req, res) => {
+
+// res.send('hello world');
+try{
+console.log(req.body);
+let response =  await query.checkWallet(req.body.username);
+
+res.send(response);}
+
+catch(error){
+  res.send(error);
+}
+
+});
+
+app.post('/queryAll', async (req, res) => {
+// res.send('hello world');
+try{
+console.log(req.body);
+let response =  await query.queryAll(req.body.username);
+
+res.send(response);}
+
+catch(error){
+  res.send(error);
+}
+
+});
+
+
+
+app.post('/deleteCertificate', async (req, res) => {
   // res.send('hello world');
   try{
-  let response =  await query.query( 'appadmin','readCertificate',req.body.key);
-  let parsedResponse = await JSON.parse(response);
-  res.send(parsedResponse);}
+  console.log(req.body);
+  let response =  await invoke.deleteCertificate(req.body.username, req.body.key);
+  
+  res.send(response);}
 
   catch(error){
     res.send(error);
   }
   
   });
-  app.post('/addCertificate', async (req, res) => {
-
-    // res.send('hello world');
-    try{
-    let response =  await invoke.addCertificate( 'appadmin',req.body.certificateId, req.body.name,req.body.gpa, req.body.grade, req.body.screenshot);
-    // let parsedResponse = await JSON.parse(response);
-    res.send(response);}
-  
-    catch(error){
-      res.send(error);
-    }
-    
-    });
-
-  app.post('/validateCertificate', async (req, res) => {
-
-    // res.send('hello world');
-    try{
-    let response =  await query.query( 'appadmin','validateCertificate',req.body.key);
-    res.send(response);}
-  
-    catch(error){
-      res.send(error);
-    }
-    
-    });
-
-  app.post('/checkWallet', async (req, res) => {
-
-    // res.send('hello world');
-    try{
-    console.log(req.body);
-    let response =  await query.checkWallet(req.body.username);
-    
-    res.send(response);}
-  
-    catch(error){
-      res.send(error);
-    }
-    
-    });
-  
-  
-  var server = app.listen(process.env.PORT || 8085);
+var server = app.listen(process.env.PORT || 8085);

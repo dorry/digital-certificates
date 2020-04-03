@@ -77,7 +77,7 @@ app.post('/checkWallet', async (req, res) => {
   
   });
 
-app.post('/registeruser', async (req, res) => {
+app.post('/registerUser', async (req, res) => {
   try{
   let response =  await register.registerUser(req.body.identity);
 
@@ -89,4 +89,17 @@ app.post('/registeruser', async (req, res) => {
   
   });  
 
+  app.post('/queryAll', async (req, res) => {
+    // res.send('hello world');
+    try{
+    console.log(req.body);
+    let response =  await query.queryAll(req.body.username);
+    
+    res.send(response);}
+  
+    catch(error){
+      res.send(error);
+    }
+    
+    });
 var server = app.listen(process.env.PORT || 8086);

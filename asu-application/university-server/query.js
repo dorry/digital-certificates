@@ -53,10 +53,19 @@ exports.query = async function(name,functionName, certificateID) {
         const contract = network.getContract('chaincode');
 
         // Evaluate the specified transaction.
+        if(certificateID==-1){
+            const result = await contract.evaluateTransaction(functionName);
+            //console.log(`Transaction has been evaluated, result is: ${result.toString()}`);
+            
+            return result;
+        }
+        else{
+            const result = await contract.evaluateTransaction(functionName,certificateID);
+            //console.log(`Transaction has been evaluated, result is: ${result.toString()}`);
+            console.log("else");
 
-        const result = await contract.evaluateTransaction(functionName,certificateID);
-        console.log(`Transaction has been evaluated, result is: ${result.toString()}`);
-        return result;
+            return result;
+        }
 
     } catch (error) {
         console.error(`Failed to evaluate transaction: ${error}`);
@@ -64,4 +73,12 @@ exports.query = async function(name,functionName, certificateID) {
     }
 }
 
+exports.queryAll = async function(name){
+    const response = await this.query(name,'queryAll',-1);
+    return response;
+}
+exports.queryAll = async function(name){
+    const response = await this.query(name,'queryAll',-1);
+    return response;
+}
 //  await query('admin','readCertificate','996');
