@@ -4,11 +4,10 @@
     <div class="login-content">
     <h2 class="h4 mb-4">Please fill the certificate information</h2>
     <b-form class="text-center border border-light p-5">
-    <b-input class="form-control mb-4" v-model="name" id="inline-form-input-nid" placeholder="Name"></b-input>
     <b-input class="form-control mb-4" v-model="certificateId" id="inline-form-input-nid" placeholder="National ID"></b-input>
     <b-input class="form-control mb-4" v-model="gpa" id="inline-form-input-username" placeholder="GPA"></b-input>
     <b-input class="form-control mb-4" v-model="grade" id="inline-form-input-username" placeholder="Grade"></b-input>
-    <b-form-select v-model="faculty" class="form-control mb-4"  id="inline-form-input-nid" :options="options"></b-form-select>
+    <b-form-select class="form-control mb-4"  id="inline-form-input-nid" v-model="selected" :options="options"></b-form-select>
 
     
     <vue-base64-file-upload    
@@ -18,7 +17,7 @@
         @file="onFile"
         @load="onLoad" />
         <br>
-    <b-button @click="addCertificate()" id="submitbtn" class="btn btn-info btn-block" variant="primary">Save</b-button>
+    <b-button @click="addCertificate()" id="submitbtn" class="btn btn-info btn-block" type="submit" variant="primary">Save</b-button>
     </b-form>
     </div>
     </div>
@@ -49,25 +48,13 @@ export default {
             name:"",
             grade:"",
             screenshot:"",
-            faculty :"",
-            university : "Public University",
             customImageMaxSize: 3
 
         }
     },
     methods:{
     async addCertificate(){
-              console.log(this.faculty);
-      const response =  await APIService.addCertificate
-       (
-       this.certificateId,
-       this.name,
-       this.gpa,
-       this.grade,
-       this.screenshot,
-       this.faculty,
-       this.university
-       )
+       const response =  await APIService.addCertificate(this.certificateId,this.name,this.gpa,this.grade,this.screenshot)
        alert(response);
     },
      onFile(file) {

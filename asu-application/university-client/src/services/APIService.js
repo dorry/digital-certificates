@@ -6,15 +6,13 @@ export default {
 //     return Api().get('queryAll')
 //   },
 
-  addCertificate(certificateId, name , gpa, grade,screenshot, faculty , university) {
+  addCertificate(certificateId, name , gpa, grade,screenshot) {
     return Api().post('addCertificate', {
         certificateId: certificateId,
         name: name,
         gpa: gpa,
         grade: grade,
-        screenshot: screenshot,
-        faculty: faculty,
-        university: university
+        screenshot: screenshot
     }) 
   },
 //   registerVoter(voterId, registrarId, firstName, lastName) {

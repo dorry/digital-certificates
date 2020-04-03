@@ -62,6 +62,8 @@ export default {
        const apiResponse = await APIService.readCertificate(this.validationKey);
        console.log(apiResponse.data);
        this.certificateData=apiResponse.data;
+       
+       
      }
      else{
 
