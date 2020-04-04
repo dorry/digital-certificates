@@ -39,7 +39,13 @@ catch(error){
 app.post('/addCertificate', async (req, res) => {
   // res.send('hello world');
   try{
-  let response =  await invoke.addCertificate( 'appadmin',req.body.certificateId, req.body.name,req.body.gpa, req.body.grade, req.body.screenshot);
+  let response =  await invoke.addCertificate( 'appadmin',
+                                              req.body.certificateId,
+                                              req.body.name,req.body.gpa,
+                                              req.body.grade,
+                                              req.body.faculty,
+                                              req.body.university,
+                                              req.body.screenshot);
   // let parsedResponse = await JSON.parse(response);
   res.send(response);}
 

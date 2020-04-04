@@ -10,7 +10,7 @@ const path = require('path');
 const ccpPath = path.resolve(__dirname, '..','..', 'gateway', 'mohesr-connection.json');
 
 
-exports.addCertificate =  async function(username,certificateID,name, gpa , grade,screenshot) {
+exports.addCertificate =  async function(username,certificateID,name, gpa , grade,faculty, university, screenshot) {
     try {
 
         // Create a new file system based wallet for managing identities.
@@ -37,7 +37,7 @@ exports.addCertificate =  async function(username,certificateID,name, gpa , grad
         const contract = network.getContract('chaincode');
 
         // Submit the specified transaction.
-        await contract.submitTransaction('addCertificate',certificateID,name, gpa, grade,screenshot);
+        await contract.submitTransaction('addCertificate',certificateID,name, gpa, grade,faculty, university,screenshot);
         console.log('Transaction has been submitted');
         
 
