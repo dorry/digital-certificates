@@ -11,7 +11,7 @@
     <b-table 
       @row-clicked="myRowClickHandler"
       id="my-table"
-      :items="items" 
+      :items="getItems" 
       :per-page="perPage"
       :current-page="currentPage"
       small
@@ -48,12 +48,19 @@ export default {
       },
       getItems(){
          this.queryAll();
-         console.log(this.response);
+         console.log("response"+this.response);
          this.items= this.changeObj(this.response);
-         return 0;
+         return this.items;
         
       }
     },
+  //     created: function (){
+  //       this.queryAll();
+  //        console.log("response"+this.response);
+  //        this.items= this.changeObj(this.response);
+  //        console.log(this.items);
+        
+  // },
     methods:{
       async queryAll(){
 
@@ -71,10 +78,11 @@ export default {
           item.ID = obj.Key;
           console.log(obj.Key + "item.ID: " + item.ID);
           item.Name = obj.Record.name;
-          console.log(obj.Record.name + "item.name: " + item.Name);
           item.GPA = obj.Record.gpa;
           item.Faculty = obj.Record.faculty;
-          item.University = obj.Record.University;
+          item.University = obj.Record.university;
+          console.log(obj.Record.university + "item.name: " + item.University);
+
           items.push(item);
           console.log("from changeobj: "+ item)
         });
