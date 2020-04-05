@@ -7,21 +7,19 @@
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
-        <b-nav-item><router-link to="/addcert"> AddCertificate </router-link></b-nav-item>
-        <b-nav-item><router-link to="/University"> Students </router-link></b-nav-item>
-        <b-nav-item href="#">Link</b-nav-item>
-        <b-nav-item href="#">Disabled</b-nav-item>
+        <b-nav-item><router-link to="/home"> Home </router-link></b-nav-item>        
+        <b-nav-item  v-if="identity !=''"><router-link to="/addcert"> AddCertificate </router-link></b-nav-item>
+        <b-nav-item  v-if="identity !=''"><router-link to="/university"> Students </router-link></b-nav-item>
+        <b-nav-item  v-if="identity !=''"><router-link to="/login"> Login </router-link></b-nav-item>
       </b-navbar-nav>
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
 
-        <b-nav-item-dropdown right>
+        <b-nav-item-dropdown v-if="identity !=''" right>
           <!-- Using 'button-content' slot -->
           <template v-slot:button-content>
-            <em>User</em>
+            <em >{{identity}}</em>
           </template>
-          <b-dropdown-item href="#">Profile</b-dropdown-item>
-          <b-dropdown-item href="#">Sign Out</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
     </b-collapse>
@@ -30,8 +28,19 @@
 </template>
 
 <script>
+import GoogleLogin from 'vue-google-login';
+
 export default {
-    
+
+computed: {
+        identity(){
+            return this.$store.state.identity;
+        },
+        firstName(){
+            return this.$store.state.firstName;
+        }
+    },
+     
 }
 </script>
 

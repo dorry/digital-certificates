@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import AddCertificate from './components/AddCertificate'
 import Login from './components/Login'
 import Home from './components/Home'
+import Profile from './components/Profile'
+import store from './store/store'
 import university from './components/University'
 Vue.use(Router)
 
@@ -10,23 +12,46 @@ export default new Router({
     mode:'history',
   routes: [
 
-    {path: '',
+    {path: '/',
+    name:'Home',
+    component : Home
+    },
+    
+    {path:'/login',
     name:'Login',
     component : Login
     },
-    {path: '/home',
-    name:'Home',
-    component : Home
+  
+    {path: '/profile',
+    name:'Profile',
+    component : Profile
     },
     {
       path:'/university',
       name:'Uni',
-      component: university
-      
+      component: university,
+      beforeEnter: (to, from, next) => {
+        if(store.state.islogged == false) {
+            console.log("Guarded");
+            next('/login');
+        } else {
+          console.log("Passed!");
+          next();
+        }
+    } 
     },
-    {path: '/addcert',
+    {
+    path: '/addcert',
     name:'AddCertificate',
-    component : AddCertificate
-    },
+    component : AddCertificate,
+    beforeEnter: (to, from, next) => {
+      if(store.state.islogged == false) {
+          console.log("Guarded");
+          next('/login');
+      } else {
+        console.log("Passed!!!");
+        next();
+      }
+  }    },
   ]
 })

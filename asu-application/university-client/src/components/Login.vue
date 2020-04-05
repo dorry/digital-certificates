@@ -1,12 +1,15 @@
 <template>
-    <div  class = "parent-container">
+<div>
+    <div  class = "parent-container">     
     <div class = "login-container">
     <div class="login-content">
     <h4 >Welcome!</h4>
     <p>Please Use the University's email to login.</p>
     </div>
-    <GoogleLogin class="google-login" :params="params" :renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure"></GoogleLogin>
+    <GoogleLogin  class="google-login" :params="params" :renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure"></GoogleLogin>
+    <GoogleLogin v-if="id!=''" :params="params" :logoutButton=true :onSuccess="logout" :onFailure="faillogout">Sign Out </GoogleLogin>
     
+    </div>
     </div>
     </div>
 </template>
@@ -32,13 +35,29 @@ export default {
                 }
             }
         },
-
+ computed: {
+        id(){
+            return this.$store.state.identity;
+        },
+        fn(){
+            return this.$store.state.firstName;
+        }
+    },
 
     components: {
         GoogleLogin
         },
 
     methods: {
+        logout(){
+            console.log("Signed Out");
+
+            this.$store.dispatch('saveUserLogged', "");
+            this.$store.commit("setislogged", false);
+//  this.$store.state.firstName =  googleUser.getBasicProfile().vW;
+            this.$store.dispatch('saveUsername', "");
+            this.$router.push("/home");
+        },
         onSuccess(googleUser) {
             console.log(googleUser);
             // This only gets the user information: id, name, imageUrl and email
@@ -46,10 +65,12 @@ export default {
             this.identity = this.getUsername(googleUser.getBasicProfile().zu);
             this.firstName = googleUser.getBasicProfile().vW;
             console.log(this.firstName);
-            this.$store.state.islogged = this.islogged;
             console.log(this.$store.state.islogged);
-            this.$store.state.identity = this.identity;
-            this.$store.state.firstName =  googleUser.getBasicProfile().vW;
+//            this.$store.state.identity = this.identity;
+            this.$store.dispatch('saveUserLogged', this.identity);
+            this.$store.commit("setislogged", true);
+//  this.$store.state.firstName =  googleUser.getBasicProfile().vW;
+            this.$store.dispatch('saveUsername', googleUser.getBasicProfile().vW);
             this.$router.push("/home");
         },
         onFailure(error){
