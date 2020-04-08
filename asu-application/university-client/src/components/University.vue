@@ -9,12 +9,12 @@
 
     <p class="mt-3">Current Page: {{ currentPage }}</p>
     <b-table 
+      :bordered="bordered"
       @row-clicked="myRowClickHandler"
       id="my-table"
       :items="getItems" 
       :per-page="perPage"
       :current-page="currentPage"
-      small
     >
     </b-table>
   </div>
@@ -26,18 +26,13 @@ import APIService from "../services/APIService";
 export default {
 
  data() {
+   
     return {
+     bordered: true,
      perPage: 20,
      currentPage: 1,
      items: [
           // { ID: 1, Name: 'Alley Mostafa El Dorry El Gamed', GPA: 4.0 , Faculty: "CS", University:"ASU" },
-          // { ID: 1, Name: 'Alley Mostafa El Dorry El Gamed', GPA: 4.0 , Faculty: "CS", University:"ASU" },
-          // { ID: 1, Name: 'Alley Mostafa El Dorry El Gamed', GPA: 4.0 , Faculty: "CS", University:"ASU" },
-          // { ID: 1, Name: 'Alley Mostafa El Dorry El Gamed', GPA: 4.0 , Faculty: "CS", University:"ASU" },
-          // { ID: 1, Name: 'Alley Mostafa El Dorry El Gamed', GPA: 4.0 , Faculty: "CS", University:"ASU" },
-          // { ID: 1, Name: 'Alley Mostafa El Dorry El Gamed', GPA: 4.0 , Faculty: "CS", University:"ASU" },
-          // { ID: 1, Name: 'Alley Mostafa El Dorry El Gamed', GPA: 4.0 , Faculty: "CS", University:"ASU" },
-
         ],
       response:[]
       }
@@ -100,3 +95,10 @@ export default {
   
 </script>
 
+<style scoped>
+.b-table{
+  background-color: white;
+  align-self: center;
+  width: 1500px;
+}
+</style>

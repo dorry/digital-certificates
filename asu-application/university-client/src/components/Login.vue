@@ -86,7 +86,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .login-container{
 height: 300px;
     width: 400px;
@@ -109,4 +109,5 @@ height: 300px;
     text-align: center;
     color:white;
 }
+
 </style>

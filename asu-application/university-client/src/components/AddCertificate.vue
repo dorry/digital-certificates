@@ -2,13 +2,19 @@
 <div  class = "parent-container">
     <div class = "login-container">
     <div class="login-content">
-    <h2 class="h4 mb-4">Please fill the certificate information</h2>
     <b-form class="text-center border border-light p-5">
-    <b-input class="form-control mb-4" v-model="name" id="inline-form-input-nid" placeholder="Name"></b-input>
-    <b-input class="form-control mb-4" v-model="certificateId" id="inline-form-input-nid" placeholder="National ID"></b-input>
-    <b-input class="form-control mb-4" v-model="gpa" id="inline-form-input-username" placeholder="GPA"></b-input>
-    <b-input class="form-control mb-4" v-model="grade" id="inline-form-input-username" placeholder="Grade"></b-input>
+        <h2 class="h4 mb-4">Please fill the certificate information</h2>
+    <label><h4> Name</h4></label>
+    <b-input class="form-control mb-4" v-model="name" id="inline-form-input-nid" placeholder="Enter The Student's Name"></b-input>
+    <label><h4> National ID</h4></label>
+    <b-input class="form-control mb-4" v-model="certificateId" id="inline-form-input-nid" placeholder="Enter the Student's National ID"></b-input>
+    <label><h4> GPA</h4></label>
+    <b-input class="form-control mb-4" v-model="gpa" id="inline-form-input-username" placeholder="Enter the Student's Cumaltive GPA"></b-input>
+    <label><h4> Final Grade </h4></label>
+    <b-input class="form-control mb-4" v-model="grade" id="inline-form-input-username" placeholder="Enter The S tudent's Grade"></b-input>
+    <label><h4> Faculty </h4></label>
     <b-form-select v-model="faculty" class="form-control mb-4"  id="inline-form-input-nid" :options="options"></b-form-select>
+    <label><h4> Please upload a snapshot of the certificate </h4></label>
     <vue-base64-file-upload    
          accept="image/png,image/jpeg"
         :max-size="customImageMaxSize"
@@ -90,27 +96,31 @@ export default {
 
 }
 </script>
-<style>
-
+<style scoped>
+.btn-info{
+  background-color:#343A40;
+}
 .login-container{
-height: auto;
+    height: auto;
     width: 700px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    background-color: #343A40;
+    /* background-color: #343A40; */
     border-radius: 5%;
 }
 .parent-container{
+  height: 230opx;
     margin-top: 50px;
     width: 100vw;
     height: auto;
      display: flex;
     justify-content: center;
     align-items: center;
-}
+    }
 .login-content{
+  background-color: rbga(215, 35, 24, 0.9);
     text-align: center;
     color:white;
 }
