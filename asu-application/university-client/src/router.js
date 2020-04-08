@@ -6,6 +6,8 @@ import Home from './components/Home'
 import Profile from './components/Profile'
 import store from './store/store'
 import university from './components/University'
+import Dashboard from './components/Dashboard'
+
 Vue.use(Router)
 
 export default new Router({
@@ -26,6 +28,12 @@ export default new Router({
     name:'Profile',
     component : Profile
     },
+
+    {path: '/dashboard',
+    name:'Dashboard',
+    component : Dashboard
+    },
+
     {
       path:'/university',
       name:'Uni',
