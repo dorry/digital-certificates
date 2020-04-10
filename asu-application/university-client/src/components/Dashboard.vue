@@ -4,12 +4,12 @@
     <div class="horizontal-line">
          </div>
     <b-nav vertical >
-        <b-nav-item active>All Certificates</b-nav-item>
-        <b-nav-item>Add Certificate</b-nav-item>
+        <b-nav-item  v-if="identity !=''"><router-link to="/addcert"> AddCertificate </router-link></b-nav-item>
         <b-nav-item>Register Admin</b-nav-item>
+        <b-nav-item  v-if="identity !=''"><router-link to="/university"> All Certificates </router-link></b-nav-item>
         <b-nav-item >Statistics</b-nav-item>
     </b-nav>
-    <add-cert style="margin-top:-150px"> </add-cert>
+    <add-cert style=" margin-top:-150px"> </add-cert>
 
 </div>
 </div>
@@ -28,7 +28,7 @@ components:{
 .vertical-nav{
     background-color:#343A40 ;
     width: 15%;
-    height: 100vh;
+    height: 119vh;
 }
 .horizontol-line{
     height: .1em;

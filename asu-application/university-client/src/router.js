@@ -31,7 +31,16 @@ export default new Router({
 
     {path: '/dashboard',
     name:'Dashboard',
-    component : Dashboard
+    component : Dashboard,
+    beforeEnter: (to, from, next) => {
+      if(store.state.islogged == false) {
+          console.log("Guarded");
+          next('/login');
+      } else {
+        console.log("Passed!");
+        next();
+      }
+  } 
     },
 
     {

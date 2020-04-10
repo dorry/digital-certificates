@@ -62,16 +62,16 @@ export default {
             console.log(googleUser);
             // This only gets the user information: id, name, imageUrl and email
             console.log(googleUser.getBasicProfile());
-            this.identity = this.getUsername(googleUser.getBasicProfile().zu);
-            this.firstName = googleUser.getBasicProfile().vW;
+            this.identity = this.getUsername(googleUser.getBasicProfile().yu);
+            this.firstName = googleUser.getBasicProfile().pW;
             console.log(this.firstName);
             console.log(this.$store.state.islogged);
 //            this.$store.state.identity = this.identity;
             this.$store.dispatch('saveUserLogged', this.identity);
             this.$store.commit("setislogged", true);
 //  this.$store.state.firstName =  googleUser.getBasicProfile().vW;
-            this.$store.dispatch('saveUsername', googleUser.getBasicProfile().vW);
-            this.$router.push("/home");
+            this.$store.dispatch('saveUsername', googleUser.getBasicProfile().pW);
+            this.$router.push("/dashboard");
         },
         onFailure(error){
             console.log(error);

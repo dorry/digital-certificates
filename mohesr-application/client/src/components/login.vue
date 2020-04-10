@@ -55,6 +55,7 @@ export default {
         },
         
         getUsername(email){
+            console.log(email);
             var username=email.split("@");
             return username[0];
         }
