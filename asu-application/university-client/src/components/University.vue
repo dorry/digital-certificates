@@ -1,13 +1,20 @@
 <template>
   <div>  
     <b-pagination
+      v-if="!waiting"
       v-model="currentPage"
       :total-rows="rows"
       :per-page="perPage"
       aria-controls="my-table"
     ></b-pagination>
-
-    <p class="mt-3">Current Page: {{ currentPage }}</p>
+    <div style=
+    "
+    top:45%;
+    position: absolute;
+    left: 50%; ">
+    <b-spinner style="width: 8rem; height: 8rem;" v-if="waiting" label="Spinning"></b-spinner>
+    </div>
+    <p v-if="!waiting" class="mt-3">Current Page: {{ currentPage }}</p>
     <b-table 
       :bordered="bordered"
       @row-clicked="myRowClickHandler"
@@ -28,6 +35,7 @@ export default {
  data() {
    
     return {
+     waiting: true,
      bordered: true,
      perPage: 20,
      currentPage: 1,
@@ -38,6 +46,9 @@ export default {
       }
     },
     computed: {
+      wait(){
+        return this.wait
+      },
       rows() {
         return this.items.length
       },
@@ -61,6 +72,7 @@ export default {
 
         const response =  await APIService.queryAll('appadmin');
         console.log(response.data);
+        this.waiting = false;
         // this.changeObj(response.data);
         this.response = response.data;
         // console.log(this.items.length);
@@ -96,6 +108,7 @@ export default {
 </script>
 
 <style scoped>
+
 .b-table{
   background-color: white;
   align-self: center;

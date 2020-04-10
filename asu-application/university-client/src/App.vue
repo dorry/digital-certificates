@@ -5,7 +5,6 @@
       </div>
 
 </template>
-
 <script>
 import navbar from "./components/features/navbar";
 export default {
@@ -15,7 +14,6 @@ export default {
   name: 'app'  
 }
 </script>
-
 <style>
 body {
    background-image: url('./assets/webbg.png');; 
