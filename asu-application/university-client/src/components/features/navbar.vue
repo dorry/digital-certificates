@@ -1,5 +1,5 @@
 <template>
-   <div>
+<div>
   <b-navbar toggleable="lg" type="dark" variant="dark">
     <b-navbar-brand href="#">PUBLIC UNIVERSITY</b-navbar-brand>
 
@@ -14,7 +14,6 @@
         <b-nav-item  v-else><router-link to="/login"> Logout </router-link></b-nav-item>
 
       </b-navbar-nav>
-      <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
 
         <b-nav-item-dropdown v-if="identity !=''" right>

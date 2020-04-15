@@ -1,6 +1,31 @@
 <template>
 <div>
-<ul>
+
+    <b-navbar toggleable="lg" type="dark" variant="dark">
+    <b-navbar-brand> <b> وزارة التعليم العالي و البحث العلمي <img src="../assets/flagg.png" alt="Egypt" style="width:50px;height:50px;">  </b></b-navbar-brand>
+    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+    <b-collapse id="nav-collapse" is-nav>
+      <b-navbar-nav>
+        <b-nav-item><router-link to="/home"> الصفحة الاساسية </router-link></b-nav-item>        
+        <b-nav-item  v-if="identity !=''"><router-link to="/dashboard"> اللائحة </router-link></b-nav-item>
+        <b-nav-item  v-if="identity ==''"><router-link to="/login"> تسجيل دخول </router-link></b-nav-item>
+        <b-nav-item  v-else><router-link to="/login" > تسجيل خروج </router-link></b-nav-item>
+
+      </b-navbar-nav>
+      <b-navbar-nav class="ml-auto">
+
+        <b-nav-item-dropdown v-if="identity !=''" right>
+          <!-- Using 'button-content' slot -->
+          <template v-slot:button-content>
+            <em >{{firstName}} مرحبا </em>
+            <em> </em>
+          </template>
+        </b-nav-item-dropdown>
+      </b-navbar-nav>
+    </b-collapse>
+  </b-navbar>
+<!-- <ul>
   <li><a href="#3">مركز المعلومات</a></li>
   <li><a href="#4">الخدمات</a></li>
   <li><a href="#5">البحث العلمي</a></li>
@@ -13,8 +38,8 @@
   <li  v-if="identity != ''"><b><router-link to="/login" > تسجيل خروج </router-link></b></li>
   <li v-else><b><router-link to="/login">تسجيل دخول </router-link></b></li>     
   <li v-if="identity != ''"><h3> <b> مرحبا {{firstName }} </b> </h3></li>
-  <li style="float:right"><img src="../assets/flagg.png" alt="Egypt" style="width:200px;height:200px;border:0;margin-left:250px;"></li>
-</ul>
+ 
+</ul> -->
 <img src="../assets/grad.png" alt="grad" id="img1">
 </div>
 </template>
@@ -34,53 +59,17 @@ computed: {
 }
 </script>
 <style scoped>
+a{
+  color:#919497;
+}
 #img1
 {
-  min-width: 100%;
+  min-width: 100%;;
   height: 400px;
   border: 0;
-  margin-top: -8px;
+  margin-top: -220px;
 }
-ul {
-  list-style-type: none;
-  vertical-align: bottom;
-  margin: -8px;
-  margin-top: -8px;
-  padding: 0px;
-  width: 101%;
-  height: auto;
-  position: absolute;
-  overflow: hidden;
-  border: 1px solid #e7e7e7;
-  background-color: #ffffff;
-  border-bottom: 2px solid gold;
-  opacity: 0.5;
-  display: flex;
-  align-items: flex-end;
-}
-
-li {
-  float: left;
-
-}
-
-li a {
-  display: inline-block;
-  text-align: center;
-  color: rgb(0, 0, 0);
-  padding: 14px 16px;
-  text-decoration: none;
-  background-color: rgb(255, 255, 255);
-  bottom: 0px;
-  width: 115px;
-
-}
-a
-{
-  border: 10px;
-}
-
-li a:hover:not(.active) {
-  background-color: rgb(255, 255, 255);
+.bg-dark {
+ background-color:rgba(1,3,5,0.9)!important;
 }
 </style>

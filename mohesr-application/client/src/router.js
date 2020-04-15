@@ -6,6 +6,7 @@ import Validation from './components/Validation'
 import Login from './components/login'
 import Publics from './components/PublicUnis'
 import Uni from './components/University'
+import Dash from './components/Dashboard'
 import store from './store/store'
 
 Vue.use(Router)
@@ -63,6 +64,12 @@ export default new Router({
     name:'Login',
     component : Login,
     
+    },
+    {
+      path: '/dashboard',
+      name:'Login',
+      component : Dash,
+      
     },
     {
     path: '/validation',
