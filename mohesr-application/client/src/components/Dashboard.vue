@@ -46,7 +46,7 @@ export default {
 <style scoped>
 .vertical-nav{
     top: 11%;
-    position: fixed;
+    position: absolute;
     background-color: #1a1c1e;
     width: 15%;
     height: 119vh;
