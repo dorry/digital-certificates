@@ -5,7 +5,8 @@
     <p>من فضلك استخدام بريدك الالكتروني لستجيل الدخول</p>
     </div>
     <GoogleLogin class="google-login" :params="params" :renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure"></GoogleLogin>
-    
+        <GoogleLogin v-if="id!=''" :params="params" :logoutButton=true :onSuccess="logout" :onFailure="faillogout">Sign Out </GoogleLogin>
+
     </div>
     </div>
 </template>
@@ -37,17 +38,28 @@ export default {
         },
 
     methods: {
+        logout(){
+            console.log("Signed Out");
+
+            this.$store.dispatch('saveUserLogged', "");
+            this.$store.commit("setislogged", false);
+//  this.$store.state.firstName =  googleUser.getBasicProfile().vW;
+            this.$store.dispatch('saveUsername', "");
+            this.$router.push("/home");
+        },
         onSuccess(googleUser) {
             console.log(googleUser);
             // This only gets the user information: id, name, imageUrl and email
             console.log(googleUser.getBasicProfile());
-            this.identity = this.getUsername(googleUser.getBasicProfile().zu);
-            this.firstName = googleUser.getBasicProfile().vW;
+            this.identity = this.getUsername(googleUser.getBasicProfile().yu);
+            this.firstName = googleUser.getBasicProfile().pW;
             console.log(this.firstName);
-            this.$store.state.islogged = this.islogged;
             console.log(this.$store.state.islogged);
-            this.$store.state.identity = this.identity;
-            this.$store.state.firstName =  googleUser.getBasicProfile().vW;
+//            this.$store.state.identity = this.identity;
+            this.$store.dispatch('saveUserLogged', this.identity);
+            this.$store.commit("setislogged", true);
+//  this.$store.state.firstName =  googleUser.getBasicProfile().vW;
+            this.$store.dispatch('saveUsername', googleUser.getBasicProfile().pW);
             this.$router.push("/home");
         },
         onFailure(error){
@@ -73,12 +85,12 @@ height: 300px;
     justify-content: space-evenly;
     align-items: center;
     /* align-content: center; */
-    background-color: rgb(67, 6, 117);
+    background-color: #4c5664;
     border-radius: 5%;
 }
 .parent-container{
     width: 100vw;
-    height: 100vh;
+    height: 50vh;
      display: flex;
     justify-content: center;
     align-items: center;

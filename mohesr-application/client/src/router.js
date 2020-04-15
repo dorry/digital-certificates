@@ -6,6 +6,8 @@ import Validation from './components/Validation'
 import Login from './components/login'
 import Publics from './components/PublicUnis'
 import Uni from './components/University'
+import store from './store/store'
+
 Vue.use(Router)
 
 export default new Router({
@@ -18,26 +20,63 @@ export default new Router({
     },
     {path: '/identification',
     name:'Identification',
-    component : Identification
+    component : Identification,
+    beforeEnter: (to, from, next) => {
+      if(store.state.islogged == false) {
+          console.log("Guarded");
+          next('/login');
+      } else {
+        console.log("Passed!");
+        next();
+      }
+  } 
     },
     {path: '/publicunis',
     name:'Publicunis',
-    component : Publics
+    component : Publics,
+    beforeEnter: (to, from, next) => {
+      if(store.state.islogged == false) {
+          console.log("Guarded");
+          next('/login');
+      } else {
+        console.log("Passed!");
+        next();
+      }
+  } 
     },
     {
     path: '/university',
     name:'Uni',
-    component : Uni
+    component : Uni,
+    beforeEnter: (to, from, next) => {
+      if(store.state.islogged == false) {
+          console.log("Guarded");
+          next('/login');
+      } else {
+        console.log("Passed!");
+        next();
+      }
+  } 
     },
     {
     path: '/login',
     name:'Login',
-    component : Login
+    component : Login,
+    
     },
     {
     path: '/validation',
     name: 'Validation',
-    component: Validation
+    component: Validation,
+    beforeEnter: (to, from, next) => {
+      if(store.state.islogged == false) {
+          console.log("Guarded");
+          next('/login');
+      } else {
+        console.log("Passed!");
+        next();
+      }
+  } 
     },
   ]
 })
