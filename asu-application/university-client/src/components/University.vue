@@ -1,5 +1,7 @@
 <template>
   <div>  
+        <h1>{{rows}}</h1>
+
     <b-pagination
       v-if="!waiting"
       v-model="currentPage"
