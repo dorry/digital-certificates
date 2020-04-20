@@ -7,10 +7,11 @@ export const eventBus = new Vue();
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-import 'chart.js'
-
+import Chartkick from 'vue-chartkick'
+import Chart from 'chart.js'
 import 'hchs-vue-charts'
 // Install BootstrapVue
+Vue.use(Chartkick.use(Chart));
 Vue.use(window.VueCharts);
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin

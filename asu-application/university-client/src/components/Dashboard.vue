@@ -12,12 +12,14 @@
     <!-- <add-cert style=" margin-top:-150px"> </add-cert> -->
 
 </div>
-      <chartjs-doughnut  
-            v-bind="datasets"
-            v-bind:option="option"
-            v-bind:labels="labels">
-             </chartjs-doughnut>
-        <h1>{{getElectronics()}}</h1>
+    <pie-chart ></pie-chart> 
+<pie-chart 
+:data="[['Electronics',getElectronicsC ], ['Masscomm.', getMasscommsC]]">
+</pie-chart>
+        <h1 hidden>{{getElectronics()}}</h1>
+        <h1 hidden>{{getMasscom()}}</h1>
+        <h1>{{getElectronicsC}}</h1>
+        <h1>{{getMasscommsC}}</h1>
         <h1 hidden>{{getItems}}</h1>   
         <h1 style="margin-left:300px">Graduates from Faculty Of Electronics : {{getElectronicsC}}</h1>
 
@@ -32,18 +34,10 @@ export default {
   return {
    response:[],
    Electronics:0,
-   s:3,
-   MassComm:[],
+   MassComm:0,
    items: [
     
    ],
-   labels:["Electronics", "Mass Communication", "Business"],
-   datasets:[
-    {       
-     data: [this.s,30,50],
-     backgroundColor: ["Red","Yellow","Purple"]
-    }
-    ],
    option : 
   {
     title:{
@@ -63,8 +57,6 @@ components:{
       getElectronics(){
       var items = this.getItems;
       for(var i =0; this.Electronics<items.length; i++){
-        console.log("Value Of I :");
-        console.log(i);
         if(i >= items.length)
         return;
         if(items[i].Faculty == "Electronics")
@@ -72,9 +64,19 @@ components:{
           this.Electronics++;
         }
       }
-      this.Electronics -=1;
       return this.Electronics;  
-
+      },
+      getMasscom(){
+      var items = this.getItems;
+      for(var i =0; this.MassComm<items.length; i++){
+        if(i >= items.length)
+        return;
+        if(items[i].Faculty == "Mass Communication")
+        {
+          this.MassComm++;
+        }
+      }
+      return this.MassComm;
       },
       async queryAll(){
         const response =  await APIService.queryAll('appadmin');
@@ -102,8 +104,11 @@ components:{
   computed:
   {
     getElectronicsC(){
-      return this.Electronics;  
+      return this.Electronics-1;  
     },
+    getMasscommsC(){
+      return this.MassComm-1;  
+    },    
     rows() 
     {
     return this.items.length
@@ -127,7 +132,8 @@ components:{
 }
 .horizontol-line{
     height: .1em;
-   
+       position: absolute;
+
     background-color: white;
 }
 
