@@ -1,14 +1,7 @@
 <template>
   <div>  
-        <h1>{{rows}}</h1>
 
-    <b-pagination
-      v-if="!waiting"
-      v-model="currentPage"
-      :total-rows="rows"
-      :per-page="perPage"
-      aria-controls="my-table"
-    ></b-pagination>
+    
     <div style=
     "
     top:45%;
@@ -16,7 +9,15 @@
     left: 50%; ">
     <b-spinner style="width: 8rem; height: 8rem;" v-if="waiting" label="Spinning"></b-spinner>
     </div>
-    <p v-if="!waiting" class="mt-3">Current Page: {{ currentPage }}</p>
+       <b-pagination
+      v-if="!waiting"
+      v-model="currentPage"
+      :total-rows="rows"
+      :per-page="perPage"
+      aria-controls="my-table"
+    ></b-pagination>
+    <div id="table">
+    <br>
     <b-table 
       :bordered="bordered"
       @row-clicked="myRowClickHandler"
@@ -26,6 +27,7 @@
       :current-page="currentPage"
     >
     </b-table>
+    </div>
   </div>
 </template>
 <script>
@@ -110,10 +112,17 @@ export default {
 </script>
 
 <style scoped>
-
+#table{
+    margin-left: 20%;
+    justify-content: center;
+    align-items: center;
+}
+.b-pagination{
+    margin-left: 20%;
+ }
 .b-table{
   background-color: white;
   align-self: center;
-  width: 1500px;
+  width: 1100px;
 }
 </style>

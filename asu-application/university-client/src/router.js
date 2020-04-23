@@ -7,6 +7,7 @@ import Profile from './components/Profile'
 import store from './store/store'
 import university from './components/University'
 import Dashboard from './components/Dashboard'
+import Stat from './components/Statistics'
 
 Vue.use(Router)
 
@@ -47,6 +48,20 @@ export default new Router({
       path:'/university',
       name:'Uni',
       component: university,
+      beforeEnter: (to, from, next) => {
+        if(store.state.islogged == false) {
+            console.log("Guarded");
+            next('/login');
+        } else {
+          console.log("Passed!");
+          next();
+        }
+    } 
+    },
+{
+      path:'/stats',
+      name:'Stat',
+      component: Stat,
       beforeEnter: (to, from, next) => {
         if(store.state.islogged == false) {
             console.log("Guarded");

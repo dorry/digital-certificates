@@ -111,11 +111,11 @@ export default {
     border-radius: 5%;
 }
 .parent-container{
-  height: 230opx;
+  height: 230px;
     margin-top: 50px;
     width: 100vw;
     height: auto;
-     display: flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     }

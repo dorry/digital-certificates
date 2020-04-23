@@ -1,21 +1,27 @@
 <template>
 <div>
-  <div class=" vertical-nav" >
-    <div class="horizontal-line">
-         </div>
-    <b-nav vertical >
-        <b-nav-item  v-if="identity !=''"><router-link to="/addcert"> AddCertificate </router-link></b-nav-item>
-        <b-nav-item>Register Admin</b-nav-item>
-        <b-nav-item  v-if="identity !=''"><router-link to="/university"> All Certificates </router-link></b-nav-item>
-        <b-nav-item ><router-link to="/stats">Statistics </router-link></b-nav-item>
-    </b-nav>
-    <!-- <add-cert style=" margin-top:-150px"> </add-cert> -->
+
+ <div style="top:35%;">
+      <pie-chart 
+      :data="[['Electronics',getElectronicsC ], 
+      ['Masscomm.', getMasscommsC],
+      ['Business', getBusinessC], 
+      ['Pharmacy', getPharmacyC],
+       ['Medical',getMedicalC]]">
+      </pie-chart>
+      </div>
+      <h1>{{getElectronics()}}</h1>
+      <h1>{{getBusiness()}}</h1>
+      <h1>{{getMasscom()}}</h1>
+      <h1>{{getPharmacy()}}</h1>
+      <h1>{{getMedical()}}</h1>
+
+    <h1 hidden>{{getItems}}</h1>   
+
 
 </div>
-
-</div>
+    
 </template>
-
 <script>
 import APIService from "../services/APIService";
 import add from "./AddCertificate.vue";
@@ -25,17 +31,12 @@ export default {
    response:[],
    Electronics:0,
    MassComm:0,
+   Business: 0,
+   Pharmacy: 0,
+   Medical:0,
    items: [
     
    ],
-   option : 
-  {
-    title:{
-    display:true,
-    position:"Bottom",
-    text: "Fruits"
-       }
-      }
     };
   },  
 components:{
@@ -55,6 +56,42 @@ components:{
         }
       }
       return this.Electronics;  
+      },
+      getPharmacy(){
+      var items = this.getItems;
+      for(var i =0; this.Pharmacy<items.length; i++){
+        if(i >= items.length)
+        return;
+        if(items[i].Faculty == "Pharmacy")
+        {
+          this.Pharmacy++;
+        }
+      }
+      return this.Pharmacy; 
+      },
+      getMedical(){
+      var items = this.getItems;
+      for(var i =0; this.Medical<items.length; i++){
+        if(i >= items.length)
+        return;
+        if(items[i].Faculty == "Medical")
+        {
+          this.Medical++;
+        }
+      }
+      return this.Medical; 
+      },
+      getBusiness(){
+      var items = this.getItems;
+      for(var i =0; this.Business<items.length; i++){
+        if(i >= items.length)
+        return;
+        if(items[i].Faculty == "Business")
+        {
+          this.Business++;
+        }
+      }
+      return this.Business;  
       },
       getMasscom(){
       var items = this.getItems;
@@ -96,9 +133,19 @@ components:{
     getElectronicsC(){
       return this.Electronics-1;  
     },
+    getPharmacyC(){
+        return this.Pharmacy-1;
+    },
+    getBusinessC(){
+      return this.Business-1;
+    },
     getMasscommsC(){
       return this.MassComm-1;  
     },    
+    getMedicalC()
+    {
+      return this.Medical-1;
+    },
     rows() 
     {
     return this.items.length

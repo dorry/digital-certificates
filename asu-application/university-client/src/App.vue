@@ -1,15 +1,18 @@
 <template>
   <div id="app">
       <nav-bar> </nav-bar>
+      <dashboard> </dashboard>
       <router-view></router-view>
       </div>
 
 </template>
 <script>
 import navbar from "./components/features/navbar";
+import db from "./components/Dashboard";
 export default {
   components:{
-    "nav-bar":navbar
+    "nav-bar":navbar,
+    "dashboard" : db
   },
   name: 'app'  
 }

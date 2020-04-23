@@ -8,8 +8,6 @@
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
         <b-nav-item><router-link to="/home"> Home </router-link></b-nav-item>        
-                <b-nav-item  v-if="identity !=''"><router-link to="/dashboard"> Dashboard </router-link></b-nav-item>
-
         <b-nav-item  v-if="identity ==''"><router-link to="/login"> Login </router-link></b-nav-item>
         <b-nav-item  v-else><router-link to="/login"> Logout </router-link></b-nav-item>
 
