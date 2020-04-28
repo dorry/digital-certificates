@@ -43,62 +43,10 @@ components:{
   },
  methods:{
       adddata(){
-      },
-      getElectronics(){
-      var items = this.getItems;
-      for(var i =0; this.Electronics<items.length; i++){
-        if(i >= items.length)
-        return;
-        if(items[i].Faculty == "Electronics")
-        {
-          this.Electronics++;
-        }
-      }
-      return this.Electronics;  
-      },
-      getMasscom(){
-      var items = this.getItems;
-      for(var i =0; this.MassComm<items.length; i++){
-        if(i >= items.length)
-        return;
-        if(items[i].Faculty == "Mass Communication")
-        {
-          this.MassComm++;
-        }
-      }
-      return this.MassComm;
-      },
-      async queryAll(){
-        const response =  await APIService.queryAll('appadmin');
-        console.log(response.data);
-        this.waiting = false;
-        this.response = response.data;       
-    },
-      changeObj(arrObj){
-        var items=[];
-        arrObj.forEach(obj=> {
-          var item = {};
-          item.ID = obj.Key;
-          console.log(obj.Key + "item.ID: " + item.ID);
-          item.Name = obj.Record.name;
-          item.GPA = obj.Record.gpa;
-          item.Faculty = obj.Record.faculty;
-          item.University = obj.Record.university;
-          console.log(obj.Record.university + "item.name: " + item.University);
-          items.push(item);
-          console.log("from changeobj: "+ item)
-        });
-        return items;
-    },    
+      },  
   },
   computed:
-  {
-    getElectronicsC(){
-      return this.Electronics-1;  
-    },
-    getMasscommsC(){
-      return this.MassComm-1;  
-    },    
+  {   
     rows() 
     {
     return this.items.length

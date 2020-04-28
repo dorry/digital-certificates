@@ -2,19 +2,29 @@
 <div>
 
  <div style="top:35%;">
+    <div style=
+    "
+    top:45%;
+    position: absolute;
+    left: 50%; ">
+    <b-spinner style="width: 8rem; height: 8rem;" v-if="waiting" label="Spinning"></b-spinner>
+    </div>      
       <pie-chart 
-      :data="[['Electronics',getElectronicsC ], 
-      ['Masscomm.', getMasscommsC],
-      ['Business', getBusinessC], 
+      v-if="!waiting"
+      :data="[
+      ['Medical',getMedicalC],
+      ['Electronics',getElectronicsC],
       ['Pharmacy', getPharmacyC],
-       ['Medical',getMedicalC]]">
+      ['Masscomm', getMasscommsC],
+      ['Business', getBusinessC]
+      ]">
       </pie-chart>
       </div>
-      <h1>{{getElectronics()}}</h1>
-      <h1>{{getBusiness()}}</h1>
-      <h1>{{getMasscom()}}</h1>
-      <h1>{{getPharmacy()}}</h1>
-      <h1>{{getMedical()}}</h1>
+    <h1>{{getElectronics()}}</h1>
+    <h1>{{getPharmacy()}}</h1>
+    <h1>{{getMasscomm()}}</h1>
+    <h1>{{getMedical()}}</h1>  
+    <h1>{{getBusiness()}}</h1> 
 
     <h1 hidden>{{getItems}}</h1>   
 
@@ -28,15 +38,19 @@ import add from "./AddCertificate.vue";
 export default {
  data(){
   return {
+   waiting: true,
    response:[],
+   i:0,
+   Loopelec:0,
+   Looppharm:0,
+   Loopbusi:0,
+   Loopmass:0,
    Electronics:0,
    MassComm:0,
    Business: 0,
    Pharmacy: 0,
    Medical:0,
-   items: [
-    
-   ],
+   items: [],
     };
   },  
 components:{
@@ -47,70 +61,105 @@ components:{
       },
       getElectronics(){
       var items = this.getItems;
-      for(var i =0; this.Electronics<items.length; i++){
-        if(i >= items.length)
-        return;
-        if(items[i].Faculty == "Electronics")
+      for(var x = 0; this.Electronics<this.rows;this.Loopelec++)
+      {
+        console.log(this.Electronics);
+        if(this.Loopelec==this.rows)
+        {
+          console.log("STOPPED");
+          return this.Electronics;
+        }
+        if(items[this.Loopelec].Faculty == "Electronics")
         {
           this.Electronics++;
         }
+
       }
-      return this.Electronics;  
-      },
-      getPharmacy(){
-      var items = this.getItems;
-      for(var i =0; this.Pharmacy<items.length; i++){
-        if(i >= items.length)
-        return;
-        if(items[i].Faculty == "Pharmacy")
-        {
-          this.Pharmacy++;
-        }
-      }
-      return this.Pharmacy; 
-      },
-      getMedical(){
-      var items = this.getItems;
-      for(var i =0; this.Medical<items.length; i++){
-        if(i >= items.length)
-        return;
-        if(items[i].Faculty == "Medical")
-        {
-          this.Medical++;
-        }
-      }
-      return this.Medical; 
-      },
+      return this.Electronics; 
+  },
       getBusiness(){
       var items = this.getItems;
-      for(var i =0; this.Business<items.length; i++){
-        if(i >= items.length)
-        return;
-        if(items[i].Faculty == "Business")
+      for(var x = 0; this.Business<this.rows;this.Loopbusi++)
+      {
+        console.log(this.Electronics);
+        if(this.Loopbusi==this.rows)
+        {
+          console.log("STOPPED");
+          return this.Business;
+        }
+        if(items[this.Loopbusi].Faculty == "Business")
         {
           this.Business++;
         }
+
       }
-      return this.Business;  
-      },
-      getMasscom(){
+      return this.Business; 
+  },
+      getPharmacy(){
       var items = this.getItems;
-      for(var i =0; this.MassComm<items.length; i++){
-        if(i >= items.length)
-        return;
-        if(items[i].Faculty == "Mass Communication")
+      for(var x = 0; this.Pharmacy<this.rows;this.Looppharm++)
+      {
+        console.log(this.Pharmacy);
+        if(this.Looppharm==this.rows)
+        {
+          console.log("STOPPED");
+          return this.Pharmacy;
+        }
+        if(items[this.Looppharm].Faculty == "Pharmacy")
+        {
+          this.Pharmacy++;
+        }
+
+      }
+      return this.Pharmacy; 
+  },
+      getMasscomm(){
+      var items = this.getItems;
+      for(var x = 0; this.MassComm<this.rows;this.Loopmass++)
+      {
+        console.log(this.MassComm);
+        if(this.Loopmass==this.rows)
+        {
+          console.log("STOPPED");
+          return this.MassComm;
+        }
+        if(items[this.Loopmass].Faculty == "Pharmacy")
         {
           this.MassComm++;
         }
+
       }
-      return this.MassComm;
-      },
+      return this.MassComm; 
+  },
+      getMedical(){
+      var items = this.getItems;
+      for(var x = 0; this.Medical<this.rows;this.i++)
+      {
+        console.log(this.Medical);
+        if(this.i==this.rows)
+        {
+          console.log("STOPPED");
+          return this.Medical;
+        }
+        if(items[this.i].Faculty == "Medical")
+        {
+          this.Medical++;
+        }
+
+      }
+      return this.Medical; 
+  },
       async queryAll(){
+        if(!this.getwait)
+        {
+        console.log("Request loop prevenetedd");
+        return; 
+        }
         const response =  await APIService.queryAll('appadmin');
         console.log(response.data);
         this.waiting = false;
         this.response = response.data;       
-    },
+      },
       changeObj(arrObj){
         var items=[];
         arrObj.forEach(obj=> {
@@ -130,25 +179,29 @@ components:{
   },
   computed:
   {
+    getwait()
+    {
+      return this.waiting;
+    },
     getElectronicsC(){
-      return this.Electronics-1;  
+      return this.Electronics;  
     },
     getPharmacyC(){
-        return this.Pharmacy-1;
+      return this.Pharmacy;  
     },
     getBusinessC(){
-      return this.Business-1;
+      return this.Business;  
     },
     getMasscommsC(){
-      return this.MassComm-1;  
+      return this.MassComm;
     },    
     getMedicalC()
     {
-      return this.Medical-1;
+      return this.Medical;
     },
     rows() 
     {
-    return this.items.length
+    return this.items.length;
     },
     getItems(){
       this.queryAll();

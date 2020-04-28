@@ -93,7 +93,6 @@ export default {
           item.Faculty = obj.Record.faculty;
           item.University = obj.Record.university;
           console.log(obj.Record.university + "item.name: " + item.University);
-
           items.push(item);
           console.log("from changeobj: "+ item)
         });
