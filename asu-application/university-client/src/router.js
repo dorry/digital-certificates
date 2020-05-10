@@ -8,7 +8,7 @@ import store from './store/store'
 import university from './components/University'
 import Dashboard from './components/Dashboard'
 import Stat from './components/Statistics'
-
+import Req from './components/Request'
 Vue.use(Router)
 
 export default new Router({
@@ -72,6 +72,20 @@ export default new Router({
         }
     } 
     },
+    {
+      path: '/Request',
+      name: 'Request',
+      component: Req,
+      beforeEnter: (to, from, next) => {
+        if(store.state.islogged == false) {
+            console.log("Guarded");
+            next('/login');
+        } else {
+          console.log("Passed!");
+          next();
+        }
+    } 
+      },   
     {
     path: '/addcert',
     name:'AddCertificate',

@@ -8,6 +8,8 @@
     ></b-pagination>
 
     <p class="mt-3">Current Page: {{ currentPage }}</p>
+        <div id="table">
+
     <b-table 
       @row-clicked="myRowClickHandler"
       id="my-table"
@@ -17,6 +19,7 @@
       small
     >
     </b-table>
+    </div>
   </div>
 </template>
 <script>
@@ -53,3 +56,19 @@ export default {
   }
 </script>
 
+
+<style>
+#table{
+    margin-left: 20%;
+    justify-content: center;
+    align-items: center;
+}
+.b-pagination{
+    margin-left: 20%;
+ }
+.b-table{
+  background-color: white;
+  align-self: center;
+  width: 1100px;
+}
+</style>

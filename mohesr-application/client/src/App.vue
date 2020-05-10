@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-       <nav-bar> </nav-bar>  
+       <nav-bar> </nav-bar>
+       <dashboard></dashboard>  
       <router-view></router-view>
 
     
@@ -9,9 +10,12 @@
 
 <script>
 import navbar from './components/navbar'
+import Dboard from './components/Dashboard'
+
 export default {
   components : {
-    'nav-bar':navbar
+    'nav-bar':navbar,
+    'dashboard':Dboard
   },
   name: 'app'  
   

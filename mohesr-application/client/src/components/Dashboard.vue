@@ -5,21 +5,16 @@
          </div>
     <b-nav vertical >
         <b-nav-item>تسجيل مشرف جديد</b-nav-item>
-        <b-nav-item >احصائيات</b-nav-item>
-        <b-nav-item router-link to="/Validation" >التحقق من شهادة</b-nav-item>
+        <b-nav-item router-link to="/Statistics" >احصائيات</b-nav-item>
+        <b-nav-item router-link to="/validation" >التحقق من شهادة</b-nav-item>
+        <b-nav-item router-link to="/Request" ></b-nav-item>        
         <b-nav-item  v-if="identity !=''"><router-link to="/university">  قائمة الطلاب </router-link></b-nav-item>
         
     </b-nav>
     <add-cert style=" margin-top:-150px"> </add-cert>
 
 </div>
-        <div id="chart">
-            <chartjs-doughnut 
-            v-bind="datasets"
-            v-bind:option="option"
-            v-bind:labels="labels">
-             </chartjs-doughnut>
-        </div>
+
 </div>
 
 </template>
