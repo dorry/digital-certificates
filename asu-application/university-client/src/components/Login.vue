@@ -6,7 +6,7 @@
     <h4 >Welcome!</h4>
     <p>Please Use the University's email to login.</p>
     </div>
-    <GoogleLogin  class="google-login" :params="params" :renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure"></GoogleLogin>
+    <GoogleLogin class="google-login" :params="params" :renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure"></GoogleLogin>
     <GoogleLogin v-if="id!=''" :params="params" :logoutButton=true :onSuccess="logout" :onFailure="faillogout">Sign Out </GoogleLogin>
     
     </div>
@@ -72,6 +72,9 @@ export default {
 //  this.$store.state.firstName =  googleUser.getBasicProfile().vW;
             this.$store.dispatch('saveUsername', googleUser.getBasicProfile().pW);
             this.$router.push("/dashboard");
+            console.log("USERRR : ")
+                        console.log(googleUser);
+
         },
         onFailure(error){
             console.log(error);

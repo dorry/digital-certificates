@@ -4,10 +4,12 @@
     <div class="horizontal-line">
          </div>
     <b-nav vertical >
-        <b-nav-item  v-if="identity !=''"><router-link to="/addcert"> AddCertificate </router-link></b-nav-item>
-        <b-nav-item>Register Admin</b-nav-item>
-        <b-nav-item  v-if="identity !=''"><router-link to="/university"> All Certificates </router-link></b-nav-item>
-        <b-nav-item ><router-link to="/stats">Statistics </router-link></b-nav-item>
+        <b-nav-item  v-if="id !=''"><router-link to="/addcert"> AddCertificate </router-link></b-nav-item>
+        <b-nav-item v-if="id !=''">Register Admin</b-nav-item>
+        <b-nav-item  v-if="id !=''"><router-link to="/university"> All Certificates </router-link></b-nav-item>
+        <b-nav-item v-if="id !=''" ><router-link to="/stats">Statistics </router-link></b-nav-item>
+        <b-nav-item v-if="id !=''" ><router-link to="/Request">Request Certificate </router-link></b-nav-item>
+        
     </b-nav>
     <!-- <add-cert style=" margin-top:-150px"> </add-cert> -->
 
@@ -47,6 +49,12 @@ components:{
   },
   computed:
   {   
+    id(){
+       return this.$store.state.identity;
+    },
+    fn(){
+      return this.$store.state.firstName;
+    },
     rows() 
     {
     return this.items.length

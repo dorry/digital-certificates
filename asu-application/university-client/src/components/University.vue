@@ -1,15 +1,13 @@
 <template>
   <div>  
-
     
-    <div style=
-    "
-    top:45%;
+    <div style =
+    " top:45%;
     position: absolute;
     left: 50%; ">
     <b-spinner style="width: 8rem; height: 8rem;" v-if="waiting" label="Spinning"></b-spinner>
     </div>
-       <b-pagination
+    <b-pagination
       v-if="!waiting"
       v-model="currentPage"
       :total-rows="rows"
@@ -64,13 +62,6 @@ export default {
         
       }
     },
-  //     created: function (){
-  //       this.queryAll();
-  //        console.log("response"+this.response);
-  //        this.items= this.changeObj(this.response);
-  //        console.log(this.items);
-        
-  // },
     methods:{
       async queryAll(){
 
