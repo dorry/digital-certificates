@@ -8,7 +8,6 @@
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
         <b-nav-item><router-link to="/home"> الصفحة الاساسية </router-link></b-nav-item>        
-        <b-nav-item  v-if="identity !=''"><router-link to="/dashboard"> اللائحة </router-link></b-nav-item>
         <b-nav-item  v-if="identity ==''"><router-link to="/login"> تسجيل دخول </router-link></b-nav-item>
         <b-nav-item  v-else><router-link to="/login" > تسجيل خروج </router-link></b-nav-item>
 

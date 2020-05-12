@@ -11,7 +11,6 @@ import Stat from './components/Statistics'
 import Req from './components/Request'
 import Reql from './components/RequestList'
 Vue.use(Router)
-
 export default new Router({
     mode:'history',
   routes: [
@@ -30,21 +29,6 @@ export default new Router({
     name:'Profile',
     component : Profile
     },
-
-    {path: '/dashboard',
-    name:'Dashboard',
-    component : Dashboard,
-    beforeEnter: (to, from, next) => {
-      if(store.state.islogged == false) {
-          console.log("Guarded");
-          next('/login');
-      } else {
-        console.log("Passed!");
-        next();
-      }
-  } 
-    },
-
     {
       path:'/clist',
       name:'Uni',

@@ -8,7 +8,6 @@ import Login from './components/login'
 import Publics from './components/PublicUnis'
 import Uni from './components/University'
 import Dash from './components/Dashboard'
-import Req from './components/Request'
 import store from './store/store'
 
 Vue.use(Router)
@@ -110,19 +109,5 @@ export default new Router({
       }
   } 
     },
-{
-      path: '/Request',
-      name: 'Request',
-      component: Req,
-      beforeEnter: (to, from, next) => {
-        if(store.state.islogged == false) {
-            console.log("Guarded");
-            next('/login');
-        } else {
-          console.log("Passed!");
-          next();
-        }
-    } 
-      },    
   ]
 })

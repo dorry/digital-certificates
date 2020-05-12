@@ -43,16 +43,14 @@ export default {
 </script>
 <style scoped>
 .vertical-nav{
-    top: 11%;
+    top: 10%;
     position: absolute;
-    background-color: #1a1c1e;
+    background-color:rgba(1,3,5,0.9)!important;
     width: 15%;
     height: 119vh;
 }
 .horizontol-line{
-    height: .1em;
-   
-    background-color: white;
+    height: .1em; 
 }
 
 a{
