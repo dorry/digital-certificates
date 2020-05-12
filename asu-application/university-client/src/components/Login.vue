@@ -1,5 +1,6 @@
 <template>
 <div>
+    
     <div  class = "parent-container">     
     <div class = "login-container">
     <div class="login-content">
@@ -11,7 +12,8 @@
     
     </div>
     </div>
-    </div>
+
+</div>
 </template>
 
 <script>

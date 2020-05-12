@@ -1,7 +1,11 @@
 <template>
     <div>
 
-      <h2 style="margin-left:15%;"> Requests Made :  </h2>
+    <div  class = "parent-container">     
+    <div class = "login-container">
+    <div class="login-content">
+   <h2 class="h4">Requests Made: </h2>
+    </div>  
     <div style =
     " top:45%;
     position: absolute;
@@ -27,6 +31,9 @@
     </b-table>
     </div>
     </div>
+    </div>
+
+  </div>
 
 </template>
 
@@ -42,6 +49,16 @@ export default {
     currentPage: 1,
     items: [
         { Email: 'sherif@asu.com' , FirstName: "Sherif" , LastName: "El Nayad"},
+         { Email: 'sherif@asu.com' , FirstName: "Sherif" , LastName: "El Nayad"},
+          { Email: 'sherif@asu.com' , FirstName: "Sherif" , LastName: "El Nayad"},
+           { Email: 'sherif@asu.com' , FirstName: "Sherif" , LastName: "El Nayad"},
+            { Email: 'sherif@asu.com' , FirstName: "Sherif" , LastName: "El Nayad"},
+             { Email: 'sherif@asu.com' , FirstName: "Sherif" , LastName: "El Nayad"},
+             { Email: 'sherif@asu.com' , FirstName: "Sherif" , LastName: "El Nayad"},
+             { Email: 'sherif@asu.com' , FirstName: "Sherif" , LastName: "El Nayad"},
+             { Email: 'sherif@asu.com' , FirstName: "Sherif" , LastName: "El Nayad"},
+             { Email: 'sherif@asu.com' , FirstName: "Sherif" , LastName: "El Nayad"},
+             { Email: 'sherif@asu.com' , FirstName: "Sherif" , LastName: "El Nayad"},
         ],
     }
  }
@@ -50,17 +67,48 @@ export default {
 </script>
 
 <style scoped>
-#table{
-    margin-left: 20%;
-    justify-content: center;
-    align-items: center;
+#table
+{
+  margin-left: 2%;
+  justify-content: center;
+  align-items: center;
 }
-.b-pagination{
-    margin-left: 20%;
- }
-.b-table{
+.b-pagination
+{
+  margin-left: 2%;
+}
+.b-table
+{
   background-color: white;
   align-self: center;
   width: 1100px;
+}
+.login-container
+{
+  height: 45%;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: #343A40;
+  border-radius: 2%;
+  padding-top: 3%;
+  padding-bottom: 1%;
+}
+.parent-container
+{
+  margin-top: 3%;
+  margin-left: 5%;
+  width: 100vw;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-content
+{
+  margin-left: 40%;
+  color:white;
 }
 </style>

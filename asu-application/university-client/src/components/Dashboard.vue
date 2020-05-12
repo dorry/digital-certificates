@@ -74,7 +74,7 @@ components:{
     position: absolute;
     background-color:#343A40 ;
     width: 15%;
-    height: 119vh;
+    height: 140vh;
 }
 .horizontol-line{
     height: .1em;

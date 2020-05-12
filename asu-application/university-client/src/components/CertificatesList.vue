@@ -1,6 +1,11 @@
 <template>
   <div>  
     
+    <div  class = "parent-container">     
+    <div class = "login-container">
+    <div class="login-content">
+    <h2 class="h4">Requests Made: </h2>
+    </div>  
     <div style =
     " top:45%;
     position: absolute;
@@ -26,6 +31,9 @@
     >
     </b-table>
     </div>
+    </div>
+    </div>
+
   </div>
 </template>
 <script>
@@ -114,5 +122,50 @@ export default {
   background-color: white;
   align-self: center;
   width: 1100px;
+}
+.btn-info
+{
+  background-color:#343A40;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: bold;
+}
+.btn-info:hover
+{
+  padding: 5px 5px;
+  background-color: white;
+  color:black;
+  text-decoration: none;
+  font-weight: bold;
+}
+.login-container
+{
+  height: 45%;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: #343A40;
+  border-radius: 2%;
+  padding-top: 3%;
+  padding-bottom: 1%;
+}
+.parent-container
+{
+  margin-top: 3%;
+  margin-left: 5%;
+  width: 100vw;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-content
+{
+  margin-left: 40%;
+  color:white;
 }
 </style>

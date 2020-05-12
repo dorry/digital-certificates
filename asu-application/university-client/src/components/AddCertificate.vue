@@ -1,61 +1,19 @@
 <template>
 <div  class = "parent-container">
-
-
-
-  
-  <div class = "login-container">
+    <div class = "login-container">
     <div class="login-content">
     <b-form class="text-center border border-light p-5">
-    <h2 class="h4 mb-4">Please fill the certificate information</h2>
-    
-    <label><h4>Full Name</h4></label>
-    <span class="form-group" :class="{ 'form-group--error': $v.name.$error }">
-    <b-input class="form-control mb-4" v-model="name" id="inline-form-input-nid" placeholder="Enter The Student's Name" ></b-input>
-    </span>
-    <span class="error" v-if="!$v.name.required">Full Name Field is required</span>
-    <span class="error" v-if="!$v.name.minLength">You only typed {{$v.name.$params.minLength.min}} letters , please enter the full name.</span>
-    <br>
-
-   
-    <span class="form-group" :class="{ 'form-group--error': $v.certificateId.$error }">
+        <h2 class="h4 mb-4">Please fill the certificate information</h2>
+    <label><h4> Name</h4></label>
+    <b-input class="form-control mb-4" v-model="name" id="inline-form-input-nid" placeholder="Enter The Student's Name"></b-input>
     <label><h4> National ID</h4></label>
-    <b-input class="form-control mb-4" v-model="certificateId" id="inline-form-input-nid" placeholder="Enter the Student's National ID" ></b-input>
-    </span>
-    <span class="error" v-if="!$v.certificateId.required">National ID is required</span>
-    <span class="error" v-if="!$v.certificateId.maxLength">National ID must have {{$v.certificateId.$params.maxLength.max}} numbers only </span>
-    <span class="error" v-if="!$v.certificateId.minLength">National ID must have {{$v.certificateId.$params.minLength.min}} numbers only</span>
-    <br>    
-    
-    <span class="form-group" :class="{ 'form-group--error': $v.gpa.$error }">
+    <b-input class="form-control mb-4" v-model="certificateId" id="inline-form-input-nid" placeholder="Enter the Student's National ID"></b-input>
     <label><h4> GPA</h4></label>
-    <b-input class="form-control mb-4" v-model="gpa" id="inline-form-input-username" placeholder="Enter the Student's Cumaltive GPA" ></b-input>
-    </span>
-    <span class="error" v-if="!$v.gpa.decimal">Field must be a decimal</span>
-    <span class="error" v-if="!$v.gpa.required">GPA is required</span>
-    <span class="error" v-if="!$v.gpa.maxValue">GPA can't exceed 4.00</span>
-    <span class="error" v-if="!$v.gpa.minValue">GPA can't be below 0.00</span>
-
-    <br>
-
-
-    <span class="form-group" :class="{ 'form-group--error': $v.grade.$error }">
-    <label><h4> Grade </h4></label>
-    <b-form-select placeholder="Enter the Final Grade" v-model="grade" class="form-control mb-4"  id="inline-form-input-nid"  :options="grades" ></b-form-select>
-      </span>
-      <span class="error" v-if="!$v.grade.required">Grade is required</span>
-      <br>
-
-
-    
-    
-    <span class="form-group" :class="{ 'form-group--error': $v.faculty.$error }">
+    <b-input class="form-control mb-4" v-model="gpa" id="inline-form-input-username" placeholder="Enter the Student's Cumaltive GPA"></b-input>
+    <label><h4> Final Grade </h4></label>
+    <b-input class="form-control mb-4" v-model="grade" id="inline-form-input-username" placeholder="Enter The S tudent's Grade"></b-input>
     <label><h4> Faculty </h4></label>
-    <b-form-select v-model="faculty" class="form-control mb-4"  id="inline-form-input-nid" :options="options" ></b-form-select>
-    </span>
-    <span class="error" v-if="!$v.faculty.required">Faculty is required</span>
-    <br>
-
+    <b-form-select v-model="faculty" class="form-control mb-4"  id="inline-form-input-nid" :options="options"></b-form-select>
     <label><h4> Please upload a snapshot of the certificate </h4></label>
     <vue-base64-file-upload    
          accept="image/png,image/jpeg"
@@ -64,16 +22,7 @@
         @file="onFile"
         @load="onLoad" />
         <br>
-    <b-button v-if="
-     $v.name.required &&
-     $v.grade.required &&
-     $v.gpa.required &&
-     $v.grade.required && 
-     $v.certificateId.required &&
-     $v.faculty.required  
-     "
-
-      @click="addCertificate()" id="submitbtn" class="btn btn-info btn-block" variant="primary">Save</b-button>
+    <b-button @click="addCertificate()" id="submitbtn" class="btn btn-info btn-block" variant="primary">Save</b-button>
     </b-form>
     </div>
     </div>
@@ -84,32 +33,13 @@
 <script>
 import VueBase64FileUpload from 'vue-base64-file-upload';
 import APIService from "../services/APIService";
-import {minValue, maxValue, alpha, decimal,required , minLength , maxLength , between} from 'vuelidate/lib/validators'
+
 export default {
     data(){
         return{
-        selected : null,
-         grades: 
-          [
-            { value: null , text: 'Enter the Final Grade'},
-            { value: 'F', text: 'F' },
-            { value: 'D-', text: 'D-' },
-            { value: 'D', text: 'D'},
-            { value: 'C-', text: 'C-' },
-            { value: 'C', text: 'C' },
-            { value: 'C+', text: 'C+' },
-            { value: 'B-', text: 'B-' },
-            { value: 'B', text: 'B' },
-            { value: 'B+', text: 'B+' },
-            { value: 'A-', text: 'A-' },
-            { value: 'A', text: 'A' },
-            { value: 'A+', text: 'A+' },
-            
-          ],
-          faculty: null,
           options: 
           [
-            { value: null, text: 'Choose Faculty' },
+            { value: 'Faculty', text: 'Choose Faculty' },
             { value: 'Business', text: 'Business' },
             { value: 'Electronics', text: 'Electronics' },
             { value: 'Mass Communication', text: 'Mass Communication'},
@@ -128,35 +58,11 @@ export default {
 
         }
     },
-  validations: {
-    certificateId:{
-      required,
-      maxLength: maxLength(14),
-      minLength: minLength(14)
-
-    },
-    gpa: {
-      maxValue : maxValue(4.00),
-      minValue: minValue(0.00),
-      decimal,
-      required,
-      minLength: minLength(3)
-    },
-    name: {
-      required,
-      minLength: minLength(3)
-    },
-    grade : {
-      required,
-      maxLength: maxLength(2)
-
-    },
-    faculty: {
-      required
-    }
-   },
     methods:{
     async addCertificate(){
+      console.log(this.faculty);
+      console.log(this.screenshot);
+      console.log(this.university);
       const response =  await APIService.addCertificate
        (
        this.certificateId,
@@ -190,16 +96,23 @@ export default {
 
 }
 </script>
-
-
-
 <style scoped>
-.error{
-  font-weight: bold;
-  color:darkred;  
-}
-.btn-info{
+.btn-info
+{
   background-color:#343A40;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: bold;
+}
+.btn-info:hover
+{
+  padding: 5px 5px;
+  background-color: white;
+  color:black;
+  text-decoration: none;
+  font-weight: bold;
 }
 .login-container{
     height: auto;
@@ -213,6 +126,7 @@ export default {
 }
 .parent-container{
   height: 230px;
+    margin-top: 50px;
     width: 100vw;
     height: auto;
     display: flex;
