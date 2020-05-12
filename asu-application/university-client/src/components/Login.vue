@@ -6,7 +6,7 @@
     <h4 >Welcome!</h4>
     <p>Please Use the University's email to login.</p>
     </div>
-    <GoogleLogin class="google-login" :params="params" :renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure"></GoogleLogin>
+    <GoogleLogin v-if="id==''"  class="google-login" :params="params" :renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure"></GoogleLogin>
     <GoogleLogin v-if="id!=''" :params="params" :logoutButton=true :onSuccess="logout" :onFailure="faillogout">Sign Out </GoogleLogin>
     
     </div>
@@ -54,7 +54,6 @@ export default {
 
             this.$store.dispatch('saveUserLogged', "");
             this.$store.commit("setislogged", false);
-//  this.$store.state.firstName =  googleUser.getBasicProfile().vW;
             this.$store.dispatch('saveUsername', "");
             this.$router.push("/home");
         },

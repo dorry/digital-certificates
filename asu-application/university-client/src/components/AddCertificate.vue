@@ -2,7 +2,7 @@
 <div  class = "parent-container">
     <div class = "login-container">
     <div class="login-content">
-    <b-form @submit="onSubmit" class="text-center border border-light p-5">
+    <b-form class="text-center border border-light p-5">
         <h2 class="h4 mb-4">Please fill the certificate information</h2>
     <label><h4> Name</h4></label>
     <b-input class="form-control mb-4" v-model="name" id="inline-form-input-nid" placeholder="Enter The Student's Name" required></b-input>
@@ -10,10 +10,10 @@
     <b-input class="form-control mb-4" v-model="certificateId" id="inline-form-input-nid" placeholder="Enter the Student's National ID" required></b-input>
     <label><h4> GPA</h4></label>
     <b-input class="form-control mb-4" v-model="gpa" id="inline-form-input-username" placeholder="Enter the Student's Cumaltive GPA" required></b-input>
-    <label><h4> Final Grade </h4></label>
-    <b-input class="form-control mb-4" v-model="grade" id="inline-form-input-username" placeholder="Enter The S tudent's Grade" required></b-input>
+    <label><h4> Grade </h4></label>
+    <b-form-select v-model="selected" class="form-control mb-4"  id="inline-form-input-nid"  :options="grades" required></b-form-select>
     <label><h4> Faculty </h4></label>
-    <b-form-select v-model="faculty" class="form-control mb-4"  id="inline-form-input-nid" :options="options" required></b-form-select>
+    <b-form-select v-model="selected" class="form-control mb-4"  id="inline-form-input-nid" :options="options" required></b-form-select>
     <label><h4> Please upload a snapshot of the certificate </h4></label>
     <vue-base64-file-upload    
          accept="image/png,image/jpeg"
@@ -37,9 +37,28 @@ import APIService from "../services/APIService";
 export default {
     data(){
         return{
+        selected : null,
+         grades: 
+          [
+            { value: null , text: 'Enter the Final Grade'},
+            { value: 'F', text: 'F' },
+            { value: 'D-', text: 'D-' },
+            { value: 'D', text: 'D'},
+            { value: 'C-', text: 'C-' },
+            { value: 'C', text: 'C' },
+            { value: 'C+', text: 'C+' },
+            { value: 'B-', text: 'B-' },
+            { value: 'B', text: 'B' },
+            { value: 'B+', text: 'B+' },
+            { value: 'A-', text: 'A-' },
+            { value: 'A', text: 'A' },
+            { value: 'A+', text: 'A+' },
+            
+          ],
+          faculty: null,
           options: 
           [
-            { value: 'Faculty', text: 'Choose Faculty' },
+            { value: null, text: 'Choose Faculty' },
             { value: 'Business', text: 'Business' },
             { value: 'Electronics', text: 'Electronics' },
             { value: 'Mass Communication', text: 'Mass Communication'},
