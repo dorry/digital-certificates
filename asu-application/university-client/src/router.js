@@ -5,7 +5,7 @@ import Login from './components/Login'
 import Home from './components/Home'
 import Profile from './components/Profile'
 import store from './store/store'
-import university from './components/University'
+import university from './components/CertificatesList'
 import Dashboard from './components/Dashboard'
 import Stat from './components/Statistics'
 import Req from './components/Request'
@@ -46,7 +46,7 @@ export default new Router({
     },
 
     {
-      path:'/university',
+      path:'/clist',
       name:'Uni',
       component: university,
       beforeEnter: (to, from, next) => {

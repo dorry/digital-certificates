@@ -16,6 +16,7 @@
     "bootstrap-vue": "^2.9.0",
     "chart.js": "^2.9.3",
     "express": "^4.17.1",
+    "firebase": "^7.14.3",
     "hchs-vue-charts": "^1.2.8",
     "save": "^2.4.0",
     "vue": "^2.6.11",
