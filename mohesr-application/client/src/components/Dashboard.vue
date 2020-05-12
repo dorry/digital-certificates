@@ -23,18 +23,19 @@
 export default {
     data(){
         return {
-            labels:["Apples", "Bananas", "Grapes"],
-            datasets:[
+        labels:["Apples", "Bananas", "Grapes"],
+           datasets:[
             {       
              data: [20,30,50],
              backgroundColor: ["Red","Yellow","Purple"]
             }
         ],
         option : {
-            title:{
+            title:
+            {
             display:true,
-                position:"Bottom",
-                text: "Fruits"
+            position:"Bottom",
+            text: "Fruits"
             }
         }
       };

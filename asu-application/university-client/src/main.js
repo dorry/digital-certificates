@@ -10,10 +10,14 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import Chartkick from 'vue-chartkick'
 import Chart from 'chart.js'
 import 'hchs-vue-charts'
+import Vuelidate from 'vuelidate'
 // Install BootstrapVue
 Vue.use(Chartkick.use(Chart));
 Vue.use(window.VueCharts);
 Vue.use(BootstrapVue)
+Vue.use(Vuelidate)
+
+
 // Optionally install the BootstrapVue icon components plugin
 
 new Vue({
