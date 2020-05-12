@@ -94,7 +94,7 @@ export default {
 }
 .parent-container
 {
-  margin-top: 10%;
+  margin-top: 4%;
   margin-left: 4%;
   width: 100vw;
   height: auto;
