@@ -1,13 +1,13 @@
 <template>
 <div>
   <b-navbar toggleable="lg" type="dark" variant="dark">
-    <b-navbar-brand href="#">PUBLIC UNIVERSITY</b-navbar-brand>
+    <b-navbar-brand id="logo">PUBLIC UNIVERSITY</b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
     <b-collapse id="nav-collapse" is-nav>
-      <b-navbar-nav>
-        <b-nav-item><router-link to="/home"> Home </router-link></b-nav-item>        
+      <b-navbar-nav id="nb">
+        <b-nav-item ><router-link to="/home"> Home </router-link></b-nav-item>        
         <b-nav-item  v-if="identity ==''"><router-link to="/login"> Login </router-link></b-nav-item>
         <b-nav-item  v-else><router-link to="/login"> Logout </router-link></b-nav-item>
 
@@ -44,7 +44,12 @@ computed: {
 </script>
 
 <style>
-a{
-  color:#919497;
+#nb
+{
+  margin-left: 2%;
+}
+#logo
+{
+  margin-left: 2%;
 }
 </style>

@@ -1,12 +1,20 @@
 <template>  
 <div>
-    <div v-if="!paidFor">
-      <h2 style="margin-left:35%;"> A fee is needed to do a request </h2>
+    <div id = "parent-container1"> 
+    <div class = "parent-container">
+    <div class = "login-container">
+    <div class="login-content">
+      <div v-if="!paidFor">
+      <h2> A fee is needed to do a request </h2>
     </div>
     <div v-else>
       Thanks!
     </div>
-    <div  id="form" ref="paypal"></div>
+        <div  id="form" ref="paypal"></div>
+    </div>
+    </div>
+    </div>
+    </div>
   </div>
 </template>
 
@@ -65,13 +73,41 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-#form{
-    
-    margin-left: 30%;
-    justify-content: center;
-    align-items: center;
+#form
+{
+
+  justify-content: center;
+  align-items: center;
+}
+.login-container
+{
+  height: 45%;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #343A40;
+  border-radius: 5%;
+  padding-top: 8%;
+}
+.parent-container
+{
+  margin-top: 10%;
+  margin-left: 4%;
+  width: 100vw;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-content
+{
+  text-align: center;
+  color:white;
+  margin-bottom: 11%;
 }
 
 </style>

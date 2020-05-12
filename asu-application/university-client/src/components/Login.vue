@@ -7,7 +7,7 @@
     <p>Please Use the University's email to login.</p>
     </div>
     <GoogleLogin v-if="id==''"  class="google-login" :params="params" :renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure"></GoogleLogin>
-    <GoogleLogin v-if="id!=''" :params="params" :logoutButton=true :onSuccess="logout" :onFailure="faillogout">Sign Out </GoogleLogin>
+    <GoogleLogin v-if="id!=''" :params="params" :logoutButton=true :onSuccess="logout" :onFailure="faillogout" id="signout">Logout </GoogleLogin>
     
     </div>
     </div>
@@ -110,6 +110,28 @@ height: 300px;
 .login-content{
     text-align: center;
     color:white;
+}
+#signout
+{
+    color: white;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    background: none;
+    font-size: 135%;
+    font-weight: bold;
+    border-color:white;
+    border-width: 1px;
+
+}
+#signout:hover
+{
+    padding: 5px 5px;
+    background-color: white;
+    color:black;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 </style>

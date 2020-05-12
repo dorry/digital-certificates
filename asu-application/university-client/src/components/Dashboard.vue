@@ -82,5 +82,21 @@ components:{
 
     background-color: white;
 }
-
+a
+{
+  color: #919497;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: bold;
+}
+a:hover
+{
+  padding: 5px 5px;
+  background-color: white;
+  color:black;
+  text-decoration: none;
+  font-weight: bold;
+}
 </style>
