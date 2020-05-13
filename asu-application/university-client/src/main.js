@@ -11,12 +11,18 @@ import Chartkick from 'vue-chartkick'
 import Chart from 'chart.js'
 import 'hchs-vue-charts'
 import Vuelidate from 'vuelidate'
+import firebase from 'firebase/app'
+import 'firebase/firestore'
+import { firestorePlugin } from 'vuefire'
+import { rtdbPlugin } from 'vuefire'
+
+Vue.use(rtdbPlugin)
 // Install BootstrapVue
 Vue.use(Chartkick.use(Chart));
 Vue.use(window.VueCharts);
 Vue.use(BootstrapVue)
 Vue.use(Vuelidate)
-
+Vue.use(firestorePlugin)
 
 // Optionally install the BootstrapVue icon components plugin
 

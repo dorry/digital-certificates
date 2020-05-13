@@ -4,11 +4,20 @@
     <div class = "parent-container">
     <div class = "login-container">
     <div class="login-content">
+    <div>
+  <input type="text" v-model="name">
+  <button @click="submitName()">add</button>
+</div>
+<ul>
+  <li v-for="personName of names" 
+  v-bind:key="personName['.key']">{{personName.mail}} {{personName.name}}  
+  </li>
+</ul>
       <div v-if="!paidFor">
       <h2> A fee is needed to do a request </h2>
     </div>
     <div v-else>
-      Thanks!
+      <h4>Thanks! Your Request Has been made. </h4>
     </div>
         <div  id="form" ref="paypal"></div>
     </div>
@@ -19,11 +28,14 @@
 </template>
 
 <script>
+import {namesRef} from './firebase'
 // import image from "../assets/lamp.png"
 export default {
   name: "HelloWorld",
   data: function() {
     return {
+      names: [],
+      name: 'Paul',
       loaded: false,
       paidFor: false,
       product: {
@@ -32,6 +44,17 @@ export default {
       }
     };
   },
+  computed: {
+        identity(){
+            return this.$store.state.identity;
+        },
+        firstName(){
+            return this.$store.state.firstName;
+        }
+    },
+        firebase: {
+    names: namesRef
+  },
   mounted: function() {
     const script = document.createElement("script");
         script.src = "https://www.paypal.com/sdk/js?client-id=AZMCUqOmyxPdzSX9Z76we2OLLlz3aLB1Sf7n9NhJPGS1HkL9X0G-GtsZNNPtPQ0KnYPqne1_rAiLftJr";
@@ -39,6 +62,9 @@ export default {
     document.body.appendChild(script);
   },
   methods: {
+    submitName(){
+      namesRef.push({name: this.name, edit : false})
+    },
     setLoaded: function() {
       this.loaded = true;
       window.paypal
@@ -60,7 +86,7 @@ export default {
             const order = await actions.order.capture();
             this.data;
             this.paidFor = true;
-            console.log(order);
+            namesRef.push({mail: this.identity + "@miuegypt.edu.eg", Request : 0 , name: this.firstName})      
             console.log("PAID");
           },
           onError: err => {
