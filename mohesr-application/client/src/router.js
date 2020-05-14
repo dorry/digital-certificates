@@ -9,7 +9,8 @@ import Publics from './components/PublicUnis'
 import Uni from './components/University'
 import Dash from './components/Dashboard'
 import store from './store/store'
-
+import AddCertificate from './components/AddCertificate'
+import reql from './components/RequestList'
 Vue.use(Router)
 
 export default new Router({
@@ -58,8 +59,22 @@ export default new Router({
         console.log("Passed!");
         next();
       }
-  } 
-    },
+  }
+},
+{
+  path: '/addcert',
+  name:'AddCertificate',
+  component : AddCertificate,
+  beforeEnter: (to, from, next) => {
+    if(store.state.islogged == false) {
+        console.log("Guarded");
+        next('/login');
+    } else {
+      console.log("Passed!!!");
+      next();
+    }
+}    
+},
     {
     path: '/login',
     name:'Login',
@@ -93,9 +108,25 @@ export default new Router({
         console.log("Passed!");
         next();
       }
-  } 
+     } 
     },
-       {
+
+    {
+      path: '/RequestList',
+      name: 'RequestList',
+      component: reql,
+      beforeEnter: (to, from, next) => {
+        if(store.state.islogged == false) {
+            console.log("Guarded");
+            next('/login');
+        } else {
+          console.log("Passed!");
+          next();
+        }
+       } 
+      },    
+    
+{
     path: '/Statistics',
     name: 'Stat',
     component: Stats,

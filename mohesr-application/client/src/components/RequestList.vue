@@ -9,7 +9,7 @@
   <ul>
     <li v-for="personName of names" 
     v-bind:key="personName['.key']">
-    The Student Name :  {{personName.name}} from Email : {{personName.mail}}  
+    Student : {{personName.name}} from {{personName.University}}
     <br>
     <b-button @click="approve(personName['.key'])">Approve</b-button>
     <b-button>Deny</b-button>
@@ -32,7 +32,7 @@ export default {
        var dialogbox = confirm("Are you sure you want to approve this certificate?");
      
       if (dialogbox == true) {
-      //  namesRef.child(id).remove();
+        namesRef.child(id).remove();
         this.$router.push('addcert')
         alert("Please fill out this student's certificate information "); 
        } 

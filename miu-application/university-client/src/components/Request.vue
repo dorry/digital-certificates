@@ -68,14 +68,15 @@ export default {
                     value: this.product.price
                   }
                 }
-              ]
+              ] 
             });
           },
           onApprove: async (data, actions) => {
             const order = await actions.order.capture();
             this.data;
             this.paidFor = true;
-            namesRef.push({mail: this.identity + "@miuegypt.edu.eg", Request : 0 , name: this.firstName}) ;     
+            namesRef.push
+            ({mail: this.identity + "@miuegypt.edu.eg", Request : 0 , name: this.firstName , University : "Misr International University"});     
             console.log("PAID");
           },
           onError: err => {
