@@ -88,25 +88,30 @@ export default {
 </script>
 
 <style scoped>
-.login-container{
-height: 300px;
+.login-container
+{
+    height: 300px;
     width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     /* align-content: center; */
-    background-color: #02254a;
+    background-color: #a11f1f;
     border-radius: 5%;
+    margin-bottom: 15%;
+    margin-right: 5%;
 }
-.parent-container{
+.parent-container
+{
     width: 100vw;
     height: 100vh;
      display: flex;
     justify-content: center;
     align-items: center;
 }
-.login-content{
+.login-content
+{
     text-align: center;
     color:white;
 }
@@ -120,15 +125,15 @@ height: 300px;
     background: none;
     font-size: 135%;
     font-weight: bold;
-    border-color:white;
-    border-width: 1px;
+    border-color:#ffffff;
+    border-width: 2px 2px 2px 2px;
 
 }
 #signout:hover
 {
     padding: 5px 5px;
-    background-color: white;
-    color:black;
+    background-color: rgb(0, 0, 0);
+    color:rgb(255, 255, 255);
     text-decoration: none;
     font-weight: bold;
 }

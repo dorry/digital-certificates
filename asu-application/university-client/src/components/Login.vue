@@ -98,6 +98,7 @@ height: 300px;
     /* align-content: center; */
     background-color: #343A40;
     border-radius: 5%;
+    margin-bottom: 15%;
 }
 .parent-container{
     width: 100vw;
@@ -105,6 +106,7 @@ height: 300px;
      display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 .login-content{
     text-align: center;

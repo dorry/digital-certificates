@@ -125,7 +125,7 @@ export default {
 }
 .btn-info
 {
-  background-color:#02254a;
+  background-color:#a11f1f;
   padding: 5px 5px;
   text-align: center;
   text-decoration: none;
@@ -147,7 +147,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  background-color: #02254a;
+  background-color: #a11f1f;
   border-radius: 2%;
   padding-top: 3%;
   padding-bottom: 1%;

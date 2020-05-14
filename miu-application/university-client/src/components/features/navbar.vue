@@ -45,7 +45,7 @@ computed: {
 
 <style>
 .bg-dark {
- background-color:#02254a!important;
+ background-color:#a11f1f!important;
 }
 #nb
 {
