@@ -4,8 +4,8 @@
     <div class="horizontal-line">
          </div>
     <b-nav vertical >
-        <b-nav-item>تسجيل مشرف جديد</b-nav-item>
-        <b-nav-item router-link to="/Statistics" >احصائيات</b-nav-item>
+        <!-- <b-nav-item>تسجيل مشرف جديد</b-nav-item> -->
+        <!-- <b-nav-item router-link to="/Statistics" >احصائيات</b-nav-item> -->
         <b-nav-item router-link to="/validation" >التحقق من شهادة</b-nav-item>
         <b-nav-item router-link to="/Request" ></b-nav-item>        
         <b-nav-item  v-if="identity !=''"><router-link to="/university">  قائمة الطلاب </router-link></b-nav-item>
@@ -43,6 +43,7 @@ export default {
 };
 </script>
 <style scoped>
+
 .vertical-nav{
     top: 10%;
     position: absolute;

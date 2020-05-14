@@ -8,7 +8,8 @@ export default new Vuex.Store({
     state:{
         islogged: '',
         identity:'',
-        firstName:''
+        firstName:'',
+        fullName : ''
     },
     mutations: {
         setislogged(state,logged)
@@ -20,7 +21,10 @@ export default new Vuex.Store({
       },
       saveUsername (state, Name) {
         state.firstName = Name
-    }
+     },
+      savename (state, Name) {
+      state.fullName = Name
+  }
 },
     actions: {
       saveUserLogged (context, loggedUser) {

@@ -25,6 +25,7 @@ export default {
                 islogged: true,
                 identity: '',
                 firstName: '',
+                fullname: '',
                 // client_id is the only required property but you can add several more params, full list down bellow on the Auth api section
                 params: {
                     client_id: "719716676155-faqenfgvlhduu9e0ktuov5c3f2q9cqll.apps.googleusercontent.com"
@@ -70,7 +71,7 @@ export default {
             this.$store.dispatch('saveUsername', googleUser.getBasicProfile().pW);
             this.$router.push("/dashboard");
             console.log("USERRR: ")
-                        console.log(googleUser);
+                        console.log(googleUser.getBasicProfile.pw);
 
         },
         onFailure(error){

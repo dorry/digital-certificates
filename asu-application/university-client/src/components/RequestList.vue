@@ -1,34 +1,20 @@
 <template>
     <div>
-
     <div  class = "parent-container">     
     <div class = "login-container">
     <div class="login-content">
-   <h2 class="h4">Requests Made: </h2>
-    </div>  
-    <div style =
-    " top:45%;
-    position: absolute;
-    left: 50%; ">
-    <b-spinner style="width: 8rem; height: 8rem;" v-if="waiting" label="Spinning"></b-spinner>
-    </div>
-    <b-pagination
-      v-model="currentPage"
-      :total-rows="rows"
-      :per-page="perPage"
-      aria-controls="my-table"
-    ></b-pagination>
-    <div id="table">
+    <h2 style="margin-left:3%">Requests: </h2>
     <br>
-    <b-table 
-      :bordered="bordered"
-      @row-clicked="myRowClickHandler"
-      id="my-table"
-      :items="items" 
-      :per-page="perPage"
-      :current-page="currentPage"
-    >
-    </b-table>
+  
+  <ul>
+    <li v-for="personName of names" 
+    v-bind:key="personName['.key']">
+    The Student Name :  {{personName.name}} from Email : {{personName.mail}}  
+    <br>
+    <b-button @click="approve(personName['.key'])">Approve</b-button>
+    <b-button>Deny</b-button>
+    </li>
+  </ul>    
     </div>
     </div>
     </div>
@@ -38,27 +24,39 @@
 </template>
 
 <script>
+import {namesRef} from './firebase'
+import emailjs from 'emailjs-com';
+
 export default {
   methods:{
-    myRowClickHandler() {
-        alert("Viewed ");
-   }    
+   approve(id) 
+   {
+       var dialogbox = confirm("Are you sure you want to approve this certificate?");
+     
+      if (dialogbox == true) {
+      //  namesRef.child(id).remove();
+        this.$router.push('addcert')
+        alert("Please fill out this student's certificate information "); 
+       } 
+      else
+       {
+       this.$router.push('Request') 
+        alert("Refused");
+      }
+  },    
  },
+  firebase: {
+    names: namesRef
+  },
+  computed:{
+    
+  },
   data() {
     return {
+    
     currentPage: 1,
-    items: [
-        { Email: 'sherif@asu.com' , FirstName: "Sherif" , LastName: "El Nayad"},
-         { Email: 'sherif@asu.com' , FirstName: "Sherif" , LastName: "El Nayad"},
-          { Email: 'sherif@asu.com' , FirstName: "Sherif" , LastName: "El Nayad"},
-           { Email: 'sherif@asu.com' , FirstName: "Sherif" , LastName: "El Nayad"},
-            { Email: 'sherif@asu.com' , FirstName: "Sherif" , LastName: "El Nayad"},
-             { Email: 'sherif@asu.com' , FirstName: "Sherif" , LastName: "El Nayad"},
-             { Email: 'sherif@asu.com' , FirstName: "Sherif" , LastName: "El Nayad"},
-             { Email: 'sherif@asu.com' , FirstName: "Sherif" , LastName: "El Nayad"},
-             { Email: 'sherif@asu.com' , FirstName: "Sherif" , LastName: "El Nayad"},
-             { Email: 'sherif@asu.com' , FirstName: "Sherif" , LastName: "El Nayad"},
-             { Email: 'sherif@asu.com' , FirstName: "Sherif" , LastName: "El Nayad"},
+    names: [
+
         ],
     }
  }
@@ -67,21 +65,14 @@ export default {
 </script>
 
 <style scoped>
-#table
-{
-  margin-left: 2%;
-  justify-content: center;
-  align-items: center;
+ul{
+    margin-left: 3%;
+    justify-content: center;
+    align-items: center;
 }
-.b-pagination
-{
-  margin-left: 2%;
-}
-.b-table
-{
-  background-color: white;
-  align-self: center;
-  width: 1100px;
+li{
+  font-weight: bold;
+  font-size: 110%;
 }
 .login-container
 {
@@ -108,7 +99,6 @@ export default {
 
 .login-content
 {
-  margin-left: 40%;
   color:white;
 }
 </style>

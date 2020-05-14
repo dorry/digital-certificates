@@ -4,19 +4,11 @@
     <div class = "parent-container">
     <div class = "login-container">
     <div class="login-content">
-    <div>
-  <input type="text" v-model="name">
-  <button @click="submitName()">add</button>
-</div>
-<ul>
-  <li v-for="personName of names" 
-  v-bind:key="personName['.key']">{{personName.mail}} {{personName.name}}  
-  </li>
-</ul>
       <div v-if="!paidFor">
       <h2> A fee is needed to do a request </h2>
     </div>
     <div v-else>
+      
       <h4>Thanks! Your Request Has been made. </h4>
     </div>
         <div  id="form" ref="paypal"></div>
@@ -35,7 +27,6 @@ export default {
   data: function() {
     return {
       names: [],
-      name: 'Paul',
       loaded: false,
       paidFor: false,
       product: {
@@ -50,21 +41,19 @@ export default {
         },
         firstName(){
             return this.$store.state.firstName;
-        }
+        },
+
     },
         firebase: {
     names: namesRef
   },
   mounted: function() {
     const script = document.createElement("script");
-        script.src = "https://www.paypal.com/sdk/js?client-id=AZMCUqOmyxPdzSX9Z76we2OLLlz3aLB1Sf7n9NhJPGS1HkL9X0G-GtsZNNPtPQ0KnYPqne1_rAiLftJr";
+    script.src = "https://www.paypal.com/sdk/js?client-id=AZMCUqOmyxPdzSX9Z76we2OLLlz3aLB1Sf7n9NhJPGS1HkL9X0G-GtsZNNPtPQ0KnYPqne1_rAiLftJr";
     script.addEventListener("load", this.setLoaded);
     document.body.appendChild(script);
   },
   methods: {
-    submitName(){
-      namesRef.push({name: this.name, edit : false})
-    },
     setLoaded: function() {
       this.loaded = true;
       window.paypal
@@ -86,7 +75,7 @@ export default {
             const order = await actions.order.capture();
             this.data;
             this.paidFor = true;
-            namesRef.push({mail: this.identity + "@miuegypt.edu.eg", Request : 0 , name: this.firstName})      
+            namesRef.push({mail: this.identity + "@miuegypt.edu.eg", Request : 0 , name: this.firstName}) ;     
             console.log("PAID");
           },
           onError: err => {
@@ -100,6 +89,7 @@ export default {
 </script>
 
 <style scoped>
+
 #form
 {
 

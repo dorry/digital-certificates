@@ -4,7 +4,7 @@
     <div  class = "parent-container">     
     <div class = "login-container">
     <div class="login-content">
-    <h2 class="h4">Requests Made: </h2>
+    <h2 style="margin-left:5%"> Certificates : </h2>
     </div>  
     <div style =
     " top:45%;
@@ -25,7 +25,7 @@
       :bordered="bordered"
       @row-clicked="myRowClickHandler"
       id="my-table"
-      :items="getItems" 
+      :items="items" 
       :per-page="perPage"
       :current-page="currentPage"
     >
@@ -50,7 +50,7 @@ export default {
      perPage: 20,
      currentPage: 1,
      items: [
-          // { ID: 1, Name: 'Alley Mostafa El Dorry El Gamed', GPA: 4.0 , Faculty: "CS", University:"ASU" },
+           { ID: 1, Name: 'Alley Mostafa El Dorry El Gamed', GPA: 4.0 , Faculty: "CS", University:"ASU" },
         ],
       response:[]
       }
@@ -111,7 +111,7 @@ export default {
 
 <style scoped>
 #table{
-    margin-left: 20%;
+    margin-left: 3%;
     justify-content: center;
     align-items: center;
 }
@@ -121,7 +121,7 @@ export default {
 .b-table{
   background-color: white;
   align-self: center;
-  width: 1100px;
+  width: 890px;
 }
 .btn-info
 {
@@ -165,7 +165,6 @@ export default {
 
 .login-content
 {
-  margin-left: 40%;
   color:white;
 }
 </style>
