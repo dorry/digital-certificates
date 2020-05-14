@@ -1,5 +1,11 @@
 <template>
   <div>  
+
+    <div  class = "parent-container">     
+    <div class = "login-container">
+    <div class="login-content">
+    <h2 >  :قائمة الطلاب </h2>
+    </div>
     <b-pagination
       v-model="currentPage"
       :total-rows="rows"
@@ -7,7 +13,7 @@
       aria-controls="my-table"
     ></b-pagination>
 
-    <p class="mt-3">Current Page: {{ currentPage }}</p>
+    <p class="mt-3" style = "color:white;">Current Page: {{ currentPage }}</p>
         <div id="table">
 
     <b-table 
@@ -19,6 +25,8 @@
       small
     >
     </b-table>
+        </div>
+    </div>
     </div>
   </div>
 </template>
@@ -56,18 +64,47 @@ export default {
 </script>
 
 
-<style>
-#table{
-    margin-left: 20%;
+<style scoped>
+#table
+{
     justify-content: center;
     align-items: center;
 }
-.b-pagination{
-    margin-left: 20%;
+.b-pagination
+{
+    margin-left: 77%;
  }
-.b-table{
+.b-table
+{
+  margin-left: 2%;
   background-color: white;
   align-self: center;
   width: 1100px;
+}
+.login-container
+{
+  height: 45%;
+  width: 60%;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: rgba(1,3,5,0.9);
+  border-radius: 2%;
+  padding-top: 3%;
+  padding-bottom: 1%;
+  margin-right: 15%;
+}
+.parent-container
+{
+  margin-top: 3%;
+  width: 100vw;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-content
+{
+  color:white;
 }
 </style>

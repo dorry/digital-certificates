@@ -1,18 +1,19 @@
 <template>
     <div id="container">
-    <div>
-<h1 style="text-align: right;    position: relative;">التحقق من صحة الشهادة</h1>
-
-    </div>
-<div id="ContainerCheckCertificate">
-</div>
-<h1 style="text-align: center;"> </h1>
 <div>
-  <h2> ادخل بيانات المتخرج</h2>
+
+  <div  class = "parent-container">
+  <div class = "login-container">
+    <div class="login-content">
+      <h1>التحقق من صحة الشهادة</h1>
+      <h2> ادخل بيانات المتخرج</h2>
   <input v-model="validationKey" id="fname"  placeholder="رقم التحقق من صحة الشهادة" style="border-radius: 10px; width: 300px; text-align: center;"><br>
   <br>
   <br>
   <input @click="validate()" type="submit" value=" دخول" id="btn1" style="border-radius: 20px;">
+    </div>
+    </div>
+  </div>
 
 </div>
 <div v-if="notEmptyObject()">
@@ -74,7 +75,7 @@ export default {
 }
 </script>
 
-<style> 
+<style scoped> 
 
 #btn1
 {
@@ -93,5 +94,38 @@ export default {
 form
 {
   text-align: center;
+}
+
+.login-container
+{
+  height: 45%;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color:rgba(1,3,5,0.9);
+  border-radius: 5%;
+  padding-top: 8%;
+  margin-right: 15%;
+  padding-bottom: 5%;
+}
+.parent-container
+{
+  margin-top: 4%;
+  margin-left: 4%;
+  width: 100vw;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.login-content
+{
+  text-align: center;
+  color:white;
+
 }
 </style>

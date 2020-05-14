@@ -99,17 +99,18 @@ export default {
 <style scoped>
 .btn-info
 {
-  background-color:#343A40;
+  background-color:rgb(0, 0, 0);
   padding: 5px 5px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-weight: bold;
+  border-color: white;
 }
 .btn-info:hover
 {
   padding: 5px 5px;
-  background-color: black;
+  background-color: rgb(255, 255, 255);
   color:black;
   text-decoration: none;
   font-weight: bold;
@@ -122,7 +123,9 @@ export default {
     justify-content: space-evenly;
     align-items: center;
     /* background-color: #343A40; */
-    border-radius: 5%;
+      border-radius: 2%;
+
+    margin-right: 15%;
 }
 .parent-container{
     height: 230px;
@@ -134,7 +137,8 @@ export default {
     align-items: center;
     }
 .login-content{
-  background-color: black;
+  
+  background-color: rgba(1,3,5,0.9);
     text-align: center;
     color:white;
 }

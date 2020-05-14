@@ -6,9 +6,11 @@
     <b-nav vertical >
         <!-- <b-nav-item>تسجيل مشرف جديد</b-nav-item> -->
         <!-- <b-nav-item router-link to="/Statistics" >احصائيات</b-nav-item> -->
-        <b-nav-item router-link to="/validation" >التحقق من شهادة</b-nav-item>
-        <b-nav-item router-link to="/Request" ></b-nav-item>        
+        <b-nav-item router-link to="/validation" >التحقق من شهادة</b-nav-item>       
         <b-nav-item  v-if="identity !=''"><router-link to="/university">  قائمة الطلاب </router-link></b-nav-item>
+        <b-nav-item  v-if="identity !=''"><router-link to="/addcert"> اضافة شهادة </router-link></b-nav-item>
+        <b-nav-item  v-if="identity !=''"><router-link to="/requestlist"> الرد علي الطلبات </router-link></b-nav-item>
+        
         
     </b-nav>
     <add-cert style=" margin-top:-150px"> </add-cert>
@@ -43,20 +45,38 @@ export default {
 };
 </script>
 <style scoped>
-
-.vertical-nav{
-    top: 10%;
+.vertical-nav
+{
     position: absolute;
-    background-color:rgba(1,3,5,0.9)!important;
-    width: 15%;
-    height: 119vh;
+    background-color:rgba(1,3,5,0.9);
+    width: 17%;
+    height: 140vh;
+    margin-left: 83%;
 }
-.horizontol-line{
-    height: .1em; 
-}
+.horizontol-line
+{
+    height: .1em;
+       position: absolute;
 
-a{
-  color:#919497;
+    background-color: #000000;
+}
+a
+{
+    margin-top: 5%;
+    color: #ffffff;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+}
+a:hover
+{
+  padding: 5px 5px;
+  background-color: rgb(255, 255, 255);
+  color:rgb(0, 0, 0);
+  text-decoration: none;
+  font-weight: bold;
 }
 
 </style>

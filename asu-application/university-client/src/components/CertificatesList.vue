@@ -147,7 +147,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  background-color: #343A40;
+  background-color: rgba(1,3,5,0.9);
   border-radius: 2%;
   padding-top: 3%;
   padding-bottom: 1%;

@@ -2,8 +2,9 @@
     <div>
     <div  class = "parent-container">     
     <div class = "login-container">
+      <h2 style = "color:white;">Requests: </h2>
     <div class="login-content">
-    <h2 style="margin-left:3%">Requests: </h2>
+    
     <br>
   
   <ul>
@@ -64,7 +65,7 @@ export default {
 
 <style scoped>
 ul{
-    margin-left: 3%;
+    
     justify-content: center;
     align-items: center;
 }
@@ -75,28 +76,29 @@ li{
 .login-container
 {
   height: 45%;
-  width: 60%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  background-color: #343A40;
+  background-color: rgba(1,3,5,0.9);
   border-radius: 2%;
   padding-top: 3%;
   padding-bottom: 1%;
+  margin-right: 10%;
 }
 .parent-container
 {
   margin-top: 3%;
-  margin-left: 5%;
-  width: 100vw;
   height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 .login-content
 {
   color:white;
+  margin-right: 50%;
 }
 </style>

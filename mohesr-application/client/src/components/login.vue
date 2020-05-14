@@ -5,7 +5,7 @@
     <p>من فضلك استخدام بريدك الالكتروني لستجيل الدخول</p>
     </div>
     <GoogleLogin class="google-login" :params="params" :renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure"></GoogleLogin>
-        <GoogleLogin v-if="id!=''" :params="params" :logoutButton=true :onSuccess="logout" :onFailure="faillogout">Sign Out </GoogleLogin>
+        <GoogleLogin v-if="id!=''" :params="params" :logoutButton=true :onSuccess="logout" :onFailure="faillogout" id="signout">Logout </GoogleLogin>
 
     </div>
     </div>
@@ -77,26 +77,53 @@ export default {
 </script>
 
 <style scoped>
-.login-container{
-height: 300px;
+.login-container
+{
+    height: 300px;
     width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     /* align-content: center; */
-    background-color: #4c5664;
+    background-color: rgba(1,3,5,0.9);
     border-radius: 5%;
+    margin-bottom: 15%;
+    margin-right: 5%;
 }
-.parent-container{
+.parent-container
+{
     width: 100vw;
-    height: 50vh;
+    height: 100vh;
      display: flex;
     justify-content: center;
     align-items: center;
 }
-.login-content{
+.login-content
+{
     text-align: center;
     color:white;
+}
+#signout
+{
+    color: white;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    background: none;
+    font-size: 135%;
+    font-weight: bold;
+    border-color:#ffffff;
+    border-width: 2px 2px 2px 2px;
+
+}
+#signout:hover
+{
+    padding: 5px 5px;
+    background-color: rgb(255, 255, 255);
+    color:rgb(0, 0, 0);
+    text-decoration: none;
+    font-weight: bold;
 }
 </style>
