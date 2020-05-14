@@ -104,7 +104,7 @@ export default {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  background-color: #02254a;
+  background-color: #a11f1f;
   border-radius: 5%;
   padding-top: 8%;
 }

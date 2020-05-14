@@ -18,7 +18,11 @@ export default {
 }
 </script>
 <style>
-body {
-   background-image: url('./assets/webbg.png');; 
+body
+{
+   background-image: url('./assets/webbg.png');
+   background-repeat: no-repeat;
+     background-size: 1920px 1080px;
+
 }
 </style>

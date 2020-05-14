@@ -25,7 +25,6 @@
 
 <script>
 import {namesRef} from './firebase'
-import emailjs from 'emailjs-com';
 
 export default {
   methods:{

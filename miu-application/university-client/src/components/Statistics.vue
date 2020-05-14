@@ -212,12 +212,12 @@ components:{
 </script>
 
 <style>
-.vertical-nav{
+/* .vertical-nav{
     position: absolute;
     background-color:#343A40 ;
     width: 15%;
     height: 119vh;
-}
+} */
 .horizontol-line{
     height: .1em;
        position: absolute;

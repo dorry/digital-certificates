@@ -1,10 +1,10 @@
 <template>
 <div>
-  <div class=" vertical-nav" >
+  <div v-if ="id !=''" class=" vertical-nav" >
     <div class="horizontal-line">
          </div>
     <b-nav vertical >
-        <b-nav-item  v-if="id !=''"><router-link to="/clist"> View All Certificates </router-link></b-nav-item>
+        <b-nav-item v-if="id !=''"><router-link to="/clist"> View All Certificates </router-link></b-nav-item>
         <b-nav-item v-if="id !=''" ><router-link to="/stats">Statistics </router-link></b-nav-item>
         <b-nav-item v-if="id !=''" ><router-link to="/Request">Request Certificate </router-link></b-nav-item>
 
@@ -68,7 +68,7 @@ components:{
 <style>
 .vertical-nav{
     position: absolute;
-    background-color:#02254a;
+    background-color:#a11f1f;
     width: 15%;
     height: 140vh;
 }
@@ -76,11 +76,11 @@ components:{
     height: .1em;
        position: absolute;
 
-    background-color: white;
+    background-color: #a11f1f;
 }
 a
 {
-  color: #919497;
+  color: #ffffff;
   padding: 5px 5px;
   text-align: center;
   text-decoration: none;
@@ -90,8 +90,8 @@ a
 a:hover
 {
   padding: 5px 5px;
-  background-color: white;
-  color:black;
+  background-color: rgb(0, 0, 0);
+  color:rgb(255, 255, 255);
   text-decoration: none;
   font-weight: bold;
 }
