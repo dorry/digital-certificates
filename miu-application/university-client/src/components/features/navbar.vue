@@ -55,4 +55,4 @@ computed: {
 {
   margin-left: 2%;
 }
-</style>  
+</style>
