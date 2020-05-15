@@ -2,17 +2,18 @@
 <div>
 
  <div style="top:35%;">
-    <div style=
+    <!-- <div style=
     "
     top:45%;
     position: absolute;
     left: 50%; ">
     <b-spinner style="width: 8rem; height: 8rem;" v-if="waiting" label="Spinning"></b-spinner>
-    </div>      
-    <div id="Sm">
-
-<bar-chart :data="[['X-Small', 5], ['Small', 27]]"></bar-chart>
-  
+    </div>       -->
+    <div id="sm">
+<h3>Average GPA in faculties</h3>
+<bar-chart :data="[['Electronics', gettestc], ['Mon', 46], ['Tue', 28]]"></bar-chart>
+<h3>Graudated student from each faculty</h3>
+<pie-chart :data="[['Mon', 46], ['Tue', 28]]"> </pie-chart>
 
     </div>
      
@@ -28,11 +29,12 @@
       ]">
       </pie-chart> -->
       </div>
-    <h1>{{getElectronics()}}</h1>
+    <!-- <h1>{{getElectronics()}}</h1>
     <h1>{{getPharmacy()}}</h1>
     <h1>{{getMasscomm()}}</h1>
     <h1>{{getMedical()}}</h1>  
-    <h1>{{getBusiness()}}</h1> 
+    <h1>{{getBusiness()}}</h1> --> 
+    <h1>{{gettest()}}</h1> 
 
     <h1 hidden>{{getItems}}</h1>   
 
@@ -58,6 +60,7 @@ export default {
    Business: 0,
    Pharmacy: 0,
    Medical:0,
+   avrg:0,
    items: [],
     };
   },  
@@ -67,6 +70,17 @@ components:{
  methods:{
       adddata(){
       },
+      gettest()
+     {
+      var avg = 0;
+      var items = this.getItems;
+      for(var x = 0; x<10; x++)
+      {
+          this.avrg += x;
+      }
+      this.avrg = this.avrg/x;
+      return this.avrg; 
+  },
       getElectronics(){
       var items = this.getItems;
       for(var x = 0; this.Electronics<this.rows;this.Loopelec++)
@@ -187,6 +201,10 @@ components:{
   },
   computed:
   {
+    gettestc()
+    {
+      return this.avrg;
+    },
     getwait()
     {
       return this.waiting;
@@ -223,7 +241,8 @@ components:{
 
 <style>
 #sm{
-  margin-left: 300px;
+
+margin-left: 15%;
 }
 .vertical-nav{
     position: absolute;
