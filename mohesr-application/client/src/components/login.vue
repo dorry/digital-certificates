@@ -1,15 +1,17 @@
 <template>
+<div>
     <div  class = "parent-container">
     <div class = "login-container">
     <div class="login-content">
     <h1> مرحبا</h1>
     <p>من فضلك استخدام بريدك الالكتروني لستجيل الدخول</p>
     </div>
-    <GoogleLogin class="google-login" :params="params" :renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure"></GoogleLogin>
-        <GoogleLogin v-if="id!=''" :params="params" :logoutButton=true :onSuccess="logout" :onFailure="faillogout" id="signout">Logout </GoogleLogin>
+    <GoogleLogin v-if="id!=''" class="google-login" :params="params" :renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure"></GoogleLogin>
+    <GoogleLogin v-if="id!=''" :params="params" :logoutButton=true :onSuccess="logout" :onFailure="faillogout" id="signout">Logout </GoogleLogin>
 
     </div>
     </div>
+</div>
 </template>
 
 <script>
@@ -20,6 +22,7 @@ export default {
                 islogged: true,
                 identity: '',
                 firstName: '',
+                fullname: '',
                 // client_id is the only required property but you can add several more params, full list down bellow on the Auth api section
                 params: {
                     client_id: "719716676155-s5a2f1m0eu1c2k4bca2bc7h7qci4d2s5.apps.googleusercontent.com"
@@ -32,14 +35,22 @@ export default {
                 }
             }
         },
-
+        computed: {
+        id(){
+            return this.$store.state.identity;
+        },
+        fn(){
+            return this.$store.state.firstName;
+        }
+    },
 
     components: {
         GoogleLogin
         },
 
     methods: {
-        logout(){
+        logout()
+        {
             console.log("Signed Out");
 
             this.$store.dispatch('saveUserLogged', "");
@@ -48,7 +59,8 @@ export default {
             this.$store.dispatch('saveUsername', "");
             this.$router.push("/home");
         },
-        onSuccess(googleUser) {
+        onSuccess(googleUser)
+        {
             console.log(googleUser);
             // This only gets the user information: id, name, imageUrl and email
             console.log(googleUser.getBasicProfile());
@@ -61,19 +73,20 @@ export default {
             this.$store.commit("setislogged", true);
 //  this.$store.state.firstName =  googleUser.getBasicProfile().vW;
             this.$store.dispatch('saveUsername', googleUser.getBasicProfile().pW);
-            this.$router.push("/home");
+            this.$router.push("/dashboard");
         },
-        onFailure(error){
+        onFailure(error)
+        {
             console.log(error);
         },
         
-        getUsername(email){
+        getUsername(email)
+        {
             console.log(email);
             var username=email.split("@");
             return username[0];
         }
     }
-
 }
 </script>
 
