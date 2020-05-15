@@ -39,7 +39,7 @@ export default {
        } 
       else
        {
-       this.$router.push('Request') 
+        namesRef.child(id).remove();
         alert("Refused");
       }
   },    

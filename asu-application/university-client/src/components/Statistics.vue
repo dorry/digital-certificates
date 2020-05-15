@@ -9,6 +9,14 @@
     left: 50%; ">
     <b-spinner style="width: 8rem; height: 8rem;" v-if="waiting" label="Spinning"></b-spinner>
     </div>      
+    <div id="Sm">
+
+<bar-chart :data="[['X-Small', 5], ['Small', 27]]"></bar-chart>
+  
+
+    </div>
+     
+      <!-- <br>
       <pie-chart 
       v-if="!waiting"
       :data="[
@@ -18,7 +26,7 @@
       ['Masscomm', getMasscommsC],
       ['Business', getBusinessC]
       ]">
-      </pie-chart>
+      </pie-chart> -->
       </div>
     <h1>{{getElectronics()}}</h1>
     <h1>{{getPharmacy()}}</h1>
@@ -214,6 +222,9 @@ components:{
 </script>
 
 <style>
+#sm{
+  margin-left: 300px;
+}
 .vertical-nav{
     position: absolute;
     background-color:#343A40 ;

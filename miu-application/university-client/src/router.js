@@ -7,7 +7,6 @@ import university from './components/CertificatesList'
 import Dashboard from './components/Dashboard'
 import Stat from './components/Statistics'
 import Req from './components/Request'
-import Reql from './components/RequestList'
 Vue.use(Router)
 export default new Router({
     mode:'history',
@@ -65,19 +64,5 @@ export default new Router({
         }
     } 
   },   
-  {
-    path: '/Requestlist',
-    name: 'RequestList',
-    component: Reql,
-    beforeEnter: (to, from, next) => {
-      if(store.state.islogged == false) {
-          console.log("Guarded");
-          next('/login');
-      } else {
-        console.log("Passed!");
-        next();
-      }
-  } 
-}, 
   ]
 })

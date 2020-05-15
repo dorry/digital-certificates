@@ -6,7 +6,7 @@ import Validation from './components/Validation'
 import Stats from './components/Statistics'
 import Login from './components/login'
 import Publics from './components/PublicUnis'
-import Uni from './components/University'
+import certlist from './components/CertificateList'
 import Dash from './components/Dashboard'
 import store from './store/store'
 import AddCertificate from './components/AddCertificate'
@@ -48,9 +48,9 @@ export default new Router({
   } 
     },
     {
-    path: '/university',
-    name:'Uni',
-    component : Uni,
+    path: '/certlist',
+    name:'CertificateList',
+    component : certlist,
     beforeEnter: (to, from, next) => {
       if(store.state.islogged == false) {
           console.log("Guarded");

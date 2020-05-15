@@ -7,7 +7,7 @@
         <!-- <b-nav-item>تسجيل مشرف جديد</b-nav-item> -->
         <!-- <b-nav-item router-link to="/Statistics" >احصائيات</b-nav-item> -->
         <b-nav-item router-link to="/validation" >التحقق من شهادة</b-nav-item>       
-        <b-nav-item  v-if="identity !=''"><router-link to="/university">  قائمة الطلاب </router-link></b-nav-item>
+        <b-nav-item  v-if="identity !=''"><router-link to="/certlist">  قائمة الطلاب </router-link></b-nav-item>
         <b-nav-item  v-if="identity !=''"><router-link to="/addcert"> اضافة شهادة </router-link></b-nav-item>
         <b-nav-item  v-if="identity !=''"><router-link to="/requestlist"> الرد علي الطلبات </router-link></b-nav-item>
         
