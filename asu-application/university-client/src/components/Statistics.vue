@@ -9,13 +9,24 @@
     left: 50%; ">
     <b-spinner style="width: 8rem; height: 8rem;" v-if="waiting" label="Spinning"></b-spinner>
     </div>       -->
-    <div id="sm">
+    <div  class = "parent-container">     
+    <div class = "login-container">
+    <div class="login-content">
 <h3>Average GPA in faculties</h3>
-<bar-chart :data="[['Electronics', gettestc], ['Mon', 46], ['Tue', 28]]"></bar-chart>
+<bar-chart id="hh" :data="[['Electronics', gettestc], ['Mon', 46], ['Tue', 28]]"></bar-chart>
+    </div>
+    </div>
+    </div>
+    <div  class = "parent-container">     
+    <div class = "login-container">
+    <div class="login-content">
 <h3>Graudated student from each faculty</h3>
 <pie-chart :data="[['Mon', 46], ['Tue', 28]]"> </pie-chart>
 
     </div>
+    </div>
+    </div>
+</div>
      
       <!-- <br>
       <pie-chart 
@@ -28,18 +39,17 @@
       ['Business', getBusinessC]
       ]">
       </pie-chart> -->
+          <h1>{{gettest()}}</h1> 
+
+    <h1 hidden>{{getItems}}</h1>   
+
       </div>
     <!-- <h1>{{getElectronics()}}</h1>
     <h1>{{getPharmacy()}}</h1>
     <h1>{{getMasscomm()}}</h1>
     <h1>{{getMedical()}}</h1>  
     <h1>{{getBusiness()}}</h1> --> 
-    <h1>{{gettest()}}</h1> 
 
-    <h1 hidden>{{getItems}}</h1>   
-
-
-</div>
     
 </template>
 <script>
@@ -240,6 +250,10 @@ components:{
 </script>
 
 <style>
+#hh
+{
+  color:blanchedalmond;
+}
 #sm{
 
 margin-left: 15%;
@@ -255,6 +269,34 @@ margin-left: 15%;
        position: absolute;
 
     background-color: white;
+}
+.login-container
+{
+  height: 45%;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: #343A40;
+  border-radius: 2%;
+  padding-top: 3%;
+  padding-bottom: 1%;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+.parent-container
+{
+  margin-top: 3%;
+  margin-left: 5%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-content
+{
+  color:white;
 }
 
 </style>
