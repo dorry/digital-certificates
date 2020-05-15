@@ -1,6 +1,6 @@
 <template>
 <div>
-  <b-navbar  toggleable="lg" type="dark" variant="dark" >
+  <b-navbar id = "hh"  toggleable="lg" type="dark" variant="dark" >
     <b-navbar-brand class = "aligning"> <b> وزارة التعليم العالي و البحث العلمي <img src="../assets/flagg.png" alt="Egypt" style="width:50px;height:50px;">  </b></b-navbar-brand>
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -43,6 +43,10 @@ computed: {
 </script>
 
 <style>
+#hh
+{
+  height: 6vh;
+}
 .aligningForItems
 {
   position: absolute; 

@@ -6,7 +6,7 @@
     <h1> مرحبا</h1>
     <p>من فضلك استخدام بريدك الالكتروني لستجيل الدخول</p>
     </div>
-    <GoogleLogin  class="google-login" :params="params" :renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure"></GoogleLogin>
+    <GoogleLogin v-if="id==''"  class="google-login" :params="params" :renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure"></GoogleLogin>
     <GoogleLogin v-if="id!=''" :params="params" :logoutButton=true :onSuccess="logout" :onFailure="faillogout" id="signout">Logout </GoogleLogin>
 
     </div>

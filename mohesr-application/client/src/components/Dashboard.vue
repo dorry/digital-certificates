@@ -1,15 +1,15 @@
 <template>
     <div>
-  <div class=" vertical-nav" v-if="id !=''">
+  <div class=" vertical-nav" v-if="identity !=''">
     <div class="horizontal-line">
          </div>
     <b-nav vertical >
         <!-- <b-nav-item>تسجيل مشرف جديد</b-nav-item> -->
         <!-- <b-nav-item router-link to="/Statistics" >احصائيات</b-nav-item> -->
         <b-nav-item router-link to="/validation" >التحقق من شهادة</b-nav-item>       
-        <b-nav-item  v-if="identity !=''"><router-link to="/certlist">  قائمة الطلاب </router-link></b-nav-item>
-        <b-nav-item  v-if="identity !=''"><router-link to="/addcert"> اضافة شهادة </router-link></b-nav-item>
-        <b-nav-item  v-if="identity !=''"><router-link to="/requestlist"> الرد علي الطلبات </router-link></b-nav-item>
+        <b-nav-item ><router-link to="/certlist">  قائمة الطلاب </router-link></b-nav-item>
+        <b-nav-item ><router-link to="/addcert"> اضافة شهادة </router-link></b-nav-item>
+        <b-nav-item ><router-link to="/requestlist"> الرد علي الطلبات </router-link></b-nav-item>
         
         
     </b-nav>
@@ -41,6 +41,13 @@ export default {
             }
         }
       };
+    },
+    computed:
+    {
+        identity()
+        {
+            return this.$store.state.identity;
+        }
     }
 };
 </script>
