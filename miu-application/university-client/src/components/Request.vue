@@ -113,7 +113,6 @@ export default {
 {
   margin-top: 4%;
   margin-left: 4%;
-  width: 100vw;
   height: auto;
   display: flex;
   justify-content: center;

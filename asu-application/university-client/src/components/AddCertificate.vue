@@ -183,9 +183,11 @@ export default {
 }
 </script>
 <style scoped>
-.error{
+.error
+{
   font-weight: bold;
-  color:darkred;  
+  color:rgb(187, 21, 21);
+  outline-color: black;
 }
 .btn-info
 {
@@ -204,24 +206,26 @@ export default {
   text-decoration: none;
   font-weight: bold;
 }
-.login-container{
-    height: auto;
-    width: 700px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    /* background-color: #343A40; */
-    border-radius: 5%;
+.login-container
+{
+  height: auto;
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  /* background-color: #343A40; */
+  border-radius: 5%;
+  margin-top: 1%;
 }
-.parent-container{
+.parent-container
+{
   height: 230px;
-    width: 100vw;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    }
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .login-content{
   background-color: rbga(215, 35, 24, 0.9);
     text-align: center;

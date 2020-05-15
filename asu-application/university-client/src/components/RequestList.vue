@@ -91,7 +91,6 @@ li{
 {
   margin-top: 3%;
   margin-left: 5%;
-  width: 100vw;
   height: auto;
   display: flex;
   justify-content: center;

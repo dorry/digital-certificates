@@ -110,8 +110,8 @@ export default {
 </script>
 
 <style scoped>
-#table{
-    margin-left: 3%;
+#table
+{
     justify-content: center;
     align-items: center;
 }
@@ -121,7 +121,8 @@ export default {
 .b-table{
   background-color: white;
   align-self: center;
-  width: 890px;
+    width: 100%;
+  height: auto;
 }
 .btn-info
 {
@@ -147,16 +148,17 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  background-color: rgba(1,3,5,0.9);
+  background-color: #343A40;
   border-radius: 2%;
   padding-top: 3%;
   padding-bottom: 1%;
+  padding-left: 2%;
+  padding-right: 2%;
 }
 .parent-container
 {
   margin-top: 3%;
   margin-left: 5%;
-  width: 100vw;
   height: auto;
   display: flex;
   justify-content: center;

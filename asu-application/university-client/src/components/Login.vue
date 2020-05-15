@@ -100,13 +100,12 @@ height: 300px;
     border-radius: 5%;
     margin-bottom: 15%;
 }
-.parent-container{
-    width: 100vw;
+.parent-container
+{
     height: 100vh;
-     display: flex;
+    display: flex;
     justify-content: center;
     align-items: center;
-    
 }
 .login-content{
     text-align: center;
