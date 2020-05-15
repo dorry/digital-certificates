@@ -13,7 +13,7 @@
       aria-controls="my-table"
     ></b-pagination>
 
-    <p class="mt-3" style = "color:white;">Current Page: {{ currentPage }}</p>
+    <p class="mt-3" style = "color:white;">صفحة: {{ currentPage }}</p>
         <div id="table">
 
     <b-table 
@@ -72,14 +72,15 @@ export default {
 }
 .b-pagination
 {
-    margin-left: 77%;
+    
  }
 .b-table
 {
-  margin-left: 2%;
   background-color: white;
   align-self: center;
-  width: 1100px;
+  width: 100%;
+  height: auto;
+  
 }
 .login-container
 {
@@ -92,11 +93,13 @@ export default {
   padding-top: 3%;
   padding-bottom: 1%;
   margin-right: 15%;
+  padding-left: 2%;
+  padding-right: 2%;
 }
 .parent-container
 {
   margin-top: 3%;
-  width: 100vw;
+  width: auto;
   height: auto;
   display: flex;
   justify-content: center;
@@ -105,6 +108,8 @@ export default {
 
 .login-content
 {
+  align-items: center;
+  justify-content: center;
   color:white;
 }
 </style>

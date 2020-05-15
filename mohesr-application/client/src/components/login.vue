@@ -2,6 +2,7 @@
     <div  class = "parent-container">
     <div class = "login-container">
     <div class="login-content">
+    <h1> مرحبا</h1>
     <p>من فضلك استخدام بريدك الالكتروني لستجيل الدخول</p>
     </div>
     <GoogleLogin class="google-login" :params="params" :renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure"></GoogleLogin>
@@ -93,9 +94,8 @@ export default {
 }
 .parent-container
 {
-    width: 100vw;
     height: 100vh;
-     display: flex;
+    display: flex;
     justify-content: center;
     align-items: center;
 }

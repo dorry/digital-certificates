@@ -31,6 +31,11 @@ export default {
   color: #2c3e50;
  
 }
+body
+{
+  background-image: url('./assets/webbg.jpg');
+  background-size: 1920px 1080px;
+}
 
 
 </style>

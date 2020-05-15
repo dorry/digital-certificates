@@ -49,9 +49,9 @@ export default {
 {
     position: absolute;
     background-color:rgba(1,3,5,0.9);
-    width: 17%;
+    width: 16%;
     height: 140vh;
-    margin-left: 83%;
+    margin-left: 84%;
 }
 .horizontol-line
 {

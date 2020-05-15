@@ -3,18 +3,18 @@
     <div class = "login-container">
     <div class="login-content">
     <b-form class="text-center border border-light p-5">
-        <h2 class="h4 mb-4">Please fill the certificate information</h2>
-    <label><h4> Name</h4></label>
-    <b-input class="form-control mb-4" v-model="name" id="inline-form-input-nid" placeholder="Enter The Student's Name"></b-input>
-    <label><h4> National ID</h4></label>
-    <b-input class="form-control mb-4" v-model="certificateId" id="inline-form-input-nid" placeholder="Enter the Student's National ID"></b-input>
-    <label><h4> GPA</h4></label>
-    <b-input class="form-control mb-4" v-model="gpa" id="inline-form-input-username" placeholder="Enter the Student's Cumaltive GPA"></b-input>
-    <label><h4> Final Grade </h4></label>
-    <b-input class="form-control mb-4" v-model="grade" id="inline-form-input-username" placeholder="Enter The S tudent's Grade"></b-input>
-    <label><h4> Faculty </h4></label>
+        <h2 class="h4 mb-4">برجاء ملء معلومات الشهادة</h2>
+    <label><h4> الأسم</h4></label>
+    <b-input class="form-control mb-4" v-model="name" id="inline-form-input-nid" placeholder="أدخل اسم الطالب"></b-input>
+    <label><h4> الرقم القومي</h4></label>
+    <b-input class="form-control mb-4" v-model="certificateId" id="inline-form-input-nid" placeholder="أدخل الرقم القومي للطالب"></b-input>
+    <label><h4> المعدل التراكمي</h4></label>
+    <b-input class="form-control mb-4" v-model="gpa" id="inline-form-input-username" placeholder="أدخل المعدل التراكمي للطالب"></b-input>
+    <label><h4> التقدير النهائي </h4></label>
+    <b-input class="form-control mb-4" v-model="grade" id="inline-form-input-username" placeholder="أدخل تقدير الطالب"></b-input>
+    <label><h4> الكلية </h4></label>
     <b-form-select v-model="faculty" class="form-control mb-4"  id="inline-form-input-nid" :options="options"></b-form-select>
-    <label><h4> Please upload a snapshot of the certificate </h4></label>
+    <label><h4> برجاء رفع صورة للشهادة </h4></label>
     <vue-base64-file-upload    
          accept="image/png,image/jpeg"
         :max-size="customImageMaxSize"
@@ -22,7 +22,7 @@
         @file="onFile"
         @load="onLoad" />
         <br>
-    <b-button @click="addCertificate()" id="submitbtn" class="btn btn-info btn-block" variant="primary">Save</b-button>
+    <b-button @click="addCertificate()" id="submitbtn" class="btn btn-info btn-block" variant="primary">حفظ</b-button>
     </b-form>
     </div>
     </div>
@@ -130,7 +130,7 @@ export default {
 .parent-container{
     height: 230px;
     margin-top: 50px;
-    width: 100vw;
+
     height: auto;
     display: flex;
     justify-content: center;

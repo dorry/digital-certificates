@@ -2,7 +2,7 @@
     <div>
     <div  class = "parent-container">     
     <div class = "login-container">
-      <h2 style = "color:white;">Requests: </h2>
+      <h2 style = "color:white;"> طلبات الشهادات</h2>
     <div class="login-content">
     
     <br>
@@ -12,8 +12,8 @@
     v-bind:key="personName['.key']">
     Student : {{personName.name}} from {{personName.University}}
     <br>
-    <b-button @click="approve(personName['.key'])">Approve</b-button>
-    <b-button>Deny</b-button>
+    <b-button @click="approve(personName['.key'])">قبول</b-button>
+    <b-button>رفض</b-button>
     </li>
   </ul>    
     </div>
