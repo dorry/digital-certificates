@@ -216,7 +216,6 @@ export default {
 }
 .parent-container{
   height: 230px;
-    margin-top: 50px;
     width: 100vw;
     height: auto;
     display: flex;
