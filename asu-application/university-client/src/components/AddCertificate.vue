@@ -8,9 +8,9 @@
     <span class="form-group" :class="{ 'form-group--error': $v.name.$error }">
     <b-input class="form-control mb-4" v-model="name" id="inline-form-input-nid" placeholder="Enter The Student's Name" ></b-input>
     </span>
-    <span class="error" v-if="!$v.name.required">Full Name Field is required</span>
+    <span class="error" v-if="!$v.name.required">Full Name field is required</span>
     <span class="error" v-if="!$v.name.alpha">Can't include numbers</span>
-    <span class="error" v-if="!$v.name.minLength">You only typed {{$v.name.$params.minLength.min}} letters , please enter the full name.</span>
+    <span class="error" v-if="!$v.name.minLength">You only typed {{$v.name.$params.minLength.min}} letters, please enter the full name.</span>
     <br>
 
    
@@ -77,7 +77,6 @@ import {minValue, maxValue, alpha, decimal,required , minLength , maxLength , be
 export default {
     data(){
         return{
-         
           grades: 
           [
             { value: null , text: 'Enter the Final Grade'},
@@ -94,7 +93,7 @@ export default {
             { value: 'A', text: 'A' },
             { value: 'A+', text: 'A+' },
             
-          ],        
+          ],
          options: 
           [
             { value: 'Faculty', text: 'Choose Faculty' },

@@ -3,7 +3,7 @@
     <div  class = "parent-container">
     <div class = "login-container">
     <div class="login-content">
-    <h1> مرحبا</h1>
+    <h1> !مرحبا</h1>
     <p>من فضلك استخدام بريدك الالكتروني لستجيل الدخول</p>
     </div>
     <GoogleLogin v-if="id==''"  class="google-login" :params="params" :renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure"></GoogleLogin>

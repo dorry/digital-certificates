@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'chart.js'
 import 'hchs-vue-charts'
+import Vuelidate from 'vuelidate'
 import 'firebase/firestore'
 import { firestorePlugin } from 'vuefire'
 import { rtdbPlugin } from 'vuefire'
@@ -18,6 +19,7 @@ Vue.use(rtdbPlugin)
 Vue.use(window.VueCharts);
 Vue.use(BootstrapVue)
 Vue.use(firestorePlugin)
+Vue.use(Vuelidate)
 // Optionally install the BootstrapVue icon components plugin
 
 new Vue({
