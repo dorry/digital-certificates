@@ -55,7 +55,6 @@ export default {
 
             this.$store.dispatch('saveUserLogged', "");
             this.$store.commit("setislogged", false);
-//  this.$store.state.firstName =  googleUser.getBasicProfile().vW;
             this.$store.dispatch('saveUsername', "");
             this.$router.push("/home");
         },

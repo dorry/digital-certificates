@@ -14,7 +14,7 @@
     {{personName.name}} from Email : {{personName.mail}}  
     <br>
     <b-button @click="approve(personName['.key'])">Approve</b-button>
-    <b-button>Deny</b-button>
+    <b-button @click="deny(personName['.key'])">Deny</b-button>
     </li>
   </ul>    
     </div>
@@ -29,6 +29,18 @@
 import {namesRef} from './firebase'
 export default {
   methods:{
+  deny(id)
+  {
+    var Dialogbox = confirm("Are you sure you want to deny the request?")
+    if(Dialogbox == true)
+    {
+        namesRef.child(id).remove();
+        this.$router.push('addcert')
+        alert("The request has been deleted , please contact the student for the reason of certificate refusal "); 
+    }
+    else {alert("Refused"); }
+
+  },
    approve(id) 
    {
        var dialogbox = confirm("Are you sure you want to approve this certificate?");
@@ -40,9 +52,7 @@ export default {
        } 
       else
        {
-        alert("Refused");
-        namesRef.child(id).remove();
-
+        alert("Refused to approve.");
       }
   },    
  },

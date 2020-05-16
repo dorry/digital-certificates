@@ -1,6 +1,6 @@
 <template>
     <div>
-  <div class=" vertical-nav" v-if="identity !=''">
+  <div class="vertical-nav" v-if="identity !=''">
     <div class="horizontal-line">
          </div>
     <b-nav vertical >
