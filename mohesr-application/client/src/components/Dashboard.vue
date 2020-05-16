@@ -9,7 +9,7 @@
         <b-nav-item router-link to="/validation" >التحقق من شهادة</b-nav-item>       
         <b-nav-item ><router-link to="/certlist">  قائمة الطلاب </router-link></b-nav-item>
         <b-nav-item ><router-link to="/addcert"> اضافة شهادة </router-link></b-nav-item>
-        <b-nav-item ><router-link to="/requestlist"> الرد علي الطلبات </router-link></b-nav-item>
+        <b-nav-item v-on:click="notification"><router-link to="/requestlist"><span v-if="count>0">{{count}}</span> الرد علي الطلبات </router-link></b-nav-item>
         
         
     </b-nav>
@@ -21,7 +21,7 @@
 
 </template>
 <script>
-
+import {namesRef} from './firebase'
 export default {
     data(){
         return {
@@ -32,6 +32,7 @@ export default {
              backgroundColor: ["Red","Yellow","Purple"]
             }
         ],
+            count:0,
         option : {
             title:
             {
@@ -39,9 +40,30 @@ export default {
             position:"Bottom",
             text: "Fruits"
             }
-        }
-      };
-    },
+        },
+        };} ,
+         firebase: {
+    names: namesRef
+  },
+  methods:{
+      notification: function(){
+      this.count=0;
+      var counter=0;
+    namesRef.on('value',gotData,errData);
+    
+     function gotData(data) {
+    var info=data.val();
+    var keys=Object.keys(info);
+    counter=keys.length;
+    return keys.length;
+    }
+    function errData()
+    {
+      return "error";
+    }
+return this.count=counter;
+  },
+  },
     computed:
     {
         identity()
