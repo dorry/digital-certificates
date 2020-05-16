@@ -9,7 +9,8 @@
         <b-nav-item  v-if="id !=''"><router-link to="/clist"> View All Certificates </router-link></b-nav-item>
         <b-nav-item v-if="id !=''" ><router-link to="/stats">Statistics </router-link></b-nav-item>
         <b-nav-item v-if="id !=''" ><router-link to="/Request">Request Certificate </router-link></b-nav-item>
-        <b-nav-item v-if="id !=''" ><router-link to="/Requestlist">View Requests </router-link></b-nav-item>
+        <b-nav-item v-if="id !=''" v-on:click="notification"><router-link to="/Requestlist">View Requests <span v-if="count>0">{{count}}</span></router-link></b-nav-item> 
+        <b-nav-item v-if="id !=''" v-on:click="notification">Refresh</b-nav-item> 
 
     </b-nav>
     <!-- <add-cert style=" margin-top:-150px"> </add-cert> -->
@@ -22,9 +23,11 @@
 <script>
 import APIService from "../services/APIService";
 import add from "./AddCertificate.vue";
+import {namesRef} from './firebase'
 export default {
  data(){
   return {
+    count:0,
    response:[],
    Electronics:0,
    MassComm:0,
@@ -39,17 +42,36 @@ export default {
     text: "Fruits"
        }
       }
+    
     };
   },  
+  firebase: {
+    names: namesRef
+  },
 components:{
     "addCert":add
   },
  methods:{
       adddata(){
       },  
+      notification: function(){
+      this.count=0;
+      var counter=0;
+    namesRef.on('value',gotData,errData);
+    
+     function gotData(data) {
+    var info=data.val();
+    var keys=Object.keys(info);
+    counter=keys.length;
+    return keys.length;
+    }
+    function errData()
+    {
+      return "error";
+    }
+return this.count=counter;
   },
-  computed:
-  {   
+
     id(){
        return this.$store.state.identity;
     },
@@ -60,6 +82,11 @@ components:{
     {
     return this.items.length
     },
+  },
+ 
+  computed:
+  {  
+    
     getItems(){
       this.queryAll();
       console.log("response"+this.response);
@@ -68,6 +95,8 @@ components:{
     },           
   },  
 };
+
+
 </script>
 
 <style>
