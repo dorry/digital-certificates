@@ -13,7 +13,7 @@
     The Student Name :
     {{personName.name}} from Email : {{personName.mail}}  
     <br>
-    <b-button @click="approve(personName['.key'])">Approve</b-button>
+    <b-button @click="approve(personName['.key'],personName.name,personName.mail)">Approve</b-button>
     <b-button @click="deny(personName['.key'])">Deny</b-button>
     </li>
   </ul>    
@@ -27,6 +27,8 @@
 
 <script>
 import {namesRef} from './firebase'
+import {MohserRef} from './firebase'
+
 export default {
   methods:{
   deny(id)
@@ -34,6 +36,7 @@ export default {
     var Dialogbox = confirm("Are you sure you want to deny the request?")
     if(Dialogbox == true)
     {
+
         namesRef.child(id).remove();
         this.$router.push('addcert')
         alert("The request has been deleted , please contact the student for the reason of certificate refusal "); 
@@ -41,12 +44,14 @@ export default {
     else {alert("Refused"); }
 
   },
-   approve(id) 
+   approve(id,name,mail) 
    {
        var dialogbox = confirm("Are you sure you want to approve this certificate?");
-     
       if (dialogbox == true) {
-        namesRef.child(id).remove();
+        MohserRef.child(id).child("Request").set(1);
+        MohserRef.child(id).child("University").set("Misr International University");
+        MohserRef.child(id).child("mail").set(mail);
+        MohserRef.child(id).child("name").set(name);
         this.$router.push('addcert')
         alert("The request has been sent to the Ministry Of Higher Education for approval."); 
        } 
