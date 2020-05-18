@@ -10,10 +10,10 @@
     " top:45%;
     position: absolute;
     left: 50%; ">
-    <b-spinner style="width: 8rem; height: 8rem;" v-if="waiting" label="Spinning"></b-spinner>
+    <!-- <b-spinner style="width: 8rem; height: 8rem;"  label="Spinning"></b-spinner> -->
     </div>
     <b-pagination
-      v-if="!waiting"
+     
       v-model="currentPage"
       :total-rows="rows"
       :per-page="perPage"
@@ -75,7 +75,7 @@ export default {
 
         const response =  await APIService.queryAll('appadmin');
         console.log(response.data);
-        this.waiting = false;
+       // this.waiting = false;
         // this.changeObj(response.data);
         this.response = response.data;
         // console.log(this.items.length);

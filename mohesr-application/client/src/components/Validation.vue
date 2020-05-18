@@ -68,9 +68,10 @@ export default {
     async validate(){
   ///  console.log(this.identity);
     const apiResponse = await APIService.validateCertificate(this.id,this.validationKey);
+    console.log(this.id);
     console.log(apiResponse.data);
      if(apiResponse.data=="Valid certificate"){
-       const apiResponse = await APIService.readCertificate(this.validationKey);
+       const apiResponse = await APIService.readCertificate(this.id,this.validationKey);
        console.log("Data :");
        console.log(apiResponse.data);
        this.certificateData=apiResponse.data; 

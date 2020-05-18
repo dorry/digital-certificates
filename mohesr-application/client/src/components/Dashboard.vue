@@ -6,9 +6,9 @@
     <b-nav vertical >
         <!-- <b-nav-item>تسجيل مشرف جديد</b-nav-item> -->
         <!-- <b-nav-item router-link to="/Statistics" >احصائيات</b-nav-item> -->
-        <b-nav-item router-link to="/validation" >التحقق من شهادة</b-nav-item>       
-        <b-nav-item ><router-link to="/certlist">  قائمة الطلاب </router-link></b-nav-item>
-        <b-nav-item ><router-link to="/addcert"> اضافة شهادة </router-link></b-nav-item>
+        <b-nav-item v-if="admin==true" router-link to="/validation" >التحقق من شهادة</b-nav-item>       
+        <b-nav-item v-if="admin==true" ><router-link to="/certlist">  قائمة الطلاب </router-link></b-nav-item>
+        <b-nav-item  v-if="admin==true"><router-link to="/addcert"> اضافة شهادة </router-link></b-nav-item>
         <b-nav-item v-on:click="notification"><router-link to="/requestlist"><span v-if="count>0">{{count}}</span> الرد علي الطلبات </router-link></b-nav-item>
         
         
