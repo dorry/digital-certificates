@@ -10,10 +10,10 @@
         <b-nav-item v-if="admin==true" ><router-link to="/certlist">  قائمة الطلاب </router-link></b-nav-item>
         <b-nav-item v-if="admin==true"><router-link to="/addcert"> اضافة شهادة </router-link></b-nav-item>
         <b-nav-item v-if="admin==true" v-on:click="notification"><router-link to="/requestlist"><span v-if="count>0">{{count}}</span> الرد علي الطلبات </router-link></b-nav-item>
-        <b-nav-item v-if="admin==false"> الاشتراك في رخصة التحقق </b-nav-item>
-        <b-nav-item v-if="admin==false"> <router-link to="/CreateLisence"> مراجعة الرخصة </router-link>  </b-nav-item>
+        <b-nav-item v-if="admin==false"> <router-link to="/CreateLisence"> الاشتراك في رخصة التحقق </router-link>  </b-nav-item></b-nav-item>
+        <b-nav-item v-if="admin==false"> <router-link to="/ViewLisence"> مراجعة الرخصة </router-link>  </b-nav-item>
         
-        <b-nav-item > التحقق من شهادة المتقدم للوظيفة </b-nav-item>        
+        <b-nav-item><router-link to="/Validation"> التحقق من شهادة المتقدم للوظيفة  </router-link> </b-nav-item>        
     </b-nav>
 
 </div>

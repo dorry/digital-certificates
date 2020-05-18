@@ -86,7 +86,7 @@ return this.count=counter;
  
   computed:
   {  
-            admin(){
+      admin(){
           return this.$store.state.isadmin;
         },
     getItems(){

@@ -40,6 +40,8 @@
     </span>
     <span class="error" v-if="!$v.faculty.required">الكلية مطلوبة</span>
     <br>
+    <label><h4> الجامعة </h4></label>
+    <b-form-select v-model="faculty" class="form-control mb-4"  id="inline-form-input-nid" :options="unis"></b-form-select>
     <label><h4> برجاء رفع صورة للشهادة </h4></label>
     <vue-base64-file-upload    
          accept="image/png,image/jpeg"
@@ -48,6 +50,7 @@
         @file="onFile"
         @load="onLoad" />
         <br>
+
     <b-button v-if="
      $v.name.required &&
      $v.grade.required &&
@@ -84,6 +87,9 @@ export default {
             { value: 'ممتاز', text: 'ممتاز' },
             { value: 'ممتاز مرتفع', text: 'ممتاز مرتفع' },
           ],	
+          unis:[
+            "MIU",
+          ],
           options: 
           [
             { value: 'الكلية', text: 'اختر الكلية' },

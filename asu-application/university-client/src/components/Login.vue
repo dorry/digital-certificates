@@ -73,14 +73,12 @@ export default {
             {
                 this.$store.commit("setadmin",false);
             }            
-            // console.log(this.firstName);
-            // console.log(this.$store.state.islogged);
+
             this.$store.dispatch('saveUserLogged', this.identity);
             this.$store.commit("setislogged", true);
             this.$store.dispatch('saveUsername', googleUser.getBasicProfile().pW);
             this.$router.push("/dashboard");
-            // console.log("USERRR: ")
-            //             console.log(googleUser.getBasicProfile.pw);
+
 
         },
         onFailure(error){

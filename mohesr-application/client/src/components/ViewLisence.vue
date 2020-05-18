@@ -21,6 +21,17 @@ import firebase from 'firebase'
 // import image from "../assets/lamp.png"
 export default {
   name: "HelloWorld",
+  methods:
+  {
+    getcompany(mail)
+    {
+     companiesRef.on("value", function(snapshot) {
+        console.log(snapshot.val());
+        }, function (errorObject) {
+        console.log("The read failed: " + errorObject.code);
+        });
+    }  
+  },
   data: function() {
     return {
 

@@ -110,7 +110,7 @@ export default {
         {        
           return this.gpabusi/(this.counterbusi);
         } 
-        if(items[this.Loopmedic2].Faculty == "Business")
+        if(items[this.Loopmedic2].Faculty == "Medical")
         {
           this.counterbusi++;
           console.log(this.counterbusi +  " + " + parseFloat(items[this.Loopmedic2].GPA));
@@ -128,7 +128,7 @@ export default {
         {        
           return this.gpamass/(this.countermass);
         } 
-        if(items[this.Loopmass2].Faculty == "Business")
+        if(items[this.Loopmass2].Faculty == "Mass Communication")
         {
           this.countermass++;
           console.log(this.countermass +  " + " + parseFloat(items[this.Loopmass2].GPA));
@@ -146,7 +146,7 @@ export default {
         {        
           return this.gpapharm/(this.counterpharm);
         } 
-        if(items[this.Looppharm2].Faculty == "Business")
+        if(items[this.Looppharm2].Faculty == "Pharmacy")
         {
           this.counterpharm++;
           console.log(this.counterpharm +  " + " + parseFloat(items[this.Looppharm2].GPA));

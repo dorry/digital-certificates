@@ -21,12 +21,14 @@ export default new Vuex.Store({
         {
             state.isadmin = admin;
         },
-        saveUserLogged (state, loggedUser) {
+        saveUserLogged (state, loggedUser)
+        {
         state.identity = loggedUser
-      },
-      saveUsername (state, Name) {
+        },
+      saveUsername (state, Name)
+       {
         state.firstName = Name
-     },
+       },
       savename (state, Name) {
       state.fullName = Name
   }
