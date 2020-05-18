@@ -1,106 +1,80 @@
-<template>
-    <div>
+<template>  
+<div>
     <div  class = "parent-container">     
     <div class = "login-container">
     <div class="login-content">
     <h2 style="margin-left:3%">تفاصيل الرخصة </h2>
     <br>
   
-    <h3
-    v-for="personName of names" 
-    v-bind:key="personName['.key']">
-    الرخصة لشركة : 
-    {{personName.company}} فعالة 
-    <br>
-     من  {{personName.paymonth}}/{{personName.payday}}/{{personName.payyear}} 
-    <br>
-    حتي 
-     {{personName.paymonth}}/{{personName.payday}}/{{personName.expirationdate}}
-    <b-button @click="getcompany(personName['.key'])">اظهار التفاصيل</b-button>
-
-    <br>
-    </h3>
+    <b-button @click="getcompany(identity)">اظهار التفاصيل</b-button>
     </div>
     </div>
     </div>
 
-  </div>
-
+</div>
 </template>
 
 <script>
 import {companiesRef} from './firebase'
+import firebase from 'firebase'
+
+// import image from "../assets/lamp.png"
 export default {
-  mounted() 
-  {
-    this.getcompany();
-  },
-  methods:{
-   getcompany(id)
-   {
-       
-   },
-
-   approve(id) 
-   {
-       var dialogbox = confirm("Are you sure you want to approve this certificate?");
-     
-      if (dialogbox == true) {
-        companiesRef.child(id).remove();
-        this.$router.push('addcert')
-        alert("Please fill out this student's certificate information "); 
-       } 
-      else
-       {
-        alert("Refused to approve.");
-      }
-  },    
- },
-  firebase: {
-    names: companiesRef
-  },
-  computed:{
-    
-  },
-  data() {
+  name: "HelloWorld",
+  data: function() {
     return {
-    
-    currentPage: 1,
-    names: [
 
-        ],
-    }
- }
+    };
+  },
+  computed: {
+        identity()
+        {
+            return this.$store.state.identity;
+        },
+        firstName()
+        {
+            return this.$store.state.firstName;
+        },
+    },
+   firebase: 
+   {
+    names: companiesRef
+   },
+  methods: 
+  {
+   getcompany(m)
+   {
+      
 
-}
+   },
+  }
+};
 </script>
 
 <style scoped>
-ul{
-    margin-left: 3%;
-    justify-content: center;
-    align-items: center;
-}
-li{
-  font-weight: bold;
-  font-size: 110%;
+
+#form
+{
+
+  justify-content: center;
+  align-items: center;
 }
 .login-container
 {
   height: 45%;
-  width: 60%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  background-color: rgba(1,3,5,0.9);
-  border-radius: 2%;
-  padding-top: 3%;
-  padding-bottom: 1%;
+  align-items: center;
+  background-color:rgba(1,3,5,0.9);
+  border-radius: 5%;
+  padding-top: 8%;
 }
 .parent-container
 {
-  margin-top: 3%;
-  margin-left: 5%;
+  margin-top: 4%;
+  margin-left: 4%;
   height: auto;
   display: flex;
   justify-content: center;
@@ -109,6 +83,9 @@ li{
 
 .login-content
 {
+  text-align: center;
   color:white;
+  margin-bottom: 11%;
 }
+
 </style>
