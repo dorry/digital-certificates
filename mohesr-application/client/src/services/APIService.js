@@ -35,15 +35,16 @@ export default {
     }) 
 
   },
-  readCertificate(key) {
+  readCertificate(identity,key) {
     return Api().post('readCertificate', {
+      identity: identity,
       key: key
     }) 
   },
   validateWallet(identity) {
     console.log("APIService Identity" + identity);
     return Api().post('checkWallet', {
-      identity: identity
+      username: identity
     }) 
   },
 

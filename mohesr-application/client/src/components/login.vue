@@ -63,17 +63,20 @@ export default {
         async onSuccess(googleUser)
         {
             console.log(googleUser.getBasicProfile().yu)
-            const response =  await APIService.validateWallet
-            (
-             googleUser.getBasicProfile().yu,
-            )
-            alert(response);
-            this.$store.commit('setadmin',true);
+          
+
             //console.log(googleUser);
             // This only gets the user information: id, name, imageUrl and email
             //console.log(googleUser.getBasicProfile());
             this.identity = googleUser.getBasicProfile().yu;
             this.firstName = googleUser.getBasicProfile().pW;
+            const response =  await APIService.validateWallet(this.identity)
+            if(response.data == 'wallet exist'){
+                this.$store.commit("setadmin",true);
+            }
+            else{
+                this.$store.commit("setadmin",false);
+            }
            //sconsole.log(this.firstName);
            //console.log(this.$store.state.islogged);
            //this.$store.state.identity = this.identity;

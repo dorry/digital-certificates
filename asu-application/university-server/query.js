@@ -37,7 +37,7 @@ exports.query = async function(name,functionName, certificateID) {
         // Check to see if we've already enrolled the user.
         const userExists = await wallet.exists(name);
         if (!userExists) {
-            console.log('An identity for the user '+username+'does not exist in the wallet');
+            console.log('An identity for the user '+name+'does not exist in the wallet');
             console.log('Run the registerUser.js application before retrying');
             return;
         }
@@ -77,8 +77,5 @@ exports.queryAll = async function(name){
     const response = await this.query(name,'queryAll',-1);
     return response;
 }
-exports.queryAll = async function(name){
-    const response = await this.query(name,'queryAll',-1);
-    return response;
-}
+
 //  await query('admin','readCertificate','996');
