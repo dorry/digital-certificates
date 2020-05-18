@@ -1,6 +1,6 @@
 <template>
     <div>
-  <div class="vertical-nav" v-if="identity !='' && admin==true ">
+  <div class="vertical-nav" v-if="identity !='' ">
     <div class="horizontal-line">
          </div>
     <b-nav vertical >
@@ -8,9 +8,10 @@
         <!-- <b-nav-item router-link to="/Statistics" >احصائيات</b-nav-item> -->
         <b-nav-item v-if="admin==true" router-link to="/validation" >التحقق من شهادة</b-nav-item>       
         <b-nav-item v-if="admin==true" ><router-link to="/certlist">  قائمة الطلاب </router-link></b-nav-item>
-        <b-nav-item  v-if="admin==true"><router-link to="/addcert"> اضافة شهادة </router-link></b-nav-item>
-        <b-nav-item v-on:click="notification"><router-link to="/requestlist"><span v-if="count>0">{{count}}</span> الرد علي الطلبات </router-link></b-nav-item>
-        
+        <b-nav-item v-if="admin==true"><router-link to="/addcert"> اضافة شهادة </router-link></b-nav-item>
+        <b-nav-item v-if="admin==true" v-on:click="notification"><router-link to="/requestlist"><span v-if="count>0">{{count}}</span> الرد علي الطلبات </router-link></b-nav-item>
+        <b-nav-item v-if="admin==false"> الاشتراك في رخصة التحقق </b-nav-item>
+        <b-nav-item v-if="admin==false"> <router-link to="/CreateLisence"> مراجعة الرخصة </router-link>  </b-nav-item>
         
     </b-nav>
 
@@ -25,26 +26,12 @@ import {namesRef} from './firebase'
 export default {
     data(){
         return {
-        labels:["Apples", "Bananas", "Grapes"],
-           datasets:[
-            {       
-             data: [20,30,50],
-             backgroundColor: ["Red","Yellow","Purple"]
-            }
-        ],
-            count:0,
-        option : {
-            title:
-            {
-            display:true,
-            position:"Bottom",
-            text: "Fruits"
-            }
+        count:0,
+        };
         },
-        };} ,
-         firebase: {
-    names: namesRef
-  },
+        firebase: {
+          names: namesRef
+        },
   methods:{
       notification: function(){
       this.count=0;

@@ -11,6 +11,8 @@ import Dash from './components/Dashboard'
 import store from './store/store'
 import AddCertificate from './components/AddCertificate'
 import reql from './components/RequestList'
+import Lisence from './components/CreateLisence'
+import VLisence from './components/ViewLisence'
 Vue.use(Router)
 
 export default new Router({
@@ -21,7 +23,8 @@ export default new Router({
     name:'Home',
     component : Home
     },
-    {path: '/identification',
+{
+    path: '/identification',
     name:'Identification',
     component : Identification,
     beforeEnter: (to, from, next) => {
@@ -33,7 +36,35 @@ export default new Router({
         next();
       }
   } 
-    },
+},
+{
+  path: '/CreateLisence',
+  name:'CreateLisence',
+  component : Lisence,
+  beforeEnter: (to, from, next) => {
+    if(store.state.islogged == false) {
+        console.log("Guarded");
+        next('/login');
+    } else {
+      console.log("Passed!");
+      next();
+    }
+} 
+},
+{
+  path: '/ViewLisence',
+  name:'ViewLisence',
+  component : VLisence,
+  beforeEnter: (to, from, next) => {
+    if(store.state.islogged == false) {
+        console.log("Guarded");
+        next('/login');
+    } else {
+      console.log("Passed!");
+      next();
+    }
+} 
+},
     {path: '/publicunis',
     name:'Publicunis',
     component : Publics,

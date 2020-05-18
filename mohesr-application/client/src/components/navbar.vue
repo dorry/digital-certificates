@@ -48,13 +48,13 @@ computed: {
 <style>
 #hh
 {
-  height: 6vh;
+  height: 60px;
 }
 .aligningForItems
 {
   position: absolute; 
   right: 0%;
-  margin-right: 17%;
+  margin-right: 20%;
 }
 .aligning
 {
