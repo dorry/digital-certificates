@@ -16,6 +16,8 @@
 
 <script>
 import GoogleLogin from 'vue-google-login';
+import APIService from "../services/APIService";
+
 export default {
    data() {
             return {
@@ -23,6 +25,7 @@ export default {
                 identity: '',
                 firstName: '',
                 fullname: '',
+
                 // client_id is the only required property but you can add several more params, full list down bellow on the Auth api section
                 params: {
                     client_id: "719716676155-s5a2f1m0eu1c2k4bca2bc7h7qci4d2s5.apps.googleusercontent.com"
@@ -52,27 +55,33 @@ export default {
         logout()
         {
             console.log("Signed Out");
-
             this.$store.dispatch('saveUserLogged', "");
             this.$store.commit("setislogged", false);
             this.$store.dispatch('saveUsername', "");
             this.$router.push("/home");
         },
-        onSuccess(googleUser)
+        async onSuccess(googleUser)
         {
-            console.log(googleUser);
+            console.log(googleUser.getBasicProfile().yu)
+            const response =  await APIService.validateWallet
+            (
+             googleUser.getBasicProfile().yu,
+            )
+            alert(response);
+            this.$store.commit('setadmin',true);
+            //console.log(googleUser);
             // This only gets the user information: id, name, imageUrl and email
-            console.log(googleUser.getBasicProfile());
-            this.identity = this.getUsername(googleUser.getBasicProfile().yu);
+            //console.log(googleUser.getBasicProfile());
+            this.identity = googleUser.getBasicProfile().yu;
             this.firstName = googleUser.getBasicProfile().pW;
-            console.log(this.firstName);
-            console.log(this.$store.state.islogged);
-//            this.$store.state.identity = this.identity;
+           //sconsole.log(this.firstName);
+           //console.log(this.$store.state.islogged);
+           //this.$store.state.identity = this.identity;
             this.$store.dispatch('saveUserLogged', this.identity);
             this.$store.commit("setislogged", true);
-//  this.$store.state.firstName =  googleUser.getBasicProfile().vW;
             this.$store.dispatch('saveUsername', googleUser.getBasicProfile().pW);
             this.$router.push("/dashboard");
+
         },
         onFailure(error)
         {

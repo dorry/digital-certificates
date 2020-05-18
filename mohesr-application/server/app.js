@@ -57,7 +57,6 @@ catch(error){
 });
 
 app.post('/validateCertificate', async (req, res) => {
-
 // res.send('hello world');
 try{
 let response =  await query.query( req.body.identity,'validateCertificate',req.body.key);
@@ -70,8 +69,6 @@ catch(error){
 });
 
 app.post('/checkWallet', async (req, res) => {
-
-// res.send('hello world');
 try{
 console.log(req.body);
 let response =  await query.checkWallet(req.body.username);

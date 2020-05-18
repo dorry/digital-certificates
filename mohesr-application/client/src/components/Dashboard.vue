@@ -1,6 +1,6 @@
 <template>
     <div>
-  <div class="vertical-nav" v-if="identity !=''">
+  <div class="vertical-nav" v-if="identity !='' && admin==true ">
     <div class="horizontal-line">
          </div>
     <b-nav vertical >
@@ -13,7 +13,6 @@
         
         
     </b-nav>
-    <add-cert style=" margin-top:-150px"> </add-cert>
 
 </div>
 
@@ -22,6 +21,7 @@
 </template>
 <script>
 import {namesRef} from './firebase'
+
 export default {
     data(){
         return {
@@ -51,7 +51,7 @@ export default {
       var counter=0;
     namesRef.on('value',gotData,errData);
     
-     function gotData(data) {
+    function gotData(data) {
     var info=data.val();
     var keys=Object.keys(info);
     counter=keys.length;
@@ -66,6 +66,9 @@ return this.count=counter;
   },
     computed:
     {
+        admin(){
+          return this.$store.state.isadmin;
+        },
         identity()
         {
             return this.$store.state.identity;

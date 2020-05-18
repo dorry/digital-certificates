@@ -6,6 +6,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state:{
+        isadmin: '',
         islogged: '',
         identity:'',
         firstName:''
@@ -14,6 +15,10 @@ export default new Vuex.Store({
         setislogged(state,logged)
         {
             state.islogged = logged;
+        },
+        setadmin(state,admin)
+        {
+            state.isadmin = admin;
         },
         saveUserLogged (state, loggedUser) {
         state.identity = loggedUser

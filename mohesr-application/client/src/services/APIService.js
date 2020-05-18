@@ -4,15 +4,18 @@ export default {
 
 //   queryAll() {
 //     return Api().get('queryAll')
-//   },
+//   },  
 
-  addCertificate(identity,certificateId, name , gpa, grade) {
+  addCertificate(identity,certificateId, name , gpa, grade,screenshot,faculty,university) {
     return Api().post('addCertificate', {
         identity:identity,
         certificateId: certificateId,
         name: name,
         gpa: gpa,
-        grade: grade
+        grade: grade,
+        screenshot: screenshot,
+        faculty: faculty,
+        university: university
     }) 
   },
 //   registerVoter(voterId, registrarId, firstName, lastName) {
@@ -24,19 +27,23 @@ export default {
       
 //     }) 
 //   },
-  validateCertificate(key) {
+  validateCertificate(identity,key) {
+
     return Api().post('validateCertificate', {
+      identity:identity,
       key: key
     }) 
+
   },
   readCertificate(key) {
     return Api().post('readCertificate', {
       key: key
     }) 
   },
-  validateWallet(username) {
+  validateWallet(identity) {
+    console.log("APIService Identity" + identity);
     return Api().post('checkWallet', {
-      username: username
+      identity: identity
     }) 
   },
 

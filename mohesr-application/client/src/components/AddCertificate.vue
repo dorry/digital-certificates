@@ -4,12 +4,11 @@
     <div class="login-content">
     <b-form class="text-center border border-light p-5">
         <h2 class="h4 mb-4">برجاء ملء معلومات الشهادة</h2>
-    <label><h4> الأسم</h4></label>
+    <label><h4> {{id}} الأسم</h4></label>
     <span class="form-group" :class="{ 'form-group--error': $v.name.$error }">
     <b-input class="form-control mb-4" v-model="name" id="inline-form-input-nid" placeholder="أدخل اسم الطالب"></b-input>
     </span>
     <span class="error" v-if="!$v.name.required">الاسم الكامل مطلوب</span>
-    <span class="error" v-if="!$v.name.alpha">لا يمكن أن يحتوي الاسم على أرقام</span>
     <span class="error" v-if="!$v.name.minLength">لقد قمت بكتابة {{$v.name.$params.minLength.min}} أحرف فقط, يرجى إدخال الاسم الكامل</span>
     <br>
     <span class="form-group" :class="{ 'form-group--error': $v.certificateId.$error }">
@@ -59,7 +58,7 @@
      " @click="addCertificate()" id="submitbtn" class="btn btn-info btn-block" variant="primary">حفظ</b-button>
     </b-form>
     </div>
-    </div>
+    </div>  
 </div>
 </template>
 
@@ -100,7 +99,7 @@ export default {
             grade:"",
             screenshot:"",
             faculty :"",
-            university : "Public University",
+            university : "Private University",
             customImageMaxSize: 3
 
         }
@@ -120,7 +119,6 @@ export default {
       minLength: minLength(3)
     },
     name: {
-      alpha,
       required,
       minLength: minLength(3)
     },
@@ -136,10 +134,13 @@ export default {
     methods:{
     async addCertificate(){
       console.log(this.faculty);
-      console.log(this.screenshot);
+      // console.log(this.screenshot);
       console.log(this.university);
+      console.log(this.faculty);
+      console.log(this.id);
       const response =  await APIService.addCertificate
        (
+       this.id,
        this.certificateId,
        this.name,
        this.gpa,
@@ -165,6 +166,19 @@ export default {
 
 
     },
+  computed:
+  {   
+    id(){
+       return this.$store.state.identity;
+    },
+    fn(){
+      return this.$store.state.firstName;
+    },
+    rows() 
+    {
+    return this.items.length
+    },
+  },
      components: {
     VueBase64FileUpload,
   },

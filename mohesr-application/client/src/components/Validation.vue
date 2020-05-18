@@ -51,16 +51,30 @@ export default {
       this.identity = this.$store.state.identity;
    
   },
-
+   computed:
+  {   
+    id(){
+       return this.$store.state.identity;
+    },
+    fn(){
+      return this.$store.state.firstName;
+    },
+    rows() 
+    {
+    return this.items.length
+    },
+  },
   methods:{
     async validate(){
-    console.log(this.identity);
-    const apiResponse = await APIService.validateCertificate(this.validationKey);
+  ///  console.log(this.identity);
+    const apiResponse = await APIService.validateCertificate(this.id,this.validationKey);
     console.log(apiResponse.data);
      if(apiResponse.data=="Valid certificate"){
        const apiResponse = await APIService.readCertificate(this.validationKey);
+       console.log("Data :");
        console.log(apiResponse.data);
        this.certificateData=apiResponse.data; 
+       alert(response);
      }
      else{
      }

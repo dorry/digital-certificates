@@ -10,11 +10,11 @@ const path = require('path');
 const ccpPath = path.resolve(__dirname, '..','..', 'gateway', 'mohesr-connection.json');
 
 exports.checkWallet = async function(username){
+    console.log(username);
     // Create a new file system based wallet for managing identities.
     const walletPath = path.join(process.cwd(), 'wallet');
     const wallet = new FileSystemWallet(walletPath);
     console.log(`Wallet path: ${walletPath}`);
-    
     // Check to see if we've already enrolled the user.
     const userExists = await wallet.exists(username);
     if (!userExists) {
@@ -28,16 +28,14 @@ exports.checkWallet = async function(username){
 
 exports.query = async function(name,functionName, certificateID) {
     try {
-
         // Create a new file system based wallet for managing identities.
         const walletPath = path.join(process.cwd(), 'wallet');
         const wallet = new FileSystemWallet(walletPath);
         console.log(`Wallet path: ${walletPath}`);
-
         // Check to see if we've already enrolled the user.
         const userExists = await wallet.exists(name);
         if (!userExists) {
-            console.log('An identity for the user '+username+'does not exist in the wallet');
+            console.log('An identity for the user '+name+'does not exist in the wallet');
             console.log('Run the registerUser.js application before retrying');
             return;
         }
@@ -45,6 +43,7 @@ exports.query = async function(name,functionName, certificateID) {
         // Create a new gateway for connecting to our peer node.
         const gateway = new Gateway();
         await gateway.connect(ccpPath, { wallet, identity: name, discovery: { enabled: true, asLocalhost: false } });
+        console.log(name);
 
         // Get the network (channel) our contract is deployed to.
         const network = await gateway.getNetwork('unichannel');
@@ -70,7 +69,7 @@ exports.query = async function(name,functionName, certificateID) {
 
     } catch (error) {
         console.error(`Failed to evaluate transaction: ${error}`);
-        return"doesn't exist";
+       // return"doesn't exist";
         //process.exit(1);
     }
 }

@@ -17,7 +17,7 @@ exports.addCertificate =  async function(username,certificateID,name, gpa , grad
         const walletPath = path.join(process.cwd(), 'wallet');
         const wallet = new FileSystemWallet(walletPath);
         console.log(`Wallet path: ${walletPath}`);
-
+        
         // Check to see if we've already enrolled the user.
         const userExists = await wallet.exists(username);
         if (!userExists) {
@@ -28,6 +28,7 @@ exports.addCertificate =  async function(username,certificateID,name, gpa , grad
 
         // Create a new gateway for connecting to our peer node.
         const gateway = new Gateway();
+
         await gateway.connect(ccpPath, { wallet, identity: username, discovery: { enabled: true, asLocalhost: false } });
 
         // Get the network (channel) our contract is deployed to.
