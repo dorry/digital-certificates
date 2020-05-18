@@ -13,7 +13,12 @@
     <div class = "login-container">
     <div class="login-content">
 <h3>Average GPA in faculties</h3>
-<bar-chart id="hh" :data="[['Electronics', getgpaelec], ['Mon', 46], ['Tue', 28]]"></bar-chart>
+<bar-chart id="hh" 
+  :data="[
+         
+         ['Electronics', getElectronicsgpa()]
+         
+         ]"></bar-chart>
     </div>
     </div>
     </div>
@@ -47,7 +52,7 @@
     <h1>{{getMasscomm()}}</h1>
     <h1>{{getMedical()}}</h1>  
     <h1>{{getBusiness()}}</h1> 
-    <h1>GPA: {{(getElectronicsgpa())}}</h1> 
+    <h1>GPA: {{getElectronicsgpa()}}</h1> 
 
           </div>
 
@@ -61,44 +66,36 @@ export default {
    waiting: true,
    response:[],
    i:0,
-   gpaelec:0,
-   Loopelec:0,
-   Loopelec2:0,
-   Looppharm:0,
-   Loopbusi:0,
-   Loopmass:0,
-   Electronics:0,
-   MassComm:0,
-   Business: 0,
-   Pharmacy: 0,
-   Medical:0,
-   avrg:0,
+   gpaelec:0,gpapharm:0,gpamedic:0, gpamass:0,gpabusi:0,
+   counterelec:0,
+   Loopelec2:0, Looppharm2:0, Loopbusi2:0,Loopmass2:0,
+   Loopelec:0, Looppharm:0, Loopbusi:0, Loopmass:0,
+   Electronics:0, MassComm:0, Business: 0, Pharmacy: 0, Medical:0,
    items: [],
     };
   },  
-components:{
-    "addCert":add
-  },
  methods:{
       adddata(){
       },
     getElectronicsgpa(){
       var items = this.getItems;
-     for(var x = 0; this.Electronics<this.rows;this.Loopelec2++)
+     for(var x = 0; this.counterelec<this.rows;this.Loopelec2++)
       {
          if(this.Loopelec2==this.rows)
         {        
-          return this.gpaelec;
+          return this.gpaelec/(this.counterelec);
         } 
         if(items[this.Loopelec2].Faculty == "Electronics")
         {
-          this.Electronics++;
-          this.gpaelec = items[this.Loopelec2].GPA;
-    
+          this.counterelec++;
+          console.log(this.counterelec +  " + " + parseFloat(items[this.Loopelec2].GPA));
+          this.gpaelec = parseFloat(this.gpaelec) + parseFloat(items[this.Loopelec2].GPA);
+          console.log("after"+this.gpaelec);
+
         }
       }
-      return this.gpaelec = this.gpaelec;
   },
+  
     getElectronics(){
       var items = this.getItems;
       for(var x = 0; this.Electronics<this.rows;this.Loopelec++)
@@ -115,7 +112,7 @@ components:{
       }
       return this.Electronics; 
   },
-      getBusiness(){
+    getBusiness(){
       var items = this.getItems;
       for(var x = 0; this.Business<this.rows;this.Loopbusi++)
       {
@@ -132,7 +129,7 @@ components:{
       }
       return this.Business; 
   },
-      getPharmacy(){
+    getPharmacy(){
       var items = this.getItems;
       for(var x = 0; this.Pharmacy<this.rows;this.Looppharm++)
       {
@@ -149,7 +146,7 @@ components:{
       }
       return this.Pharmacy; 
   },
-      getMasscomm(){
+    getMasscomm(){
       var items = this.getItems;
       for(var x = 0; this.MassComm<this.rows;this.Loopmass++)
       {
@@ -166,7 +163,7 @@ components:{
       }
       return this.MassComm; 
   },
-      getMedical(){
+    getMedical(){
       var items = this.getItems;
       for(var x = 0; this.Medical<this.rows;this.i++)
       {
@@ -183,7 +180,7 @@ components:{
       }
       return this.Medical; 
   },
-      async queryAll(){
+  async queryAll(){
         if(!this.getwait)
         {
         console.log("Request loop prevenetedd");
@@ -213,15 +210,6 @@ components:{
   },
   computed:
   {
-    getgpaelec()
-    {
-      return this.gpaelec;
-
-    },
-    gettestc()
-    {
-      return this.avrg;
-    },
     getwait()
     {
       return this.waiting;

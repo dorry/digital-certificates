@@ -18,6 +18,7 @@
 
 <script>
  import GoogleLogin from 'vue-google-login';
+ import APIService from "../services/APIService";
 
 export default {
    data() {
@@ -59,19 +60,27 @@ export default {
             this.$store.dispatch('saveUsername', "");
             this.$router.push("/home");
         },
-        onSuccess(googleUser) {
-            console.log(googleUser);
-            console.log(googleUser.getBasicProfile());
+          async onSuccess(googleUser) {
+            // console.log(googleUser);
+            // console.log(googleUser.getBasicProfile());
             this.identity = googleUser.getBasicProfile().yu;
             this.firstName = googleUser.getBasicProfile().pW;
-            console.log(this.firstName);
-            console.log(this.$store.state.islogged);
+            const response =  await APIService.validateWallet(this.identity)    
+            if(response.data == 'wallet exist'){
+                this.$store.commit("setadmin",true);
+            }
+            else
+            {
+                this.$store.commit("setadmin",false);
+            }            
+            // console.log(this.firstName);
+            // console.log(this.$store.state.islogged);
             this.$store.dispatch('saveUserLogged', this.identity);
             this.$store.commit("setislogged", true);
             this.$store.dispatch('saveUsername', googleUser.getBasicProfile().pW);
             this.$router.push("/dashboard");
-            console.log("USERRR: ")
-                        console.log(googleUser.getBasicProfile.pw);
+            // console.log("USERRR: ")
+            //             console.log(googleUser.getBasicProfile.pw);
 
         },
         onFailure(error){

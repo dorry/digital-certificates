@@ -4,7 +4,7 @@
     <div class="horizontal-line">
          </div>
     <b-nav vertical >
-        <b-nav-item  v-if="id !=''"><router-link to="/addcert"> Add Certificate </router-link></b-nav-item>
+        <b-nav-item  v-if="id !='' && admin==true"><router-link to="/addcert"> Add Certificate </router-link></b-nav-item>
         <b-nav-item v-if="id !=''">Register Admin</b-nav-item>
         <b-nav-item  v-if="id !=''"><router-link to="/clist"> View All Certificates </router-link></b-nav-item>
         <b-nav-item v-if="id !=''" ><router-link to="/stats">Statistics </router-link></b-nav-item>
@@ -86,7 +86,9 @@ return this.count=counter;
  
   computed:
   {  
-    
+            admin(){
+          return this.$store.state.isadmin;
+        },
     getItems(){
       this.queryAll();
       console.log("response"+this.response);
