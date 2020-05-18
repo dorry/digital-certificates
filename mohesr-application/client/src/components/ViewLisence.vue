@@ -10,9 +10,14 @@
     v-for="personName of names" 
     v-bind:key="personName['.key']">
     الرخصة لشركة : 
-    {{personName.company}} فعالة<br> من  {{personName.paymonth}}/{{personName.payday}}/{{personName.payyear}} <br>
+    {{personName.company}} فعالة 
+    <br>
+     من  {{personName.paymonth}}/{{personName.payday}}/{{personName.payyear}} 
+    <br>
     حتي 
      {{personName.paymonth}}/{{personName.payday}}/{{personName.expirationdate}}
+    <b-button @click="getcompany(personName['.key'])">اظهار التفاصيل</b-button>
+
     <br>
     </h3>
     </div>
@@ -26,19 +31,16 @@
 <script>
 import {companiesRef} from './firebase'
 export default {
-  methods:{
-  deny(id)
+  mounted() 
   {
-    var Dialogbox = confirm("Are you sure you want to deny the request?")
-    if(Dialogbox == true)
-    {
-        companiesRef.child(id).remove();
-        this.$router.push('addcert')
-        alert("The request has been deleted , please contact the student for the reason of certificate refusal "); 
-    }
-    else {alert("Refused"); }
-
+    this.getcompany();
   },
+  methods:{
+   getcompany(id)
+   {
+       
+   },
+
    approve(id) 
    {
        var dialogbox = confirm("Are you sure you want to approve this certificate?");

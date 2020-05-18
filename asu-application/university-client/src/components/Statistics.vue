@@ -16,7 +16,8 @@
 <bar-chart id="hh" 
   :data="[
          
-         ['Electronics', getElectronicsgpa()]
+         ['Electronics', getElectronicsgpa()],
+         ['Business', getBusinessGPA()]
          
          ]"></bar-chart>
     </div>
@@ -52,8 +53,8 @@
     <h1>{{getMasscomm()}}</h1>
     <h1>{{getMedical()}}</h1>  
     <h1>{{getBusiness()}}</h1> 
-    <h1>GPA: {{getElectronicsgpa()}}</h1> 
-
+    <h1>{{getElectronicsgpa()}}</h1> 
+    <h1>{{getBusinessGPA()}}</h1>
           </div>
 
 </template>
@@ -67,8 +68,9 @@ export default {
    response:[],
    i:0,
    gpaelec:0,gpapharm:0,gpamedic:0, gpamass:0,gpabusi:0,
-   counterelec:0,
+   counterelec:0, counterbusi:0, countermedic:0, countermass:0, counterpharm:0,
    Loopelec2:0, Looppharm2:0, Loopbusi2:0,Loopmass2:0,
+
    Loopelec:0, Looppharm:0, Loopbusi:0, Loopmass:0,
    Electronics:0, MassComm:0, Business: 0, Pharmacy: 0, Medical:0,
    items: [],
@@ -77,6 +79,24 @@ export default {
  methods:{
       adddata(){
       },
+    getBusinessGPA(){
+      var items = this.getItems;
+     for(var x = 0; this.counterbusi<this.rows;this.Loopbusi2++)
+      {
+         if(this.Loopbusi2==this.rows)
+        {        
+          return this.gpabusi/(this.counterbusi);
+        } 
+        if(items[this.Loopbusi2].Faculty == "Business")
+        {
+          this.counterbusi++;
+          console.log(this.counterbusi +  " + " + parseFloat(items[this.Loopbusi2].GPA));
+          this.gpabusi = parseFloat(this.gpabusi) + parseFloat(items[this.Loopbusi2].GPA);
+          console.log("after"+this.gpabusi);
+
+        }
+      }
+  },
     getElectronicsgpa(){
       var items = this.getItems;
      for(var x = 0; this.counterelec<this.rows;this.Loopelec2++)
@@ -95,7 +115,6 @@ export default {
         }
       }
   },
-  
     getElectronics(){
       var items = this.getItems;
       for(var x = 0; this.Electronics<this.rows;this.Loopelec++)

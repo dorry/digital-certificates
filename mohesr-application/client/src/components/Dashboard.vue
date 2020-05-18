@@ -13,6 +13,7 @@
         <b-nav-item v-if="admin==false"> الاشتراك في رخصة التحقق </b-nav-item>
         <b-nav-item v-if="admin==false"> <router-link to="/CreateLisence"> مراجعة الرخصة </router-link>  </b-nav-item>
         
+        <b-nav-item > التحقق من شهادة المتقدم للوظيفة </b-nav-item>        
     </b-nav>
 
 </div>
@@ -22,6 +23,7 @@
 </template>
 <script>
 import {namesRef} from './firebase'
+import {companiesRef} from './firebase'
 
 export default {
     data(){
