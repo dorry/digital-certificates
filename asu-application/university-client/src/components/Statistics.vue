@@ -13,7 +13,7 @@
     <div class = "login-container">
     <div class="login-content">
 <h3>Average GPA in faculties</h3>
-<bar-chart id="hh" :data="[['Electronics', gettestc], ['Mon', 46], ['Tue', 28]]"></bar-chart>
+<bar-chart id="hh" :data="[['Electronics', getgpaelec], ['Mon', 46], ['Tue', 28]]"></bar-chart>
     </div>
     </div>
     </div>
@@ -21,14 +21,6 @@
     <div class = "login-container">
     <div class="login-content">
 <h3>Graudated student from each faculty</h3>
-<pie-chart :data="[['Mon', 46], ['Tue', 28]]"> </pie-chart>
-
-    </div>
-    </div>
-    </div>
-</div>
-     
-      <!-- <br>
       <pie-chart 
       v-if="!waiting"
       :data="[
@@ -38,19 +30,27 @@
       ['Masscomm', getMasscommsC],
       ['Business', getBusinessC]
       ]">
-      </pie-chart> -->
-          <h1>{{gettest()}}</h1> 
+      </pie-chart>
+
+    </div>
+    </div>
+    </div>
+</div>
+     
+      <br>
+
 
     <h1 hidden>{{getItems}}</h1>   
 
-      </div>
-    <!-- <h1>{{getElectronics()}}</h1>
+    <h1>{{getElectronics()}}</h1>
     <h1>{{getPharmacy()}}</h1>
     <h1>{{getMasscomm()}}</h1>
     <h1>{{getMedical()}}</h1>  
-    <h1>{{getBusiness()}}</h1> --> 
+    <h1>{{getBusiness()}}</h1> 
+    <h1>GPA: {{(getElectronicsgpa())}}</h1> 
 
-    
+          </div>
+
 </template>
 <script>
 import APIService from "../services/APIService";
@@ -61,7 +61,9 @@ export default {
    waiting: true,
    response:[],
    i:0,
+   gpaelec:0,
    Loopelec:0,
+   Loopelec2:0,
    Looppharm:0,
    Loopbusi:0,
    Loopmass:0,
@@ -80,25 +82,29 @@ components:{
  methods:{
       adddata(){
       },
-      gettest()
-     {
-      var avg = 0;
+    getElectronicsgpa(){
       var items = this.getItems;
-      for(var x = 0; x<10; x++)
+     for(var x = 0; this.Electronics<this.rows;this.Loopelec2++)
       {
-          this.avrg += x;
+         if(this.Loopelec2==this.rows)
+        {        
+          return this.gpaelec;
+        } 
+        if(items[this.Loopelec2].Faculty == "Electronics")
+        {
+          this.Electronics++;
+          this.gpaelec = items[this.Loopelec2].GPA;
+    
+        }
       }
-      this.avrg = this.avrg/x;
-      return this.avrg; 
+      return this.gpaelec = this.gpaelec;
   },
-      getElectronics(){
+    getElectronics(){
       var items = this.getItems;
       for(var x = 0; this.Electronics<this.rows;this.Loopelec++)
       {
-        console.log(this.Electronics);
         if(this.Loopelec==this.rows)
         {
-          console.log("STOPPED");
           return this.Electronics;
         }
         if(items[this.Loopelec].Faculty == "Electronics")
@@ -113,10 +119,9 @@ components:{
       var items = this.getItems;
       for(var x = 0; this.Business<this.rows;this.Loopbusi++)
       {
-        console.log(this.Electronics);
-        if(this.Loopbusi==this.rows)
+       if(this.Loopbusi==this.rows)
         {
-          console.log("STOPPED");
+          // console.log("STOPPED");
           return this.Business;
         }
         if(items[this.Loopbusi].Faculty == "Business")
@@ -131,10 +136,9 @@ components:{
       var items = this.getItems;
       for(var x = 0; this.Pharmacy<this.rows;this.Looppharm++)
       {
-        console.log(this.Pharmacy);
         if(this.Looppharm==this.rows)
         {
-          console.log("STOPPED");
+          // console.log("STOPPED");
           return this.Pharmacy;
         }
         if(items[this.Looppharm].Faculty == "Pharmacy")
@@ -149,10 +153,9 @@ components:{
       var items = this.getItems;
       for(var x = 0; this.MassComm<this.rows;this.Loopmass++)
       {
-        console.log(this.MassComm);
-        if(this.Loopmass==this.rows)
+       if(this.Loopmass==this.rows)
         {
-          console.log("STOPPED");
+          // console.log("STOPPED");
           return this.MassComm;
         }
         if(items[this.Loopmass].Faculty == "Pharmacy")
@@ -167,10 +170,9 @@ components:{
       var items = this.getItems;
       for(var x = 0; this.Medical<this.rows;this.i++)
       {
-        console.log(this.Medical);
-        if(this.i==this.rows)
+         if(this.i==this.rows)
         {
-          console.log("STOPPED");
+          // console.log("STOPPED");
           return this.Medical;
         }
         if(items[this.i].Faculty == "Medical")
@@ -211,6 +213,11 @@ components:{
   },
   computed:
   {
+    getgpaelec()
+    {
+      return this.gpaelec;
+
+    },
     gettestc()
     {
       return this.avrg;

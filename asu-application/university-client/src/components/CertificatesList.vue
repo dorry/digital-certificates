@@ -25,7 +25,7 @@
       :bordered="bordered"
       @row-clicked="myRowClickHandler"
       id="my-table"
-      :items="items" 
+      :items="getItems" 
       :per-page="perPage"
       :current-page="currentPage"
     >
@@ -50,8 +50,8 @@ export default {
      perPage: 20,
      currentPage: 1,
      items: [
-           { ID: 1, Name: 'Alley Mostafa El Dorry El Gamed', GPA: 4.0 , Faculty: "CS", University:"ASU" },
-        ],
+
+],
       response:[]
       }
     },
