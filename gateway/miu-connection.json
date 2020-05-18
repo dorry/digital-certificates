@@ -3,7 +3,7 @@
     "description": "Network on IBP v2",
     "version": "1.0.0",
     "client": {
-        "organization": "mohesrmsp"
+        "organization": "miumsp"
     },
     "organizations": {
         "asumsp": {
@@ -16,15 +16,15 @@
             "mspid": "miumsp",
             "peers": [
                 "nfafcac-miupeer1.mycluster-164118-f0b663fbbfc70b7f0cec9f6ad23e45a3-0000.eu-gb.containers.appdomain.cloud:7051"
+            ],
+            "certificateAuthorities": [
+                "nfafcac-camiu.mycluster-164118-f0b663fbbfc70b7f0cec9f6ad23e45a3-0000.eu-gb.containers.appdomain.cloud:7054"
             ]
         },
         "mohesrmsp": {
             "mspid": "mohesrmsp",
             "peers": [
                 "nfafcac-mohesrpeer1.mycluster-164118-f0b663fbbfc70b7f0cec9f6ad23e45a3-0000.eu-gb.containers.appdomain.cloud:7051"
-            ],
-            "certificateAuthorities": [
-                "nfafcac-camohesr.mycluster-164118-f0b663fbbfc70b7f0cec9f6ad23e45a3-0000.eu-gb.containers.appdomain.cloud:7054"
             ]
         }
     },
@@ -66,11 +66,11 @@
         }
     },
     "certificateAuthorities": {
-        "nfafcac-camohesr.mycluster-164118-f0b663fbbfc70b7f0cec9f6ad23e45a3-0000.eu-gb.containers.appdomain.cloud:7054": {
-            "url": "https://nfafcac-camohesr.mycluster-164118-f0b663fbbfc70b7f0cec9f6ad23e45a3-0000.eu-gb.containers.appdomain.cloud:7054",
+        "nfafcac-camiu.mycluster-164118-f0b663fbbfc70b7f0cec9f6ad23e45a3-0000.eu-gb.containers.appdomain.cloud:7054": {
+            "url": "https://nfafcac-camiu.mycluster-164118-f0b663fbbfc70b7f0cec9f6ad23e45a3-0000.eu-gb.containers.appdomain.cloud:7054",
             "caName": "ca",
             "tlsCACerts": {
-                "pem": "-----BEGIN CERTIFICATE-----\nMIIDEzCCArigAwIBAgIRAKgzYjjzO2RWsltq/Sk1fu0wCgYIKoZIzj0EAwIwgc0x\nCzAJBgNVBAYTAlVTMRcwFQYDVQQIEw5Ob3J0aCBDYXJvbGluYTEPMA0GA1UEBxMG\nRHVyaGFtMQwwCgYDVQQKEwNJQk0xEzARBgNVBAsTCkJsb2NrY2hhaW4xcTBvBgNV\nBAMTaG5mYWZjYWMtY2Ftb2hlc3IubXljbHVzdGVyLTE2NDExOC1mMGI2NjNmYmJm\nYzcwYjdmMGNlYzlmNmFkMjNlNDVhMy0wMDAwLmV1LWdiLmNvbnRhaW5lcnMuYXBw\nZG9tYWluLmNsb3VkMB4XDTIwMDUxNzAwNDk1MVoXDTMwMDUxNTAwNDk1MVowgc0x\nCzAJBgNVBAYTAlVTMRcwFQYDVQQIEw5Ob3J0aCBDYXJvbGluYTEPMA0GA1UEBxMG\nRHVyaGFtMQwwCgYDVQQKEwNJQk0xEzARBgNVBAsTCkJsb2NrY2hhaW4xcTBvBgNV\nBAMTaG5mYWZjYWMtY2Ftb2hlc3IubXljbHVzdGVyLTE2NDExOC1mMGI2NjNmYmJm\nYzcwYjdmMGNlYzlmNmFkMjNlNDVhMy0wMDAwLmV1LWdiLmNvbnRhaW5lcnMuYXBw\nZG9tYWluLmNsb3VkMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAERbQ9NwH0I79m\nzADejwWGnaXfYfDJhuw9BOtK3IgAhIa1nfyX5QEU6tOhREbaZJtRfAzi8scwymSr\nyXgjwtHBW6N3MHUwcwYDVR0RBGwwaoJobmZhZmNhYy1jYW1vaGVzci5teWNsdXN0\nZXItMTY0MTE4LWYwYjY2M2ZiYmZjNzBiN2YwY2VjOWY2YWQyM2U0NWEzLTAwMDAu\nZXUtZ2IuY29udGFpbmVycy5hcHBkb21haW4uY2xvdWQwCgYIKoZIzj0EAwIDSQAw\nRgIhAIOMbuOQj3etRAsDIvU0nmFAv3RUowr0C/zeumfzBtPEAiEA0ZDI9zAM5yG7\n5PQKbNd+4Ern2vDB1P1uaWhlavnf5LM=\n-----END CERTIFICATE-----\n"
+                "pem": "-----BEGIN CERTIFICATE-----\nMIIDCDCCAq+gAwIBAgIRAJlfoLBGNwVSoX59d16uvFIwCgYIKoZIzj0EAwIwgcox\nCzAJBgNVBAYTAlVTMRcwFQYDVQQIEw5Ob3J0aCBDYXJvbGluYTEPMA0GA1UEBxMG\nRHVyaGFtMQwwCgYDVQQKEwNJQk0xEzARBgNVBAsTCkJsb2NrY2hhaW4xbjBsBgNV\nBAMTZW5mYWZjYWMtY2FtaXUubXljbHVzdGVyLTE2NDExOC1mMGI2NjNmYmJmYzcw\nYjdmMGNlYzlmNmFkMjNlNDVhMy0wMDAwLmV1LWdiLmNvbnRhaW5lcnMuYXBwZG9t\nYWluLmNsb3VkMB4XDTIwMDUxNzExNTczMloXDTMwMDUxNTExNTczMlowgcoxCzAJ\nBgNVBAYTAlVTMRcwFQYDVQQIEw5Ob3J0aCBDYXJvbGluYTEPMA0GA1UEBxMGRHVy\naGFtMQwwCgYDVQQKEwNJQk0xEzARBgNVBAsTCkJsb2NrY2hhaW4xbjBsBgNVBAMT\nZW5mYWZjYWMtY2FtaXUubXljbHVzdGVyLTE2NDExOC1mMGI2NjNmYmJmYzcwYjdm\nMGNlYzlmNmFkMjNlNDVhMy0wMDAwLmV1LWdiLmNvbnRhaW5lcnMuYXBwZG9tYWlu\nLmNsb3VkMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEh7xRxld95oTsuSZHU+P/\nG9NNGQMoBnP/4xu+wD/icQUZSb/i58sK8Tb/Qrqr7fotbKlsAbQmtbNlhUkwQXZd\n7KN0MHIwcAYDVR0RBGkwZ4JlbmZhZmNhYy1jYW1pdS5teWNsdXN0ZXItMTY0MTE4\nLWYwYjY2M2ZiYmZjNzBiN2YwY2VjOWY2YWQyM2U0NWEzLTAwMDAuZXUtZ2IuY29u\ndGFpbmVycy5hcHBkb21haW4uY2xvdWQwCgYIKoZIzj0EAwIDRwAwRAIgbjnvpb1i\nAx3vl172YWrRP3E9OjzByEUW6PWGGT/XCbMCIE7l3s3R9SZlNLeAdc62lPYSSDiF\nBbTDoDEQjatNLW92\n-----END CERTIFICATE-----\n"
             }
         }
     }

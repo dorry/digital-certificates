@@ -17,7 +17,7 @@ async function main() {
     try {
 
         // Create a new CA client for interacting with the CA.
-        const caInfo = ccp.certificateAuthorities['n778465-asuca.mycluster2-344909-a2c3b56b240340230fd09eb15bebf412-0000.eu-gb.containers.appdomain.cloud:7054'];
+        const caInfo = ccp.certificateAuthorities['nfafcac-caasu.mycluster-164118-f0b663fbbfc70b7f0cec9f6ad23e45a3-0000.eu-gb.containers.appdomain.cloud:7054'];
         const caTLSCACerts = caInfo.tlsCACerts.pem;
         const ca = new FabricCAServices(caInfo.url, { trustedRoots: caTLSCACerts, verify: false }, caInfo.caName);
 
