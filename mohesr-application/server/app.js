@@ -27,7 +27,7 @@ app.post('/readCertificate', async (req, res) => {
 
 // res.send('hello world');
 try{
-let response =  await query.query( 'appadmin','readCertificate',req.body.key);
+let response =  await query.query( req.body.identity,'readCertificate',req.body.key);
 let parsedResponse = await JSON.parse(response);
 res.send(parsedResponse);}
 
@@ -40,7 +40,7 @@ app.post('/addCertificate', async (req, res) => {
 
 // res.send('hello world');
 try{
-  let response =  await invoke.addCertificate( 'appadmin',
+  let response =  await invoke.addCertificate( req.body.identity,
                                               req.body.certificateId,
                                               req.body.name,req.body.gpa,
                                               req.body.grade,
@@ -60,7 +60,7 @@ app.post('/validateCertificate', async (req, res) => {
 
 // res.send('hello world');
 try{
-let response =  await query.query( 'appadmin','validateCertificate',req.body.key);
+let response =  await query.query( req.body.identity,'validateCertificate',req.body.key);
 res.send(response);}
 
 catch(error){
@@ -113,4 +113,32 @@ app.post('/deleteCertificate', async (req, res) => {
   }
   
   });
+
+  app.post('/deleteCertificate', async (req, res) => {
+    // res.send('hello world');
+    try{
+    console.log(req.body);
+    let response =  await invoke.deleteCertificate(req.body.username, req.body.key);
+    
+    res.send(response);}
+  
+    catch(error){
+      res.send(error);
+    }
+    
+    });
+
+    app.post('/registerAdmin', async (req, res) => {
+      // res.send('hello world');
+      try{
+      console.log(req.body);
+      let response =  await invoke.registerAdmin(req.body.identity);
+      
+      res.send(response);}
+    
+      catch(error){
+        res.send(error);
+      }
+      
+      });
 var server = app.listen(process.env.PORT || 8085);

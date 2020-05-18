@@ -62,7 +62,7 @@ export default {
         onSuccess(googleUser) {
             console.log(googleUser);
             console.log(googleUser.getBasicProfile());
-            this.identity = this.getUsername(googleUser.getBasicProfile().yu);
+            this.identity = googleUser.getBasicProfile().yu;
             this.firstName = googleUser.getBasicProfile().pW;
             console.log(this.firstName);
             console.log(this.$store.state.islogged);

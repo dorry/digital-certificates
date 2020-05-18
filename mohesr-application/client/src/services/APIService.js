@@ -6,8 +6,9 @@ export default {
 //     return Api().get('queryAll')
 //   },
 
-  addCertificate(certificateId, name , gpa, grade) {
+  addCertificate(identity,certificateId, name , gpa, grade) {
     return Api().post('addCertificate', {
+        identity:identity,
         certificateId: certificateId,
         name: name,
         gpa: gpa,

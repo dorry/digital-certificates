@@ -70,7 +70,8 @@ exports.query = async function(name,functionName, certificateID) {
 
     } catch (error) {
         console.error(`Failed to evaluate transaction: ${error}`);
-        process.exit(1);
+        return"doesn't exist";
+        //process.exit(1);
     }
 }
 exports.queryAll = async function(name){
