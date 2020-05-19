@@ -5,8 +5,16 @@
     <div class="login-content">
     <h2 style="margin-left:3%">تفاصيل الرخصة </h2>
     <br>
-  
-    <b-button @click="getcompany(identity)">اظهار التفاصيل</b-button>
+    <b-button @click="getcompany(identity)">
+      عرض التفاصيل
+    </b-button>
+    {{getx}}
+    <br>
+    <b-table 
+      id="my-table"
+      :items="getitems" 
+    >
+    </b-table>
     </div>
     </div>
     </div>
@@ -15,29 +23,23 @@
 </template>
 
 <script>
-import {companiesRef} from './firebase'
+import {companiesRef , db} from './firebase'
 import firebase from 'firebase'
 
 // import image from "../assets/lamp.png"
 export default {
   name: "HelloWorld",
-  methods:
-  {
-    getcompany(mail)
-    {
-     companiesRef.on("value", function(snapshot) {
-        console.log(snapshot.val());
-        }, function (errorObject) {
-        console.log("The read failed: " + errorObject.code);
-        });
-    }  
-  },
   data: function() {
     return {
-
-    };
+    x:[ ],
+    items:[],
+  };
   },
   computed: {
+         getx(){
+          return this.x;
+     
+       },
         identity()
         {
             return this.$store.state.identity;
@@ -53,10 +55,36 @@ export default {
    },
   methods: 
   {
+  // changeobj(arrObj){
+  //       var items=[];
+  //       arrObj.forEach(obj=> {
+  //         var item = {};
+  //         item.paid = obj.paid;
+  //         item.mail = obj.mail;
+  //         items.push(item);
+  //       });
+  //       return items;
+  // },
    getcompany(m)
    {
-      
-
+          companiesRef.orderByChild('mail')
+          .equalTo(m)
+          .once("value", function(snapshot) {
+              var key;
+              snapshot.forEach(function (childSnapshot) {
+                  key = childSnapshot.key;
+                  return true;
+              });
+              if (key) {
+                var companies2 = db.ref('Companies').child(key);
+                companies2.on("value", function(data, prevChildKey) {
+                var x = data.val();
+                return x;
+               });
+              } else {
+                  console.log("There is nothing of this category");
+              }
+          });
    },
   }
 };

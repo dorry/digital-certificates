@@ -9,7 +9,6 @@
     <b-input class="form-control mb-4" v-model="name" id="inline-form-input-nid" placeholder="Enter The Student's Name" ></b-input>
     </span>
     <span class="error" v-if="!$v.name.required">Full Name field is required</span>
-    <span class="error" v-if="!$v.name.alpha">Can't include numbers</span>
     <span class="error" v-if="!$v.name.minLength">You only typed {{$v.name.$params.minLength.min}} letters, please enter the full name.</span>
     <br>
 
@@ -126,7 +125,6 @@ export default {
       minLength: minLength(3)
     },
     name: {
-      alpha,
       required,
       minLength: minLength(3)
     },

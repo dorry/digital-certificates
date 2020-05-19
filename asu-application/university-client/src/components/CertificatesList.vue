@@ -43,15 +43,12 @@ import APIService from "../services/APIService";
 export default {
 
  data() {
-   
     return {
      waiting: true,
      bordered: true,
      perPage: 20,
      currentPage: 1,
-     items: [
-
-],
+     items: [],
       response:[]
       }
     },
@@ -67,7 +64,6 @@ export default {
          console.log("response"+this.response);
          this.items= this.changeObj(this.response);
          return this.items;
-        
       }
     },
     methods:{
@@ -75,7 +71,7 @@ export default {
 
         const response =  await APIService.queryAll('appadmin');
         console.log(response.data);
-       // this.waiting = false;
+        this.waiting = false;
         // this.changeObj(response.data);
         this.response = response.data;
         // console.log(this.items.length);

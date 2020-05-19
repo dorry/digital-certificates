@@ -27,23 +27,10 @@ import {namesRef} from './firebase'
 export default {
  data(){
   return {
-    count:0,
+  count:0,
    response:[],
-   Electronics:0,
-   MassComm:0,
-   items: [
-    
-   ],
-   option : 
-  {
-    title:{
-    display:true,
-    position:"Bottom",
-    text: "Fruits"
-       }
-      }
-    
-    };
+   items: [],
+  };
   },  
   firebase: {
     names: namesRef
@@ -52,14 +39,13 @@ components:{
     "addCert":add
   },
  methods:{
-      adddata(){
-      },  
+      adddata(){},  
       notification: function(){
       this.count=0;
       var counter=0;
     namesRef.on('value',gotData,errData);
     
-     function gotData(data) {
+    function gotData(data) {
     var info=data.val();
     var keys=Object.keys(info);
     counter=keys.length;
@@ -86,9 +72,9 @@ return this.count=counter;
  
   computed:
   {  
-      admin(){
-          return this.$store.state.isadmin;
-        },
+    admin(){
+        return this.$store.state.isadmin;
+    },
     getItems(){
       this.queryAll();
       console.log("response"+this.response);
