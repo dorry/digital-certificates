@@ -81,7 +81,9 @@ export default {
             this.paidFor = true;
             var d = new Date()
             companiesRef.push(
-                {mail: this.identity ,
+                {
+                 paid :1,
+                 mail: this.identity ,
                  payday: d.getDate(), 
                  paymonth: d.getMonth()+1,
                  payyear: d.getFullYear(),
