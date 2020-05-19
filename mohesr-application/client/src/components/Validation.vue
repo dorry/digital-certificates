@@ -29,7 +29,7 @@
   <img v-bind:src="'data:image/jpeg;base64,'+imageBytes" />
 
 </div>
-<span v-if="admin==false" hidden> {{getcompany(identity)}}</span>
+<span  v-if="admin==false && trigger==true" hidden> {{getcompany(identity)}}</span>
 
 </div>
 </template>
@@ -42,6 +42,7 @@ import firebase from 'firebase'
 export default {
   data(){
     return{
+      trigger : true,
       certificateData:{},
       validationKey:"",
       identity:""
@@ -72,6 +73,7 @@ export default {
   methods:{
   getcompany(m)
 {
+  this.trigger = false;
   var Dialogbox = confirm("هل اشتركت؟")
     if(Dialogbox == true)
     {

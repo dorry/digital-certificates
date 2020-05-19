@@ -4,7 +4,7 @@
     <div class="login-content">
     <b-form class="text-center border border-light p-5">
         <h2 class="h4 mb-4">برجاء ملء معلومات الشهادة</h2>
-    <label><h4> {{id}} الأسم</h4></label>
+    <label><h4>  الأسم</h4></label>
     <span class="form-group" :class="{ 'form-group--error': $v.name.$error }">
     <b-input class="form-control mb-4" v-model="name" id="inline-form-input-nid" placeholder="أدخل اسم الطالب"></b-input>
     </span>
