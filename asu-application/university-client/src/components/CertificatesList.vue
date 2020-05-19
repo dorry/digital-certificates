@@ -80,6 +80,8 @@ export default {
       changeObj(arrObj){
         var items=[];
         arrObj.forEach(obj=> {
+          if(obj.Record.university == "Public University")
+          {
           var item = {};
           item.ID = obj.Key;
           console.log(obj.Key + "item.ID: " + item.ID);
@@ -90,6 +92,7 @@ export default {
           console.log(obj.Record.university + "item.name: " + item.University);
           items.push(item);
           console.log("from changeobj: "+ item)
+          }
         });
         return items;
     },

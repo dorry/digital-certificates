@@ -93,7 +93,7 @@ return this.count=counter;
     position: absolute;
     background-color:#343A40 ;
     width: 15%;
-    height: 140vh;
+    height: 200vh;
 }
 .horizontol-line{
     height: .1em;
