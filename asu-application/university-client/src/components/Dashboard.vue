@@ -4,14 +4,14 @@
     <div class="horizontal-line">
          </div>
     <b-nav vertical >
-        <b-nav-item v-if="id !='' && admin==true"><router-link to="/addcert"> Add Certificate </router-link></b-nav-item>
-        <b-nav-item v-if="id !='' && admin==true">Register Admin</b-nav-item>
-        <b-nav-item v-if="id !='' && admin==true"><router-link to="/clist"> View All Certificates </router-link></b-nav-item>
-        <b-nav-item v-if="id !='' && admin==true"><router-link to="/stats">Statistics </router-link></b-nav-item>
-        <b-nav-item v-if="id !=''" ><router-link to="/Request">Request Certificate </router-link></b-nav-item>
-        <b-nav-item v-if="id !=''" ><router-link to="/viewMyCert">View My Certificate </router-link></b-nav-item>
-        <b-nav-item v-if="id !='' && admin==true" v-on:click="notification"><router-link to="/Requestlist">View Requests <span v-if="count>0">{{count}}</span></router-link></b-nav-item> 
-        <b-nav-item v-if="id !='' && admin==true" v-on:click="notification">Refresh</b-nav-item> 
+        <b-nav-item v-if="admin==true"><router-link to="/addcert"> Add Certificate </router-link></b-nav-item>
+        <b-nav-item v-if="admin==true">Register Admin</b-nav-item>
+        <b-nav-item v-if="admin==true"><router-link to="/clist"> View All Certificates </router-link></b-nav-item>
+        <b-nav-item v-if="admin==true"><router-link to="/stats">Statistics </router-link></b-nav-item>
+        <b-nav-item v-if="admin==false"><router-link to="/Request">Request Certificate </router-link></b-nav-item>
+        <b-nav-item v-if="admin==false"><router-link to="/viewMyCert">View My Certificate </router-link></b-nav-item>
+        <b-nav-item v-if="admin==true" v-on:click="notification"><router-link to="/Requestlist">View Requests <span v-if="count>0">{{count}}</span></router-link></b-nav-item> 
+        <b-nav-item v-if="admin==true" v-on:click="notification">Refresh</b-nav-item> 
 
     </b-nav>
     <!-- <add-cert style=" margin-top:-150px"> </add-cert> -->
@@ -59,9 +59,7 @@ components:{
 return this.count=counter;
   },
 
-    id(){
-       return this.$store.state.identity;
-    },
+    
     fn(){
       return this.$store.state.firstName;
     },
@@ -73,6 +71,9 @@ return this.count=counter;
  
   computed:
   {  
+    id(){
+       return this.$store.state.identity;
+    },
     admin(){
         return this.$store.state.isadmin;
     },
