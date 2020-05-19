@@ -6,7 +6,7 @@
     <h2 style="margin-left:3%">تفاصيل الرخصة </h2>
     <br>
     <b-button @click="getcompany(identity)">
-      عرض   
+      عرض التفاصيل
     </b-button>
     {{X}}
     <br>
