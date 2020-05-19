@@ -29,7 +29,7 @@
   <img v-bind:src="'data:image/jpeg;base64,'+imageBytes" />
 
 </div>
-<span> {{getcompany(identity)}}</span>
+<span hidden> {{getcompany(identity)}}</span>
 
 </div>
 </template>
