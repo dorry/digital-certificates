@@ -5,10 +5,11 @@
     <div class="login-content">
     <h2 style="margin-left:3%">تفاصيل الرخصة </h2>
     <br>
-    <b-button @click="getcompany(identity)">
+    <b-button @click="getcompany('sherifali121@gmail.com')">
       عرض التفاصيل
     </b-button>
-    {{getx}}
+    d
+   {{x}}
     <br>
     <b-table 
       id="my-table"
@@ -28,12 +29,13 @@ import firebase from 'firebase'
 
 // import image from "../assets/lamp.png"
 export default {
-  name: "HelloWorld",
-  data: function() {
+  
+  data(){
     return {
-    x:[ ],
-    items:[],
-  };
+    x:{},
+    items:""
+
+  }
   },
   computed: {
          getx(){
@@ -55,16 +57,6 @@ export default {
    },
   methods: 
   {
-  // changeobj(arrObj){
-  //       var items=[];
-  //       arrObj.forEach(obj=> {
-  //         var item = {};
-  //         item.paid = obj.paid;
-  //         item.mail = obj.mail;
-  //         items.push(item);
-  //       });
-  //       return items;
-  // },
    getcompany(m)
    {
           companiesRef.orderByChild('mail')
@@ -79,10 +71,15 @@ export default {
                 var companies2 = db.ref('Companies').child(key);
                 companies2.on("value", function(data, prevChildKey) {
                 var x = data.val();
+                console.log(x);
+                //this.x = x;
+              this.items="red";
                 return x;
+                
                });
               } else {
                   console.log("There is nothing of this category");
+                  return 0;
               }
           });
    },
