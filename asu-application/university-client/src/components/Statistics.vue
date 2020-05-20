@@ -55,11 +55,11 @@
     <h1>{{getMasscomm()}}</h1>
     <h1>{{getMedical()}}</h1>  
     <h1>{{getBusiness()}}</h1> 
-    <h1>{{getElectronicsgpa()}}</h1> 
-    <h1>{{getBusinessGPA()}}</h1>
-    <h1>{{getPharmacyGPA()}}</h1>
-    <h1>{{getMasscommGPA()}}</h1>
-    <h1>{{getMedicalGPA()}}</h1>
+    <!-- <h1>{{getElectronicsgpa()}}</h1> 
+    <h1>{{getBusinessGPA()}}</h1> -->
+    <!-- <h1>{{getPharmacyGPA()}}</h1> -->
+    <!-- <h1>{{getMasscommGPA()}}</h1>
+    <h1>{{getMedicalGPA()}}</h1> -->
     </div>
           </div>
 
@@ -86,6 +86,7 @@ export default {
       var items = this.getItems;
      for(var x = 0; this.counterbusi<this.rows;this.Loopbusi2++)
       {  
+        console.log("Business: "+items[this.Loopbusi2].Faculty);
         if(items[this.Loopbusi2].Faculty == "Business")
         {
           this.counterbusi++;
@@ -99,6 +100,8 @@ export default {
       var items = this.getItems;
      for(var x = 0; this.countermedic<this.rows;this.Loopmedic2++)
       { 
+        console.log("Medical: "+items[this.Loopmedic2].Faculty);
+
         if(items[this.Loopmedic2].Faculty == "Medical")
         {
           this.countermedic++;
@@ -112,6 +115,7 @@ export default {
       var items = this.getItems;
      for(var x = 0; this.countermass<this.rows;this.Loopmass2++)
       {
+        console.log("Mass Communication: "+items[this.Loopmass2].Faculty);
         
         if(items[this.Loopmass2].Faculty == "Mass Communication")
         {
@@ -126,6 +130,11 @@ export default {
       var items = this.getItems;
      for(var x = 0; this.counterpharm<this.rows;this.Looppharm2++)
       {
+        if(this.Looppharm2==this.rows)
+        {
+          return this.gpapharm/(this.counterpharm);
+        }
+        console.log("Pharmacy: "+items[this.Looppharm2].Faculty+this.Looppharm2);
         if(items[this.Looppharm2].Faculty == "Pharmacy")
         {
           this.counterpharm++;
@@ -133,7 +142,7 @@ export default {
 
         }
       }
-      return this.gpapharm/(this.counterpharm);
+  
       
   },
     getElectronicsgpa(){
@@ -298,6 +307,7 @@ export default {
       this.queryAll();
       console.log("response"+this.response);
       this.items= this.changeObj(this.response);
+      console.log(this.items);
       return this.items;  
     },           
   },  

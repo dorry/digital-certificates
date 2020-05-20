@@ -153,7 +153,8 @@ export default {
        this.faculty,
        this.university
        )
-      alert(response);
+       console.log(response);
+      alert(response.data);
     },
      onFile(file) {
       console.log(file); // file object

@@ -50,7 +50,7 @@ app.post('/addCertificate', async (req, res) => {
   res.send(response);}
 
   catch(error){
-    res.send(error);
+    res.send("error");
   }
   
   });
