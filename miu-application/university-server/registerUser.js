@@ -7,7 +7,7 @@
 const { FileSystemWallet, Gateway, X509WalletMixin } = require('fabric-network');
 const path = require('path');
 
-const ccpPath = path.resolve(__dirname, '..', '..', 'gateway', 'asu-connection.json');
+const ccpPath = path.resolve(__dirname, '..', '..', 'gateway', 'miu-connection.json');
 
 exports.registerUser =  async function (identity) {
     try {
@@ -43,7 +43,7 @@ exports.registerUser =  async function (identity) {
         // Register the user, enroll the user, and import the new identity into the wallet.
         const secret = await ca.register({ affiliation: '', enrollmentID: identity, role: 'client' }, adminIdentity);
         const enrollment = await ca.enroll({ enrollmentID: identity, enrollmentSecret: secret });
-        const userIdentity = X509WalletMixin.createIdentity('asumsp', enrollment.certificate, enrollment.key.toBytes());
+        const userIdentity = X509WalletMixin.createIdentity('miumsp', enrollment.certificate, enrollment.key.toBytes());
         await wallet.import(identity, userIdentity);
         console.log('Successfully registered and enrolled admin user ' + identity +' and imported it into the wallet');
         return "registred";

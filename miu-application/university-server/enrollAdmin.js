@@ -9,7 +9,7 @@ const { FileSystemWallet, X509WalletMixin } = require('fabric-network');
 const fs = require('fs');
 const path = require('path');
 
-const ccpPath = path.resolve(__dirname, '..','..', 'gateway', 'miu-connection.json');
+const ccpPath = path.resolve(__dirname, '..','..', 'gateway', 'asu-connection.json');
 const ccpJSON = fs.readFileSync(ccpPath, 'utf8');
 const ccp = JSON.parse(ccpJSON);
 
@@ -17,7 +17,7 @@ async function main() {
     try {
 
         // Create a new CA client for interacting with the CA.
-        const caInfo = ccp.certificateAuthorities['ndbc22b-miuca.dcluster-f0b663fbbfc70b7f0cec9f6ad23e45a3-0000.eu-gb.containers.appdomain.cloud:7054'];
+        const caInfo = ccp.certificateAuthorities['ndbc22b-asuca.dcluster-f0b663fbbfc70b7f0cec9f6ad23e45a3-0000.eu-gb.containers.appdomain.cloud:7054'];
         const caTLSCACerts = caInfo.tlsCACerts.pem;
         const ca = new FabricCAServices(caInfo.url, { trustedRoots: caTLSCACerts, verify: false }, caInfo.caName);
 
