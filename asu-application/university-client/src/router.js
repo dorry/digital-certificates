@@ -7,6 +7,7 @@ import Profile from './components/Profile'
 import store from './store/store'
 import university from './components/CertificatesList'
 import Dashboard from './components/Dashboard'
+import ViewMyCert from './components/ViewMyCert'
 import Stat from './components/Statistics'
 import Req from './components/Request'
 import Reql from './components/RequestList'
@@ -51,7 +52,13 @@ export default new Router({
         if(store.state.islogged == false) {
             console.log("Guarded");
             next('/login');
-        } else {
+        } 
+        if(store.state.isadmin==false)
+        {
+          alert("Un-authorized");
+          next('home')
+        }
+          else {
           console.log("Passed!");
           next();
         }
@@ -98,6 +105,20 @@ export default new Router({
         next();
       }
   }    
+},
+{
+  path: '/ViewMyCert',
+  name:'ViewMyCert',
+  component : ViewMyCert,
+  beforeEnter: (to, from, next) => {
+    if(store.state.islogged == false) {
+        console.log("Guarded");
+        next('/login');
+    } else {
+      console.log("Passed!!!");
+      next();
+    }
+}    
 },
   ]
 })

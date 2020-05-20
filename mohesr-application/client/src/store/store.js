@@ -6,12 +6,17 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state:{
+        ispaid:'',
         isadmin: '',
         islogged: '',
         identity:'',
         firstName:''
     },
     mutations: {
+      setispaid(state,pay)
+      {
+          state.ispaid = pay;
+      },
         setislogged(state,logged)
         {
             state.islogged = logged;

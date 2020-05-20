@@ -17,6 +17,10 @@ export default new Vuex.Store({
         {
             state.islogged = logged;
         },
+        setispaid(state,ispaid)
+        {
+            state.ispaid = ispaid;
+        },
         setadmin(state,admin)
         {
             state.isadmin = admin;

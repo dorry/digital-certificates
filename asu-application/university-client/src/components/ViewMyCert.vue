@@ -4,13 +4,9 @@
     <div class = "parent-container">
     <div class = "login-container">
     <div class="login-content">
-      <div v-if="!paidFor">
-      <h2> اختار طريقة الدفع للاشتراك</h2>
-    </div>
-    <div v-else>  
-     <h2>شكرا </h2>
-    </div>
-    <div id="form" ref="paypal"></div>
+
+        
+
     </div>
     </div>
     </div>
@@ -19,7 +15,7 @@
 </template>
 
 <script>
-import {companiesRef} from './firebase'
+import {namesRef} from './firebase'
 // import image from "../assets/lamp.png"
 export default {
   name: "HelloWorld",
@@ -30,64 +26,51 @@ export default {
       paidFor: false,
       product: {
         price: 30.0,
-        description: "الاشتراك في خدمة التحقق من الشهادات",
+        description: "Request for a graduation certficicate",
       }
     };
   },
   computed: {
-        identity()
-        {
+        identity(){
             return this.$store.state.identity;
         },
-        firstName()
-        {
+        firstName(){
             return this.$store.state.firstName;
         },
+
     },
-   firebase: 
-   {
-    names: companiesRef
-   },
-   
+        firebase: {
+    names: namesRef
+  },
   mounted: function() {
     const script = document.createElement("script");
     script.src = "https://www.paypal.com/sdk/js?client-id=AZMCUqOmyxPdzSX9Z76we2OLLlz3aLB1Sf7n9NhJPGS1HkL9X0G-GtsZNNPtPQ0KnYPqne1_rAiLftJr";
     script.addEventListener("load", this.setLoaded);
     document.body.appendChild(script);
   },
-  methods: 
-  {
+  methods: {
     setLoaded: function() {
       this.loaded = true;
       window.paypal
         .Buttons({
           createOrder: (data, actions) => {
-           return actions.order.create({
-            purchase_units: 
-            [
+            return actions.order.create({
+              purchase_units: [
                 {
                   description: this.product.description,
                   amount: {
-                  currency_code: "USD",
-                  value: this.product.price
+                    currency_code: "USD",
+                    value: this.product.price
+                  }
                 }
-              }
-             ]
-          });
-        },
+              ]
+            });
+          },
           onApprove: async (data, actions) => {
             const order = await actions.order.capture();
             this.data;
             this.paidFor = true;
-            var d = new Date()
-            companiesRef.push(
-                {
-                 paid :1,
-                 mail: this.identity ,
-                 payday: d.getDate(), 
-                 paymonth: d.getMonth()+1,
-                 payyear: d.getFullYear(),
-                 expirationdate:d.getFullYear()+1}) ;     
+            namesRef.push({mail: this.identity + "@asuegypt.edu.eg", Request : 0 , name: this.firstName}) ;     
             console.log("PAID");
           },
           onError: err => {
@@ -116,7 +99,7 @@ export default {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  background-color:rgba(1,3,5,0.9);
+  background-color: #343A40;
   border-radius: 5%;
   padding-top: 8%;
 }

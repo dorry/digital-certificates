@@ -1,21 +1,15 @@
-<template>  
+<template>
 <div>
     <div  class = "parent-container">     
     <div class = "login-container">
     <div class="login-content">
     <h2 style="margin-left:3%">تفاصيل الرخصة </h2>
     <br>
-    <b-button @click="getcompany('sherifali121@gmail.com')">
+    <b-button @click="getcompany(identity)">
       عرض التفاصيل
     </b-button>
-    d
-   {{x}}
+    {{X}}
     <br>
-    <b-table 
-      id="my-table"
-      :items="getitems" 
-    >
-    </b-table>
     </div>
     </div>
     </div>
@@ -23,22 +17,21 @@
 </div>
 </template>
 
+
 <script>
 import {companiesRef , db} from './firebase'
 import firebase from 'firebase'
-
-// import image from "../assets/lamp.png"
 export default {
-  
-  data(){
-    return {
-    x:{},
-    items:""
+data(){
+ return {
+    x:"",
+    items:[],
 
-  }
-  },
-  computed: {
-         getx(){
+    };
+
+  },  
+ computed: {
+        X(){
           return this.x;
      
        },
@@ -50,14 +43,14 @@ export default {
         {
             return this.$store.state.firstName;
         },
-    },
-   firebase: 
+    },    
+ firebase: 
    {
     names: companiesRef
    },
-  methods: 
-  {
-   getcompany(m)
+ methods:
+ {
+  getcompany(m)
    {
           companiesRef.orderByChild('mail')
           .equalTo(m)
@@ -71,24 +64,38 @@ export default {
                 var companies2 = db.ref('Companies').child(key);
                 companies2.on("value", function(data, prevChildKey) {
                 var x = data.val();
-                console.log(x);
-                //this.x = x;
-              this.items="red";
-                return x;
-                
-               });
-              } else {
-                  console.log("There is nothing of this category");
-                  return 0;
-              }
+                alert(x.company + "   اشتراكها فعال حتي   " + x.paymonth +"/" + x.payday + "/" + x.expirationdate );
+              });
+              } 
+              else {console.log("اشتراكك انتهي او لم يتم الدفع");}
           });
+
    },
-  }
-};
+ }
+}
 </script>
 
 <style scoped>
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+}
 
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
 #form
 {
 

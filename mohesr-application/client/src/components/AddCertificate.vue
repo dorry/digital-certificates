@@ -4,7 +4,7 @@
     <div class="login-content">
     <b-form class="text-center border border-light p-5">
         <h2 class="h4 mb-4">برجاء ملء معلومات الشهادة</h2>
-    <label><h4> {{id}} الأسم</h4></label>
+    <label><h4>  الأسم</h4></label>
     <span class="form-group" :class="{ 'form-group--error': $v.name.$error }">
     <b-input class="form-control mb-4" v-model="name" id="inline-form-input-nid" placeholder="أدخل اسم الطالب"></b-input>
     </span>
@@ -39,9 +39,17 @@
     <b-form-select v-model="faculty" class="form-control mb-4"  id="inline-form-input-nid" :options="options"></b-form-select>
     </span>
     <span class="error" v-if="!$v.faculty.required">الكلية مطلوبة</span>
+
     <br>
     <label><h4> الجامعة </h4></label>
-    <b-form-select v-model="faculty" class="form-control mb-4"  id="inline-form-input-nid" :options="unis"></b-form-select>
+    <span class="form-group" :class="{ 'form-group--error': $v.University.$error }"> 
+    <b-form-select v-model="University" class="form-control mb-4"  id="inline-form-input-nid"  >
+    <b-form-select-option v-for="UniversityName of names" v-bind:value="UniversityName.name" v-bind:key="UniversityName['.key']" >{{UniversityName.name}}</b-form-select-option></b-form-select>  
+    </span>
+    <span class="error" v-if="!$v.University.required">الجامعة مطلوبة</span>
+    <br>
+
+
     <label><h4> برجاء رفع صورة للشهادة </h4></label>
     <vue-base64-file-upload    
          accept="image/png,image/jpeg"
@@ -57,7 +65,8 @@
      $v.gpa.required &&
      $v.grade.required && 
      $v.certificateId.required &&
-     $v.faculty.required  
+     $v.faculty.required &&  
+     $v.University.required  
      " @click="addCertificate()" id="submitbtn" class="btn btn-info btn-block" variant="primary">حفظ</b-button>
     </b-form>
     </div>
@@ -70,10 +79,12 @@
 import VueBase64FileUpload from 'vue-base64-file-upload';
 import APIService from "../services/APIService";
 import {minValue, maxValue, alpha, decimal,required , minLength , maxLength , between} from 'vuelidate/lib/validators'
+import {UniRef} from './firebase'
 
 export default {
     data(){
         return{
+          names:'',
           grades: 
           [
             { value: null , text: 'أدخل تقدير الطالب'},
@@ -87,9 +98,6 @@ export default {
             { value: 'ممتاز', text: 'ممتاز' },
             { value: 'ممتاز مرتفع', text: 'ممتاز مرتفع' },
           ],	
-          unis:[
-            "MIU",
-          ],
           options: 
           [
             { value: 'الكلية', text: 'اختر الكلية' },
@@ -105,12 +113,18 @@ export default {
             grade:"",
             screenshot:"",
             faculty :"",
-            university : "Private University",
+            University : "",
             customImageMaxSize: 3
 
         }
     },
+    firebase: {
+    names: UniRef
+  },
     validations: {
+    University:{
+      required
+    },
     certificateId:{
       required,
       maxLength: maxLength(14),
@@ -131,7 +145,6 @@ export default {
     grade : {
       required,
       maxLength: maxLength(2)
-
     },
     faculty: {
       required
@@ -141,9 +154,9 @@ export default {
     async addCertificate(){
       console.log(this.faculty);
       // console.log(this.screenshot);
-      console.log(this.university);
+      console.log(this.University);
       console.log(this.faculty);
-      console.log(this.id);
+      console.log(this.certificateId);
       const response =  await APIService.addCertificate
        (
        this.id,
@@ -153,7 +166,7 @@ export default {
        this.grade,
        this.screenshot,
        this.faculty,
-       this.university
+       this.University
        )
       alert(response);
     },

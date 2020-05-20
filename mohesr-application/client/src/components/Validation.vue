@@ -29,18 +29,20 @@
   <img v-bind:src="'data:image/jpeg;base64,'+imageBytes" />
 
 </div>
+<span  v-if="admin==false && trigger==true" hidden> {{getcompany(identity)}}</span>
 
 </div>
-
 </template>
 
 <script>
 import { eventBus } from '../main'
 import APIService from "../services/APIService";
-
+import {companiesRef , db} from './firebase'
+import firebase from 'firebase'
 export default {
   data(){
     return{
+      trigger : true,
       certificateData:{},
       validationKey:"",
       identity:""
@@ -53,6 +55,10 @@ export default {
   },
    computed:
   {   
+    admin()
+    {
+      return this.$store.state.isadmin;
+    },
     id(){
        return this.$store.state.identity;
     },
@@ -65,6 +71,36 @@ export default {
     },
   },
   methods:{
+  getcompany(m)
+{
+  this.trigger = false;
+  var Dialogbox = confirm("هل اشتركت؟")
+    if(Dialogbox == true)
+    {
+      companiesRef.orderByChild('mail')
+      .equalTo(m)
+      .once("value", function(snapshot) {
+          var key;
+          snapshot.forEach(function (childSnapshot) {
+              key = childSnapshot.key;
+              return true;
+          });
+          if (key) {
+            alert("تستطيع التحقق")  
+          } 
+          else {
+            alert("اشتراك الرخصة انتهي او لم يتم الدفع");
+            document.location.href = './CreateLisence'
+
+          }
+          });    }
+  
+  else 
+       {
+        document.location.href = './CreateLisence'
+       }   
+
+},
     async validate(){
   ///  console.log(this.identity);
     const apiResponse = await APIService.validateCertificate(this.id,this.validationKey);

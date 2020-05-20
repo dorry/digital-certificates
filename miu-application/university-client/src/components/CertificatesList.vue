@@ -84,6 +84,7 @@ export default {
       changeObj(arrObj){
         var items=[];
         arrObj.forEach(obj=> {
+          if(obj.Record.university == "MIU")
           var item = {};
           item.ID = obj.Key;
           console.log(obj.Key + "item.ID: " + item.ID);
