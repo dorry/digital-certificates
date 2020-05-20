@@ -86,6 +86,10 @@ export default {
       var items = this.getItems;
      for(var x = 0; this.counterbusi<this.rows;this.Loopbusi2++)
       {  
+        if(this.Loopbusi2==this.rows)
+        {        
+          return this.gpabusi/(this.counterbusi);
+        } 
         console.log("Business: "+items[this.Loopbusi2].Faculty);
         if(items[this.Loopbusi2].Faculty == "Business")
         {
@@ -93,7 +97,6 @@ export default {
           this.gpabusi = parseFloat(this.gpabusi) + parseFloat(items[this.Loopbusi2].GPA);
 
         }
-          return this.gpabusi/(this.counterbusi);
     }
   },
   getMedicalGPA(){
@@ -102,28 +105,31 @@ export default {
       { 
         console.log("Medical: "+items[this.Loopmedic2].Faculty);
 
+        if(this.Loopmedic2==this.rows)
+        {        
+          return this.gpamedic/(this.countermedic);
+        } 
         if(items[this.Loopmedic2].Faculty == "Medical")
         {
           this.countermedic++;
           this.gpamedic = parseFloat(this.gpamedic) + parseFloat(items[this.Loopmedic2].GPA);
 
         }
-          return this.gpamedic/(this.countermedic);
       }
   },
   getMasscommGPA(){
       var items = this.getItems;
      for(var x = 0; this.countermass<this.rows;this.Loopmass2++)
       {
-        console.log("Mass Communication: "+items[this.Loopmass2].Faculty);
-        
+         if(this.Loopmass2==this.rows)
+        {        
+          return this.gpamass/(this.countermass);
+        }         
         if(items[this.Loopmass2].Faculty == "Mass Communication")
         {
           this.countermass++;
           this.gpamass = parseFloat(this.gpamass) + parseFloat(items[this.Loopmass2].GPA);
         }
-        return this.gpamass/(this.countermass);
-
       }
   },
   getPharmacyGPA(){
