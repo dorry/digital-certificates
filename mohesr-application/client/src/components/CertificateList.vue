@@ -1,62 +1,109 @@
 <template>
-  <div>  
-
+    <div>  
+    
     <div  class = "parent-container">     
     <div class = "login-container">
     <div class="login-content">
-    <h2 >  :قائمة الطلاب </h2>
+    <h2 style="margin-left:5%"> Certificates : </h2>
+    </div>  
+    <div style =
+    " top:45%;
+    position: absolute;
+    left: 50%; ">
+    <b-spinner style="width: 8rem; height: 8rem;"  v-if="waiting" label="Spinning"></b-spinner>
     </div>
     <b-pagination
+     
       v-model="currentPage"
       :total-rows="rows"
       :per-page="perPage"
       aria-controls="my-table"
     ></b-pagination>
-
-    <p class="mt-3" style = "color:white;">صفحة: {{ currentPage }}</p>
-        <div id="table">
-
+    <div id="table">
+    <br>
     <b-table 
+      :bordered="bordered"
       @row-clicked="myRowClickHandler"
       id="my-table"
-      :items="items" 
+      :items="getItems" 
       :per-page="perPage"
       :current-page="currentPage"
-      small
     >
     </b-table>
-        </div>
     </div>
     </div>
+    </div>
+
   </div>
 </template>
 <script>
+
+import APIService from "../services/APIService";
+
 export default {
-  methods: {
-  myRowClickHandler(record, index) {
-    alert("Viewed ");
-    // 'record' will be the row data from items
-    // `index` will be the visible row number (available in the v-model 'shownItems')
-    log(record); // This will be the item data for the row
-  }
-},
+
  data() {
     return {
-     perPage: 5,
+     waiting: true,
+     bordered: true,
+     perPage: 20,
      currentPage: 1,
-     items: [
-         
-        ]
+     items: [],
+      response:[]
       }
     },
     computed: {
+      wait(){
+        return this.wait
+      },
       rows() {
         return this.items.length
+      },
+      getItems(){
+         this.queryAll();
+         console.log("response"+this.response);
+         this.items= this.changeObj(this.response);
+         return this.items;
       }
-    }
-  }
-</script>
+    },
+    methods:{
+      async queryAll(){
 
+        const response =  await APIService.queryAll('appadmin');
+        console.log(response.data);
+        this.waiting = false;
+        // this.changeObj(response.data);
+        this.response = response.data;
+        // console.log(this.items.length);
+       
+    },
+      changeObj(arrObj){
+        var items=[];
+        arrObj.forEach(obj=> {
+          var item = {};
+          item.ID = obj.Key;
+          console.log(obj.Key + "item.ID: " + item.ID);
+          item.Name = obj.Record.name;
+          item.GPA = obj.Record.gpa;
+          item.Faculty = obj.Record.faculty;
+          item.University = obj.Record.university;
+          console.log(obj.Record.university + "item.name: " + item.University);
+          items.push(item);
+          console.log("from changeobj: "+ item)
+        });
+        return items;
+    },
+        myRowClickHandler(record, index) {
+          alert("Viewed ");
+          // 'record' will be the row data from items
+          // `index` will be the visible row number (available in the v-model 'shownItems')
+          log(record); // This will be the item data for the row
+        }
+},
+
+    }
+  
+</script>
 
 <style scoped>
 #table

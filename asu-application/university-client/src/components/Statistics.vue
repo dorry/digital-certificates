@@ -76,15 +76,12 @@ export default {
    gpaelec:0,gpapharm:0,gpamedic:0, gpamass:0,gpabusi:0,
    counterelec:0, counterbusi:0, countermedic:0, countermass:0, counterpharm:0,
    Loopelec2:0, Looppharm2:0, Loopbusi2:0,Loopmass2:0, Loopmedic2:0,
-
    Loopelec:0, Looppharm:0, Loopbusi:0, Loopmass:0,
    Electronics:0, MassComm:0, Business: 0, Pharmacy: 0, Medical:0,
    items: [],
     };
   },  
  methods:{
-      adddata(){
-      },
     getBusinessGPA(){
       var items = this.getItems;
      for(var x = 0; this.counterbusi<this.rows;this.Loopbusi2++)
@@ -150,9 +147,7 @@ export default {
         if(items[this.Loopelec2].Faculty == "Electronics")
         {
           this.counterelec++;
-          //console.log(this.counterelec +  " + " + parseFloat(items[this.Loopelec2].GPA));
           this.gpaelec = parseFloat(this.gpaelec) + parseFloat(items[this.Loopelec2].GPA);
-          //console.log("after"+this.gpaelec);
 
         }
       }
