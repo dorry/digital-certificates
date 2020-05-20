@@ -63,8 +63,9 @@ export default {
           async onSuccess(googleUser) {
             // console.log(googleUser);
             // console.log(googleUser.getBasicProfile());
-            this.identity = googleUser.getBasicProfile().yu;
-            this.firstName = googleUser.getBasicProfile().pW;
+            this.identity = googleUser.getBasicProfile().getEmail();
+            this.firstName = googleUser.getBasicProfile().getName();
+            console.log(this.identity);
             const response =  await APIService.validateWallet(this.identity)    
             if(response.data == 'wallet exist'){
                 this.$store.commit("setadmin",true);
@@ -77,7 +78,7 @@ export default {
 
             this.$store.dispatch('saveUserLogged', this.identity);
             this.$store.commit("setislogged", true);
-            this.$store.dispatch('saveUsername', googleUser.getBasicProfile().pW);
+            this.$store.dispatch('saveUsername', this.firstName);
             this.$router.push("/dashboard");
 
 
