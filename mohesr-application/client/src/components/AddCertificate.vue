@@ -41,7 +41,9 @@
     <span class="error" v-if="!$v.faculty.required">الكلية مطلوبة</span>
     <br>
     <label><h4> الجامعة </h4></label>
-    <b-form-select v-model="faculty" class="form-control mb-4"  id="inline-form-input-nid" :options="unis"></b-form-select>
+    <b-form-select v-model="University" class="form-control mb-4"  id="inline-form-input-nid"  >
+          <b-form-select-option v-for="UniversityName of names" v-bind:value="UniversityName.name" v-bind:key="UniversityName['.key']" >{{UniversityName.name}}</b-form-select-option></b-form-select>  
+
     <label><h4> برجاء رفع صورة للشهادة </h4></label>
     <vue-base64-file-upload    
          accept="image/png,image/jpeg"
@@ -70,10 +72,12 @@
 import VueBase64FileUpload from 'vue-base64-file-upload';
 import APIService from "../services/APIService";
 import {minValue, maxValue, alpha, decimal,required , minLength , maxLength , between} from 'vuelidate/lib/validators'
+import {UniRef} from './firebase'
 
 export default {
     data(){
         return{
+          names:'',
           grades: 
           [
             { value: null , text: 'أدخل تقدير الطالب'},
@@ -87,9 +91,6 @@ export default {
             { value: 'ممتاز', text: 'ممتاز' },
             { value: 'ممتاز مرتفع', text: 'ممتاز مرتفع' },
           ],	
-          unis:[
-            "MIU",
-          ],
           options: 
           [
             { value: 'الكلية', text: 'اختر الكلية' },
@@ -105,11 +106,14 @@ export default {
             grade:"",
             screenshot:"",
             faculty :"",
-            university : "Private University",
+            University : "",
             customImageMaxSize: 3
 
         }
     },
+    firebase: {
+    names: UniRef
+  },
     validations: {
     certificateId:{
       required,
@@ -141,9 +145,9 @@ export default {
     async addCertificate(){
       console.log(this.faculty);
       // console.log(this.screenshot);
-      console.log(this.university);
+      console.log(this.University);
       console.log(this.faculty);
-      console.log(this.id);
+      console.log(this.certificateId);
       const response =  await APIService.addCertificate
        (
        this.id,
@@ -153,7 +157,7 @@ export default {
        this.grade,
        this.screenshot,
        this.faculty,
-       this.university
+       this.University
        )
       alert(response);
     },
