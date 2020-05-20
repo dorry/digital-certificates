@@ -13,7 +13,6 @@
     <b-spinner style="width: 8rem; height: 8rem;"  v-if="waiting" label="Spinning"></b-spinner>
     </div>
     <b-pagination
-     
       v-model="currentPage"
       :total-rows="rows"
       :per-page="perPage"

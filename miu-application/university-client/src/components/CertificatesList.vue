@@ -10,10 +10,9 @@
     " top:45%;
     position: absolute;
     left: 50%; ">
-    <b-spinner style="width: 8rem; height: 8rem;" v-if="waiting" label="Spinning"></b-spinner>
+    <b-spinner style="width: 8rem; height: 8rem;"  v-if="waiting" label="Spinning"></b-spinner>
     </div>
     <b-pagination
-      v-if="!waiting"
       v-model="currentPage"
       :total-rows="rows"
       :per-page="perPage"
@@ -25,7 +24,7 @@
       :bordered="bordered"
       @row-clicked="myRowClickHandler"
       id="my-table"
-      :items="items" 
+      :items="getItems" 
       :per-page="perPage"
       :current-page="currentPage"
     >
@@ -43,15 +42,12 @@ import APIService from "../services/APIService";
 export default {
 
  data() {
-   
     return {
      waiting: true,
      bordered: true,
      perPage: 20,
      currentPage: 1,
-     items: [
-           { ID: 1, Name: 'Alley Mostafa El Dorry', GPA: 4.0 , Faculty: "CS", University:"MIU" },
-        ],
+     items: [],
       response:[]
       }
     },
@@ -67,7 +63,6 @@ export default {
          console.log("response"+this.response);
          this.items= this.changeObj(this.response);
          return this.items;
-        
       }
     },
     methods:{
@@ -85,6 +80,7 @@ export default {
         var items=[];
         arrObj.forEach(obj=> {
           if(obj.Record.university == "MIU")
+          {
           var item = {};
           item.ID = obj.Key;
           console.log(obj.Key + "item.ID: " + item.ID);
@@ -95,6 +91,7 @@ export default {
           console.log(obj.Record.university + "item.name: " + item.University);
           items.push(item);
           console.log("from changeobj: "+ item)
+          }
         });
         return items;
     },
@@ -111,7 +108,8 @@ export default {
 </script>
 
 <style scoped>
-#table{
+#table
+{
     justify-content: center;
     align-items: center;
 }
@@ -121,7 +119,7 @@ export default {
 .b-table{
   background-color: white;
   align-self: center;
-  width: 100%;
+    width: 100%;
   height: auto;
 }
 .btn-info
@@ -163,9 +161,8 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: auto;
 }
-
+    
 .login-content
 {
   color:white;
