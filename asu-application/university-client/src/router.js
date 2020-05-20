@@ -53,11 +53,11 @@ export default new Router({
             console.log("Guarded");
             next('/login');
         } 
-        if(store.state.isadmin==false)
-        {
-          alert("Un-authorized");
-          next('home')
-        }
+        // if(store.state.isadmin==false)
+        // {
+        //   alert("Un-authorized");
+        //   next('home')
+        // }
           else {
           console.log("Passed!");
           next();
