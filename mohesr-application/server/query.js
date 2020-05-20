@@ -74,6 +74,7 @@ exports.query = async function(name,functionName, certificateID) {
     }
 }
 exports.queryAll = async function(name){
+    console.log("a8a7a7a7a")
     const response = await this.query(name,'queryAll',-1);
     return response;
 }

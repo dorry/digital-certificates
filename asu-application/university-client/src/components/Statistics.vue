@@ -49,7 +49,7 @@
 
 
     <h1 hidden>{{getItems}}</h1>   
-
+  <div hidden>
     <h1>{{getElectronics()}}</h1>
     <h1>{{getPharmacy()}}</h1>
     <h1>{{getMasscomm()}}</h1>
@@ -59,7 +59,8 @@
     <h1>{{getBusinessGPA()}}</h1>
     <h1>{{getPharmacyGPA()}}</h1>
     <h1>{{getMasscommGPA()}}</h1>
-    <h1>{{getMasscommGPA()}}</h1>
+    <h1>{{getMedicalGPA()}}</h1>
+    </div>
           </div>
 
 </template>
@@ -75,86 +76,65 @@ export default {
    gpaelec:0,gpapharm:0,gpamedic:0, gpamass:0,gpabusi:0,
    counterelec:0, counterbusi:0, countermedic:0, countermass:0, counterpharm:0,
    Loopelec2:0, Looppharm2:0, Loopbusi2:0,Loopmass2:0, Loopmedic2:0,
-
    Loopelec:0, Looppharm:0, Loopbusi:0, Loopmass:0,
    Electronics:0, MassComm:0, Business: 0, Pharmacy: 0, Medical:0,
    items: [],
     };
   },  
  methods:{
-      adddata(){
-      },
     getBusinessGPA(){
       var items = this.getItems;
-     for(var x = 0; this.countermedic<this.rows;this.Loopbusi2++)
-      {
-         if(this.Loopbusi2==this.rows)
-        {        
-          return this.gpamedic/(this.countermedic);
-        } 
+     for(var x = 0; this.counterbusi<this.rows;this.Loopbusi2++)
+      {  
         if(items[this.Loopbusi2].Faculty == "Business")
         {
-          this.countermedic++;
-          console.log(this.countermedic +  " + " + parseFloat(items[this.Loopbusi2].GPA));
-          this.gpamedic = parseFloat(this.gpamedic) + parseFloat(items[this.Loopbusi2].GPA);
-          console.log("after"+this.gpamedic);
+          this.counterbusi++;
+          this.gpabusi = parseFloat(this.gpabusi) + parseFloat(items[this.Loopbusi2].GPA);
 
         }
-      }
+          return this.gpabusi/(this.counterbusi);
+    }
   },
   getMedicalGPA(){
       var items = this.getItems;
-     for(var x = 0; this.counterbusi<this.rows;this.Loopmedic2++)
-      {
-         if(this.Loopmedic2==this.rows)
-        {        
-          return this.gpabusi/(this.counterbusi);
-        } 
+     for(var x = 0; this.countermedic<this.rows;this.Loopmedic2++)
+      { 
         if(items[this.Loopmedic2].Faculty == "Medical")
         {
-          this.counterbusi++;
-          console.log(this.counterbusi +  " + " + parseFloat(items[this.Loopmedic2].GPA));
-          this.gpabusi = parseFloat(this.gpabusi) + parseFloat(items[this.Loopmedic2].GPA);
-          console.log("after"+this.gpabusi);
+          this.countermedic++;
+          this.gpamedic = parseFloat(this.gpamedic) + parseFloat(items[this.Loopmedic2].GPA);
 
         }
+          return this.gpamedic/(this.countermedic);
       }
   },
   getMasscommGPA(){
       var items = this.getItems;
      for(var x = 0; this.countermass<this.rows;this.Loopmass2++)
       {
-         if(this.Loopmass2==this.rows)
-        {        
-          return this.gpamass/(this.countermass);
-        } 
+        
         if(items[this.Loopmass2].Faculty == "Mass Communication")
         {
           this.countermass++;
-          console.log(this.countermass +  " + " + parseFloat(items[this.Loopmass2].GPA));
           this.gpamass = parseFloat(this.gpamass) + parseFloat(items[this.Loopmass2].GPA);
-          console.log("after"+this.gpamass);
-
         }
+        return this.gpamass/(this.countermass);
+
       }
   },
   getPharmacyGPA(){
       var items = this.getItems;
      for(var x = 0; this.counterpharm<this.rows;this.Looppharm2++)
       {
-         if(this.Looppharm2==this.rows)
-        {        
-          return this.gpapharm/(this.counterpharm);
-        } 
         if(items[this.Looppharm2].Faculty == "Pharmacy")
         {
           this.counterpharm++;
-          console.log(this.counterpharm +  " + " + parseFloat(items[this.Looppharm2].GPA));
           this.gpapharm = parseFloat(this.gpapharm) + parseFloat(items[this.Looppharm2].GPA);
-          console.log("after"+this.gpapharm);
 
         }
       }
+      return this.gpapharm/(this.counterpharm);
+      
   },
     getElectronicsgpa(){
       var items = this.getItems;
@@ -167,9 +147,7 @@ export default {
         if(items[this.Loopelec2].Faculty == "Electronics")
         {
           this.counterelec++;
-          console.log(this.counterelec +  " + " + parseFloat(items[this.Loopelec2].GPA));
           this.gpaelec = parseFloat(this.gpaelec) + parseFloat(items[this.Loopelec2].GPA);
-          console.log("after"+this.gpaelec);
 
         }
       }
@@ -233,7 +211,7 @@ export default {
           // console.log("STOPPED");
           return this.MassComm;
         }
-        if(items[this.Loopmass].Faculty == "Pharmacy")
+        if(items[this.Loopmass].Faculty == "Mass Communication")
         {
           this.MassComm++;
         }
@@ -272,6 +250,8 @@ export default {
       changeObj(arrObj){
         var items=[];
         arrObj.forEach(obj=> {
+          if(obj.Record.university == "Public University")
+          {
           var item = {};
           item.ID = obj.Key;
           console.log(obj.Key + "item.ID: " + item.ID);
@@ -282,7 +262,9 @@ export default {
           console.log(obj.Record.university + "item.name: " + item.University);
           items.push(item);
           console.log("from changeobj: "+ item)
+          }
         });
+        
         return items;
     },    
   },

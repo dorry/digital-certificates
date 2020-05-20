@@ -2,9 +2,11 @@ import Api from './api'
 
 export default {
 
-//   queryAll() {
-//     return Api().get('queryAll')
-//   },  
+  queryAll(username) {
+    return Api().post('queryAll',{
+      username: username
+    });
+  },
 
   addCertificate(identity,certificateId, name , gpa, grade,screenshot,faculty,university) {
     return Api().post('addCertificate', {

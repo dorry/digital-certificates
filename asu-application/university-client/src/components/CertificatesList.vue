@@ -10,7 +10,7 @@
     " top:45%;
     position: absolute;
     left: 50%; ">
-    <!-- <b-spinner style="width: 8rem; height: 8rem;"  label="Spinning"></b-spinner> -->
+    <b-spinner style="width: 8rem; height: 8rem;"  v-if="waiting" label="Spinning"></b-spinner>
     </div>
     <b-pagination
      

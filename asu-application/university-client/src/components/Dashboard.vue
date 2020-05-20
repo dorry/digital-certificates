@@ -9,7 +9,6 @@
         <b-nav-item v-if="admin==true"><router-link to="/clist"> View All Certificates </router-link></b-nav-item>
         <b-nav-item v-if="admin==true"><router-link to="/stats">Statistics </router-link></b-nav-item>
         <b-nav-item v-if="admin==false"><router-link to="/Request">Request Certificate </router-link></b-nav-item>
-        <b-nav-item v-if="admin==false"><router-link to="/viewMyCert">View My Certificate </router-link></b-nav-item>
         <b-nav-item v-if="admin==true" v-on:click="notification"><router-link to="/Requestlist">View Requests <span v-if="count>0">{{count}}</span></router-link></b-nav-item> 
         <b-nav-item v-if="admin==true" v-on:click="notification">Refresh</b-nav-item> 
 

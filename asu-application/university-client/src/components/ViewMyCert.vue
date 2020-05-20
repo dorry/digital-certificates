@@ -15,71 +15,9 @@
 </template>
 
 <script>
-import {namesRef} from './firebase'
-// import image from "../assets/lamp.png"
-export default {
-  name: "HelloWorld",
-  data: function() {
-    return {
-      names: [],
-      loaded: false,
-      paidFor: false,
-      product: {
-        price: 30.0,
-        description: "Request for a graduation certficicate",
-      }
-    };
-  },
-  computed: {
-        identity(){
-            return this.$store.state.identity;
-        },
-        firstName(){
-            return this.$store.state.firstName;
-        },
 
-    },
-        firebase: {
-    names: namesRef
-  },
-  mounted: function() {
-    const script = document.createElement("script");
-    script.src = "https://www.paypal.com/sdk/js?client-id=AZMCUqOmyxPdzSX9Z76we2OLLlz3aLB1Sf7n9NhJPGS1HkL9X0G-GtsZNNPtPQ0KnYPqne1_rAiLftJr";
-    script.addEventListener("load", this.setLoaded);
-    document.body.appendChild(script);
-  },
-  methods: {
-    setLoaded: function() {
-      this.loaded = true;
-      window.paypal
-        .Buttons({
-          createOrder: (data, actions) => {
-            return actions.order.create({
-              purchase_units: [
-                {
-                  description: this.product.description,
-                  amount: {
-                    currency_code: "USD",
-                    value: this.product.price
-                  }
-                }
-              ]
-            });
-          },
-          onApprove: async (data, actions) => {
-            const order = await actions.order.capture();
-            this.data;
-            this.paidFor = true;
-            namesRef.push({mail: this.identity + "@asuegypt.edu.eg", Request : 0 , name: this.firstName}) ;     
-            console.log("PAID");
-          },
-          onError: err => {
-            console.log(err);
-          }
-        })
-        .render(this.$refs.paypal);
-    }
-  }
+export default {
+
 };
 </script>
 

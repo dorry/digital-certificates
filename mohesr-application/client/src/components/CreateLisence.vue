@@ -5,6 +5,12 @@
     <div class = "login-container">
     <div class="login-content">
       <div v-if="!paidFor">
+    <span class="form-group" :class="{ 'form-group--error': $v.companyname.$error }">
+    <label><h4> اسم الشركة</h4></label>
+    <b-input class="form-control mb-4" v-model="companyname" id="inline-form-input-nid" placeholder="أدخل اسم الشركة"></b-input>
+    <span class="error" v-if="!$v.companyname.required">اسم الشركة مطلوب</span>
+          </span>
+
       <h2> اختار طريقة الدفع للاشتراك</h2>
     </div>
     <div v-else>  
@@ -20,6 +26,8 @@
 
 <script>
 import {companiesRef} from './firebase'
+import {minValue, maxValue, alpha, decimal,required , minLength , maxLength , between} from 'vuelidate/lib/validators'
+
 // import image from "../assets/lamp.png"
 export default {
   name: "HelloWorld",
@@ -28,6 +36,7 @@ export default {
       names: [],
       loaded: false,
       paidFor: false,
+      companyname:'',
       product: {
         price: 30.0,
         description: "الاشتراك في خدمة التحقق من الشهادات",
@@ -55,6 +64,11 @@ export default {
     script.addEventListener("load", this.setLoaded);
     document.body.appendChild(script);
   },
+  validations: {
+    companyname:{
+      required
+    }, 
+  }, 
   methods: 
   {
     setLoaded: function() {
@@ -82,12 +96,14 @@ export default {
             var d = new Date()
             companiesRef.push(
                 {
+                 company:this.companyname,
                  paid :1,
                  mail: this.identity ,
                  payday: d.getDate(), 
                  paymonth: d.getMonth()+1,
                  payyear: d.getFullYear(),
-                 expirationdate:d.getFullYear()+1}) ;     
+                 expirationdate:d.getFullYear()+1}
+                 );     
             console.log("PAID");
           },
           onError: err => {
@@ -101,7 +117,12 @@ export default {
 </script>
 
 <style scoped>
-
+.error
+{
+  font-weight: bold;
+  color:rgb(187, 21, 21);
+  outline-color: black;
+}
 #form
 {
 
