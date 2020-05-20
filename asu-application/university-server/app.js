@@ -108,4 +108,17 @@ app.post('/registerUser', async (req, res) => {
     }
     
     });
+    app.post('/registerAdmin', async (req, res) => {
+      // res.send('hello world');
+      try{
+      console.log(req.body);
+      let response =  await invoke.registerAdmin(req.body.identity);
+      
+      res.send(response);}
+    
+      catch(error){
+        res.send(error);
+      }
+      
+      });
 var server = app.listen(process.env.PORT || 8086);

@@ -8,8 +8,9 @@ queryAll(username) {
   });
 },
 
-addCertificate(certificateId, name , gpa, grade,screenshot, faculty , university) {
+addCertificate(identity,certificateId, name , gpa, grade,screenshot, faculty , university) {
   return Api().post('addCertificate', {
+      identity:identity,
       certificateId: certificateId,
       name: name,
       gpa: gpa,

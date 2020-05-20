@@ -144,6 +144,7 @@ export default {
       console.log(this.university);
       const response =  await APIService.addCertificate
        (
+       this.id,
        this.certificateId,
        this.name,
        this.gpa,
@@ -172,6 +173,11 @@ export default {
      components: {
     VueBase64FileUpload,
   },
+  computed: {
+        id(){
+       return this.$store.state.identity;
+    },
+  }
 
 }
 </script>

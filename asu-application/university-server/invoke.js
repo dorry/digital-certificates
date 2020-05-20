@@ -4,7 +4,7 @@
 
 'use strict';
 
-const { FileSystemWallet, Gateway } = require('fabric-network');
+const { FileSystemWallet, Gateway, X509WalletMixin } = require('fabric-network');
 const path = require('path');
 
 const ccpPath = path.resolve(__dirname, '..','..', 'gateway', 'asu-connection.json');
@@ -19,16 +19,16 @@ exports.addCertificate =  async function(username,certificateID,name, gpa , grad
         console.log(`Wallet path: ${walletPath}`);
 
         // Check to see if we've already enrolled the user.
-        const userExists = await wallet.exists(username);
+        const userExists = await wallet.exists("appadmin");
         if (!userExists) {
-            console.log('An identity for the user ' +username+' does not exist in the wallet');
+            console.log('An identity for the user ' +"appadmin"+' does not exist in the wallet');
             console.log('Run the registerUser.js application before retrying');
             return;
         }
 
         // Create a new gateway for connecting to our peer node.
         const gateway = new Gateway();
-        await gateway.connect(ccpPath, { wallet, identity: username, discovery: { enabled: true, asLocalhost: false } });
+        await gateway.connect(ccpPath, { wallet, identity: "appadmin", discovery: { enabled: true, asLocalhost: false } });
 
         // Get the network (channel) our contract is deployed to.
         const network = await gateway.getNetwork('unichannel');

@@ -68,6 +68,7 @@ export default {
             const response =  await APIService.validateWallet(this.identity)    
             if(response.data == 'wallet exist'){
                 this.$store.commit("setadmin",true);
+                
             }
             else
             {
