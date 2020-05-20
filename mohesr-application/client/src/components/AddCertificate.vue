@@ -39,10 +39,16 @@
     <b-form-select v-model="faculty" class="form-control mb-4"  id="inline-form-input-nid" :options="options"></b-form-select>
     </span>
     <span class="error" v-if="!$v.faculty.required">الكلية مطلوبة</span>
+
     <br>
     <label><h4> الجامعة </h4></label>
+    <span class="form-group" :class="{ 'form-group--error': $v.University.$error }"> 
     <b-form-select v-model="University" class="form-control mb-4"  id="inline-form-input-nid"  >
-          <b-form-select-option v-for="UniversityName of names" v-bind:value="UniversityName.name" v-bind:key="UniversityName['.key']" >{{UniversityName.name}}</b-form-select-option></b-form-select>  
+    <b-form-select-option v-for="UniversityName of names" v-bind:value="UniversityName.name" v-bind:key="UniversityName['.key']" >{{UniversityName.name}}</b-form-select-option></b-form-select>  
+    </span>
+    <span class="error" v-if="!$v.University.required">الجامعة مطلوبة</span>
+    <br>
+
 
     <label><h4> برجاء رفع صورة للشهادة </h4></label>
     <vue-base64-file-upload    
@@ -59,7 +65,8 @@
      $v.gpa.required &&
      $v.grade.required && 
      $v.certificateId.required &&
-     $v.faculty.required  
+     $v.faculty.required &&  
+     $v.University.required  
      " @click="addCertificate()" id="submitbtn" class="btn btn-info btn-block" variant="primary">حفظ</b-button>
     </b-form>
     </div>
@@ -115,6 +122,9 @@ export default {
     names: UniRef
   },
     validations: {
+    University:{
+      required
+    },
     certificateId:{
       required,
       maxLength: maxLength(14),
@@ -135,7 +145,6 @@ export default {
     grade : {
       required,
       maxLength: maxLength(2)
-
     },
     faculty: {
       required
