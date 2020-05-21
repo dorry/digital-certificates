@@ -55,11 +55,11 @@
     <h1>{{getMasscomm()}}</h1>
     <h1>{{getMedical()}}</h1>  
     <h1>{{getBusiness()}}</h1> 
-    <h1>{{getElectronicsgpa()}}</h1> 
-    <h1>{{getBusinessGPA()}}</h1>
-    <h1>{{getPharmacyGPA()}}</h1>
-    <h1>{{getMasscommGPA()}}</h1>
-    <h1>{{getMedicalGPA()}}</h1>
+    <!-- <h1>{{getElectronicsgpa()}}</h1> 
+    <h1>{{getBusinessGPA()}}</h1> -->
+    <!-- <h1>{{getPharmacyGPA()}}</h1> -->
+    <!-- <h1>{{getMasscommGPA()}}</h1>
+    <h1>{{getMedicalGPA()}}</h1> -->
     </div>
           </div>
 
@@ -85,54 +85,68 @@ export default {
       var items = this.getItems;
      for(var x = 0; this.counterbusi<this.rows;this.Loopbusi2++)
       {  
-        if(items[this.Loopbusi2].Faculty == "Business")
+        if(this.Loopbusi2==this.rows)
+        {        
+          return this.gpabusi/(this.counterbusi);
+        } 
+        console.log("Business: "+items[this.Loopbusi2].Faculty);
+        if(items[this.Loopbusi2].Faculty == "تجارة")
         {
           this.counterbusi++;
           this.gpabusi = parseFloat(this.gpabusi) + parseFloat(items[this.Loopbusi2].GPA);
 
         }
-          return this.gpabusi/(this.counterbusi);
     }
   },
   getMedicalGPA(){
       var items = this.getItems;
      for(var x = 0; this.countermedic<this.rows;this.Loopmedic2++)
       { 
-        if(items[this.Loopmedic2].Faculty == "Medical")
+
+        if(this.Loopmedic2==this.rows)
+        {        
+          return this.gpamedic/(this.countermedic);
+        } 
+        if(items[this.Loopmedic2].Faculty == "طب")
         {
           this.countermedic++;
           this.gpamedic = parseFloat(this.gpamedic) + parseFloat(items[this.Loopmedic2].GPA);
 
         }
-          return this.gpamedic/(this.countermedic);
       }
   },
   getMasscommGPA(){
       var items = this.getItems;
      for(var x = 0; this.countermass<this.rows;this.Loopmass2++)
       {
-        
-        if(items[this.Loopmass2].Faculty == "Mass Communication")
+         if(this.Loopmass2==this.rows)
+        {        
+          return this.gpamass/(this.countermass);
+        }         
+        if(items[this.Loopmass2].Faculty == "أعلام")
         {
           this.countermass++;
           this.gpamass = parseFloat(this.gpamass) + parseFloat(items[this.Loopmass2].GPA);
         }
-        return this.gpamass/(this.countermass);
-
       }
   },
   getPharmacyGPA(){
       var items = this.getItems;
      for(var x = 0; this.counterpharm<this.rows;this.Looppharm2++)
       {
-        if(items[this.Looppharm2].Faculty == "Pharmacy")
+        if(this.Looppharm2==this.rows)
+        {
+          return this.gpapharm/(this.counterpharm);
+        }
+        console.log("Pharmacy: "+items[this.Looppharm2].Faculty+this.Looppharm2);
+        if(items[this.Looppharm2].Faculty == "")
         {
           this.counterpharm++;
           this.gpapharm = parseFloat(this.gpapharm) + parseFloat(items[this.Looppharm2].GPA);
 
         }
       }
-      return this.gpapharm/(this.counterpharm);
+  
       
   },
     getElectronicsgpa(){
@@ -143,7 +157,7 @@ export default {
         {        
           return this.gpaelec/(this.counterelec);
         } 
-        if(items[this.Loopelec2].Faculty == "Electronics")
+        if(items[this.Loopelec2].Faculty == "إلكترونيات")
         {
           this.counterelec++;
           this.gpaelec = parseFloat(this.gpaelec) + parseFloat(items[this.Loopelec2].GPA);
@@ -176,7 +190,7 @@ export default {
           // console.log("STOPPED");
           return this.Business;
         }
-        if(items[this.Loopbusi].Faculty == "Business")
+        if(items[this.Loopbusi].Faculty == "تجارة")
         {
           this.Business++;
         }
@@ -193,7 +207,7 @@ export default {
           // console.log("STOPPED");
           return this.Pharmacy;
         }
-        if(items[this.Looppharm].Faculty == "Pharmacy")
+        if(items[this.Looppharm].Faculty == "صيدلة")
         {
           this.Pharmacy++;
         }
@@ -210,7 +224,7 @@ export default {
           // console.log("STOPPED");
           return this.MassComm;
         }
-        if(items[this.Loopmass].Faculty == "Mass Communication")
+        if(items[this.Loopmass].Faculty == "أعلام")
         {
           this.MassComm++;
         }
@@ -227,7 +241,7 @@ export default {
           // console.log("STOPPED");
           return this.Medical;
         }
-        if(items[this.i].Faculty == "Medical")
+        if(items[this.i].Faculty == "طب")
         {
           this.Medical++;
         }
@@ -249,8 +263,8 @@ export default {
       changeObj(arrObj){
         var items=[];
         arrObj.forEach(obj=> {
-          if(obj.Record.university == "Public University")
-          {        
+          if(obj.Record.university == "MIU")
+          {
           var item = {};
           item.ID = obj.Key;
           console.log(obj.Key + "item.ID: " + item.ID);
@@ -260,7 +274,7 @@ export default {
           item.University = obj.Record.university;
           console.log(obj.Record.university + "item.name: " + item.University);
           items.push(item);
-          console.log("from changeobj: "+ item);
+          console.log("from changeobj: "+ item)
           }
         });
         
@@ -297,6 +311,7 @@ export default {
       this.queryAll();
       console.log("response"+this.response);
       this.items= this.changeObj(this.response);
+      console.log(this.items);
       return this.items;  
     },           
   },  

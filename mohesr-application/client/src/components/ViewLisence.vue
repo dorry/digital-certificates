@@ -67,7 +67,7 @@ data(){
                 alert(x.company + "   اشتراكها فعال حتي   " + x.paymonth +"/" + x.payday + "/" + x.expirationdate );
               });
               } 
-              else {console.log("اشتراكك انتهي او لم يتم الدفع");}
+              else {alert("اشتراكك انتهي او لم يتم الدفع");}
           });
 
    },
