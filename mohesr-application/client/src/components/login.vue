@@ -68,8 +68,8 @@ export default {
             //console.log(googleUser);
             // This only gets the user information: id, name, imageUrl and email
             //console.log(googleUser.getBasicProfile());
-            this.identity = googleUser.getBasicProfile().yu;
-            this.firstName = googleUser.getBasicProfile().pW;
+            this.identity = googleUser.getBasicProfile().getEmail();
+            this.firstName = googleUser.getBasicProfile().getName();
             const response =  await APIService.validateWallet(this.identity)
             if(response.data == 'wallet exist'){
                 this.$store.commit("setadmin",true);

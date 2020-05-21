@@ -90,14 +90,16 @@ export default {
           } 
           else {
             alert("اشتراك الرخصة انتهي او لم يتم الدفع");
-            document.location.href = './CreateLisence'
+            document.location.href = './ViewLisence'
 
           }
-          });    }
+          });
+
+    }
   
   else 
        {
-        document.location.href = './CreateLisence'
+        document.location.href = './ViewLisence'
        }   
 
 },
