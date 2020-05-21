@@ -11,12 +11,7 @@
   <br>
   <br>
   <input @click="validate()" type="submit" value=" دخول" id="btn1" style="border-radius: 20px;">
-    </div>
-    </div>
-  </div>
-
-</div>
-<div v-if="notEmptyObject()">
+  <div v-if="notEmptyObject()">
   <div  v-for="(data,key) in certificateData" :key="key" style="margin-top:20px">
     <div v-if="key!='screenshot'">
   {{key}} : {{data}}
@@ -26,6 +21,12 @@
 
     </div>
   </div>
+    </div>
+    </div>
+  </div>
+
+</div>
+
   
 
 </div>
