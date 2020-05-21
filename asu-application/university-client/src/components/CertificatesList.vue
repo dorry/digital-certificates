@@ -233,10 +233,7 @@ export default {
 {
   color:white;
 }
-.certificate-info{
 
-    
-}
 .alert-primary {
     color: #004085;
     background-color: #cce5ff;
