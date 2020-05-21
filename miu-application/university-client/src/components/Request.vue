@@ -76,7 +76,7 @@ export default {
             this.data;
             this.paidFor = true;
             namesRef.push
-            ({mail: this.identity + "@miuegypt.edu.eg", Request : 0 , name: this.firstName , University : "Misr International University"});     
+            ({mail: this.identity, Request : 0 , name: this.firstName , University : "Misr International University"});     
             console.log("PAID");
           },
           onError: err => {

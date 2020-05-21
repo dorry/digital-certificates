@@ -75,7 +75,7 @@ export default {
             const order = await actions.order.capture();
             this.data;
             this.paidFor = true;
-            namesRef.push({mail: this.identity + "@asuegypt.edu.eg", Request : 0 , name: this.firstName}) ;     
+            namesRef.push({mail: this.identity , Request : 0 , name: this.firstName}) ;     
             console.log("PAID");
           },
           onError: err => {
