@@ -10,9 +10,14 @@ export default new Vuex.Store({
         islogged: '',
         identity:'',
         firstName:'',
-        fullName : ''
+        fullName : '',
+        listResponse: []
+        
     },
     mutations: {
+        setListResponse(state,listResponse){
+          state.listResponse = listResponse;
+        },
         setislogged(state,logged)
         {
             state.islogged = logged;

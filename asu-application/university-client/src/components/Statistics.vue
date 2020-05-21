@@ -2,13 +2,13 @@
 <div>
 
  <div style="top:35%;">
-    <!-- <div style=
+    <div style=
     "
     top:45%;
     position: absolute;
     left: 50%; ">
     <b-spinner style="width: 8rem; height: 8rem;" v-if="waiting" label="Spinning"></b-spinner>
-    </div>       -->
+    </div>      
     <div  class = "parent-container">     
     <div class = "login-container">
     <div class="login-content">
@@ -19,8 +19,9 @@
          ['Electronics', getElectronicsgpa()],
          ['Business', getBusinessGPA()],
          ['Pharmacy', getPharmacyGPA()],
-         ['Mass Communication', getMasscommGPA()],
          ['Medical', getMedicalGPA()],
+         ['Mass Communication', getMasscommGPA()],
+         
          ]"></bar-chart>
     </div>
     </div>
@@ -90,7 +91,6 @@ export default {
         {        
           return this.gpabusi/(this.counterbusi);
         } 
-        console.log("Business: "+items[this.Loopbusi2].Faculty);
         if(items[this.Loopbusi2].Faculty == "Business")
         {
           this.counterbusi++;
@@ -103,7 +103,7 @@ export default {
       var items = this.getItems;
      for(var x = 0; this.countermedic<this.rows;this.Loopmedic2++)
       { 
-        console.log("Medical: "+items[this.Loopmedic2].Faculty);
+       
 
         if(this.Loopmedic2==this.rows)
         {        
@@ -140,7 +140,6 @@ export default {
         {
           return this.gpapharm/(this.counterpharm);
         }
-        console.log("Pharmacy: "+items[this.Looppharm2].Faculty+this.Looppharm2);
         if(items[this.Looppharm2].Faculty == "Pharmacy")
         {
           this.counterpharm++;

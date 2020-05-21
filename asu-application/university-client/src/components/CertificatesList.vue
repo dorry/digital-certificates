@@ -29,9 +29,29 @@
       :current-page="currentPage"
     >
     </b-table>
+    <b-alert style="position:absolute; top:70%;right: 30%;" id = "certificate-info" v-model="rowClicked" variant="primary" dismissible>
+     
+    <!-- <div v-if="rowClicked"  > -->
+      
+      <div  >
+      <div v-for="(data,key) in viewobj" :key="key" style="margin-top:20px">
+        <div v-if="key!='screenshot'">
+          {{key}} : {{data}}
+        </div>
+      <div v-else> 
+      <img v-bind:src="data" />
+
+      </div>
+      </div>
+  
+
+      </div>
+    </b-alert>
+
     </div>
     </div>
     </div>
+    <!-- </div> -->
 
   </div>
 </template>
@@ -43,11 +63,14 @@ export default {
 
  data() {
     return {
-     waiting: true,
-     bordered: true,
-     perPage: 20,
-     currentPage: 1,
-     items: [],
+      ID: 0,
+      viewobj:{},
+      rowClicked:false,
+      waiting: true,
+      bordered: true,
+      perPage: 20,
+      currentPage: 1,
+      items: [],
       response:[]
       }
     },
@@ -58,18 +81,22 @@ export default {
       rows() {
         return this.items.length
       },
+     
       getItems(){
          this.queryAll();
-         console.log("response"+this.response);
+         //console.log("response"+this.response);
+         this.$store.commit("setListResponse",this.response);
          this.items= this.changeObj(this.response);
          return this.items;
-      }
+      },
+     
     },
     methods:{
+
       async queryAll(){
 
         const response =  await APIService.queryAll('appadmin');
-        console.log(response.data);
+        //console.log(response.data);
         this.waiting = false;
         // this.changeObj(response.data);
         this.response = response.data;
@@ -83,23 +110,62 @@ export default {
           {
           var item = {};
           item.ID = obj.Key;
-          console.log(obj.Key + "item.ID: " + item.ID);
+         // console.log(obj.Key + "item.ID: " + item.ID);
           item.Name = obj.Record.name;
           item.GPA = obj.Record.gpa;
           item.Faculty = obj.Record.faculty;
           item.University = obj.Record.university;
-          console.log(obj.Record.university + "item.name: " + item.University);
+          //console.log(obj.Record.university + "item.name: " + item.University);
           items.push(item);
-          console.log("from changeobj: "+ item)
+         // console.log("from changeobj: "+ item)
           }
         });
         return items;
     },
+      changeObjForView(arrObj){
+        var items=[];
+        arrObj.forEach(obj=> {
+          if(obj.Record.university == "Public University")
+          {
+          var item = {};
+          item.ID = obj.Key;
+          //console.log(obj.Key + "item.ID: " + item.ID);
+          item.Name = obj.Record.name;
+          item.GPA = obj.Record.gpa;
+          item.Faculty = obj.Record.faculty;
+          item.University = obj.Record.university;
+          item.Screenshot = obj.Record.screenshot;
+          item.TransactionMonth = obj.Record.transaction_month;
+          item.TransactionYear = obj.Record.transaction_year;
+        
+          //console.log(obj.Record.university + "item.name: " + item.University);
+          items.push(item);
+          //console.log("from changeobj: "+ item)
+          }
+        });
+        return items;
+    },
+     findObj(){
+      var arrObjView = this.$store.state.listResponse;
+      arrObjView.forEach( obj=>{
+
+        if(this.ID == obj.Key){
+          console.log(obj.Record);
+          this.viewobj=obj.Record;
+          return obj.Record;
+        }
+      });
+      },
+    
         myRowClickHandler(record, index) {
-          alert("Viewed ");
+          
+          this.rowClicked = true;
           // 'record' will be the row data from items
           // `index` will be the visible row number (available in the v-model 'shownItems')
-          log(record); // This will be the item data for the row
+          this.ID = record.ID;
+          this.findObj();
+          console.log(this.viewobj);
+
         }
 },
 
@@ -166,5 +232,21 @@ export default {
 .login-content
 {
   color:white;
+}
+.certificate-info{
+
+    
+}
+.alert-primary {
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: bold;
+    position:absolute;
+     top:1100%;
+     right: 30%;
 }
 </style>

@@ -26,7 +26,7 @@
 
     </div>
   </div>
-  <img v-bind:src="'data:image/jpeg;base64,'+imageBytes" />
+  
 
 </div>
 <span  v-if="admin==false && trigger==true" hidden> {{getcompany(identity)}}</span>
@@ -111,7 +111,7 @@ export default {
        console.log("Data :");
        console.log(apiResponse.data);
        this.certificateData=apiResponse.data; 
-       alert(response);
+       
      }
      else{
      }
