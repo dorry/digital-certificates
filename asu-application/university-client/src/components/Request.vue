@@ -8,7 +8,6 @@
       <h2> A fee is needed to do a request </h2>
     </div>
     <div v-else>
-      
       <h4>Thanks! Your Request Has been made. </h4>
     </div>
         <div  id="form" ref="paypal"></div>

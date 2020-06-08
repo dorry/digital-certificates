@@ -9,14 +9,21 @@
     <label><h4> اسم الشركة</h4></label>
     <b-input class="form-control mb-4" v-model="companyname" id="inline-form-input-nid" placeholder="أدخل اسم الشركة"></b-input>
     <span class="error" v-if="!$v.companyname.required">اسم الشركة مطلوب</span>
-          </span>
-
+    </span>
+    <span class="form-group" :class="{ 'form-group--error': $v.price.$error }">
+      <br>
+    <label for=""><h4>اختار العروض المتاحة</h4></label>
+    <b-form-select v-model="price" class="form-control mb-4"  id="inline-form-input-nid" :options="options" ></b-form-select>
+    </span>
+    <span class="error" v-if="!$v.price.required">الاختيار مطلوب</span>
+    <br>
       <h2> اختار طريقة الدفع للاشتراك</h2>
     </div>
     <div v-else>  
      <h2>شكرا </h2>
     </div>
     <div id="form" ref="paypal"></div>
+    
     </div>
     </div>
     </div>
@@ -33,12 +40,19 @@ export default {
   name: "HelloWorld",
   data: function() {
     return {
+      options: 
+      [
+        { value: 350, text: '1 Year for 350 EGP' },
+        { value: 175, text: '6 Months for 175 EGP' },
+        { value: 50, text: '1 Month for 50 EGP' },
+
+      ], 
       names: [],
       loaded: false,
       paidFor: false,
       companyname:'',
+      price:'',
       product: {
-        price: 30.0,
         description: "الاشتراك في خدمة التحقق من الشهادات",
       }
     };
@@ -65,6 +79,9 @@ export default {
     document.body.appendChild(script);
   },
   validations: {
+    price:{
+      required
+    },
     companyname:{
       required
     }, 
@@ -83,7 +100,7 @@ export default {
                   description: this.product.description,
                   amount: {
                   currency_code: "USD",
-                  value: this.product.price
+                  value: this.price,
                 }
               }
              ]
@@ -94,6 +111,7 @@ export default {
             this.data;
             this.paidFor = true;
             var d = new Date()
+            if(this.price == 350){
             companiesRef.push(
                 {
                  company:this.companyname,
@@ -104,7 +122,39 @@ export default {
                  payyear: d.getFullYear(),
                  expirationdate:d.getFullYear()+1}
                  );     
+
             console.log("PAID");
+          }
+             else if(this.price == 175){
+               companiesRef.push(
+                {
+                 company:this.companyname,
+                 paid :1,
+                 mail: this.identity ,
+                 payday: d.getDate(), 
+                 paymonth: d.getMonth()+7,
+                 payyear: d.getFullYear(),
+                 expirationdate:d.getFullYear()}
+                 );     
+
+            console.log("PAID"); 
+
+          }
+          else if(this.price == 50){
+               companiesRef.push(
+                {
+                 company:this.companyname,
+                 paid :1,
+                 mail: this.identity ,
+                 payday: d.getDate(), 
+                 paymonth: d.getMonth()+2,
+                 payyear: d.getFullYear(),
+                 expirationdate:d.getFullYear()}
+                 );     
+
+            console.log("PAID"); 
+
+          }
           },
           onError: err => {
             console.log(err);

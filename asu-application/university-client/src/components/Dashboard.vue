@@ -11,10 +11,7 @@
         <b-nav-item v-if="admin==false"><router-link to="/Request">Request Certificate </router-link></b-nav-item>
         <b-nav-item v-if="admin==true" v-on:click="notification"><router-link to="/Requestlist">View Requests <span v-if="count>0">{{count}}</span></router-link></b-nav-item> 
         <b-nav-item v-if="admin==true" v-on:click="notification">Refresh</b-nav-item> 
-
     </b-nav>
-    <!-- <add-cert style=" margin-top:-150px"> </add-cert> -->
-
 </div>
 
 </div>
@@ -23,7 +20,6 @@
 <script>
 import APIService from "../services/APIService";
 import add from "./AddCertificate.vue";
-import {namesRef} from './firebase'
 export default {
  data(){
   return {
@@ -32,19 +28,13 @@ export default {
    items: [],
   };
   },  
-  firebase: {
-    names: namesRef
-  },
 components:{
     "addCert":add
   },
  methods:{
-      adddata(){},  
       notification: function(){
       this.count=0;
-      var counter=0;
-    namesRef.on('value',gotData,errData);
-    
+      var counter=0;    
     function gotData(data) {
     var info=data.val();
     var keys=Object.keys(info);

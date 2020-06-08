@@ -1,6 +1,5 @@
 <template>
-  <div>  
-    
+  <div>      
     <div  class = "parent-container">     
     <div class = "login-container">
     <div class="login-content">
@@ -26,14 +25,10 @@
       id="my-table"
       :items="getItems" 
       :per-page="perPage"
-      :current-page="currentPage"
-    >
+      :current-page="currentPage">
     </b-table>
-    <b-alert style="position:absolute; top:70%;right: 30%;" id = "certificate-info" v-model="rowClicked" variant="primary" dismissible>
-     
-    <!-- <div v-if="rowClicked"  > -->
-      
-      <div  >
+    <b-alert style="position:absolute; top:70%;right: 30%;" id = "certificate-info" v-model="rowClicked" variant="primary" dismissible>   
+      <div>
       <div v-for="(data,key) in viewobj" :key="key" style="margin-top:20px">
         <div v-if="key!='screenshot'">
           {{key}} : {{data}}
@@ -51,7 +46,6 @@
     </div>
     </div>
     </div>
-    <!-- </div> -->
 
   </div>
 </template>
@@ -84,7 +78,6 @@ export default {
      
       getItems(){
          this.queryAll();
-         //console.log("response"+this.response);
          this.$store.commit("setListResponse",this.response);
          this.items= this.changeObj(this.response);
          return this.items;
@@ -94,14 +87,9 @@ export default {
     methods:{
 
       async queryAll(){
-
         const response =  await APIService.queryAll('appadmin');
-        //console.log(response.data);
         this.waiting = false;
-        // this.changeObj(response.data);
-        this.response = response.data;
-        // console.log(this.items.length);
-       
+        this.response = response.data;       
     },
       changeObj(arrObj){
         var items=[];
@@ -110,14 +98,11 @@ export default {
           {
           var item = {};
           item.ID = obj.Key;
-         // console.log(obj.Key + "item.ID: " + item.ID);
           item.Name = obj.Record.name;
           item.GPA = obj.Record.gpa;
           item.Faculty = obj.Record.faculty;
           item.University = obj.Record.university;
-          //console.log(obj.Record.university + "item.name: " + item.University);
           items.push(item);
-         // console.log("from changeobj: "+ item)
           }
         });
         return items;
@@ -129,7 +114,6 @@ export default {
           {
           var item = {};
           item.ID = obj.Key;
-          //console.log(obj.Key + "item.ID: " + item.ID);
           item.Name = obj.Record.name;
           item.GPA = obj.Record.gpa;
           item.Faculty = obj.Record.faculty;
@@ -137,10 +121,7 @@ export default {
           item.Screenshot = obj.Record.screenshot;
           item.TransactionMonth = obj.Record.transaction_month;
           item.TransactionYear = obj.Record.transaction_year;
-        
-          //console.log(obj.Record.university + "item.name: " + item.University);
           items.push(item);
-          //console.log("from changeobj: "+ item)
           }
         });
         return items;
@@ -148,7 +129,6 @@ export default {
      findObj(){
       var arrObjView = this.$store.state.listResponse;
       arrObjView.forEach( obj=>{
-
         if(this.ID == obj.Key){
           console.log(obj.Record);
           this.viewobj=obj.Record;
@@ -158,10 +138,7 @@ export default {
       },
     
         myRowClickHandler(record, index) {
-          
           this.rowClicked = true;
-          // 'record' will be the row data from items
-          // `index` will be the visible row number (available in the v-model 'shownItems')
           this.ID = record.ID;
           this.findObj();
           console.log(this.viewobj);

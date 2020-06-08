@@ -1,12 +1,10 @@
 <template>
 <div>
-
  <div style="top:35%;">
     <div style=
-    "
-    top:45%;
-    position: absolute;
-    left: 50%; ">
+    "top:45%;
+     position: absolute;
+     left: 50%; ">
     <b-spinner style="width: 8rem; height: 8rem;" v-if="waiting" label="Spinning"></b-spinner>
     </div>      
     <div  class = "parent-container">     
@@ -62,7 +60,7 @@
     <!-- <h1>{{getMasscommGPA()}}</h1>
     <h1>{{getMedicalGPA()}}</h1> -->
     </div>
-          </div>
+    </div>
 
 </template>
 <script>
@@ -80,8 +78,8 @@ export default {
    Loopelec:0, Looppharm:0, Loopbusi:0, Loopmass:0,
    Electronics:0, MassComm:0, Business: 0, Pharmacy: 0, Medical:0,
    items: [],
-    };
-  },  
+  };
+ },  
  methods:{
     getBusinessGPA(){
       var items = this.getItems;

@@ -19,7 +19,6 @@
 <script>
  import GoogleLogin from 'vue-google-login';
  import APIService from "../services/APIService";
-
 export default {
    data() {
             return {
@@ -61,8 +60,6 @@ export default {
             this.$router.push("/home");
         },
           async onSuccess(googleUser) {
-            // console.log(googleUser);
-            // console.log(googleUser.getBasicProfile());
             this.identity = googleUser.getBasicProfile().getEmail();
             this.firstName = googleUser.getBasicProfile().getName();
             console.log(this.identity);
@@ -71,17 +68,11 @@ export default {
                 this.$store.commit("setadmin",true);
                 
             }
-            else
-            {
-                this.$store.commit("setadmin",false);
-            }            
-
+            else   { this.$store.commit("setadmin",false);}            
             this.$store.dispatch('saveUserLogged', this.identity);
             this.$store.commit("setislogged", true);
             this.$store.dispatch('saveUsername', this.firstName);
             this.$router.push("/dashboard");
-
-
         },
         onFailure(error){
             console.log(error);
