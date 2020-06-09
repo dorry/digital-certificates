@@ -64,7 +64,7 @@ data(){
                 var companies2 = db.ref('Companies').child(key);
                 companies2.on("value", function(data, prevChildKey) {
                 var x = data.val();
-                alert(x.company + "   اشتراكها فعال حتي   " + x.paymonth +"/" + x.payday + "/" + x.expirationdate );
+                alert(x.company + "   اشتراكها فعال حتي   " + x.expirationmonth +"/" + x.expirationday + "/" + x.expirationdate );
               });
               } 
               else {alert("اشتراكك انتهي او لم يتم الدفع");}

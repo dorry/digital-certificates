@@ -74,6 +74,7 @@ export default {
   methods:{
   getcompany(m)
 {
+  var d = new Date()  
   this.trigger = false;
   var Dialogbox = confirm("هل اشتركت؟")
     if(Dialogbox == true)
@@ -87,11 +88,16 @@ export default {
               return true;
           });
           if (key) {
-            alert("تستطيع التحقق")  
-          } 
+            var companies2 = db.ref('Companies').child(key);
+            companies2.on("value", function(data, prevChildKey) {
+            var x = data.val();
+            alert("تستطيع التحقق"); 
+ 
+          });
+            } 
           else {
             alert("اشتراك الرخصة انتهي او لم يتم الدفع");
-            document.location.href = './ViewLisence'
+            document.location.href = './CreateLisence'
 
           }
           });

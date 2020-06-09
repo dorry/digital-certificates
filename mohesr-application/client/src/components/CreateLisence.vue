@@ -120,6 +120,8 @@ export default {
                  payday: d.getDate(), 
                  paymonth: d.getMonth()+1,
                  payyear: d.getFullYear(),
+                 expirationmonth : d.getMonth()+1,
+                 expirationday : d.getDate(),
                  expirationdate:d.getFullYear()+1}
                  );     
 
@@ -132,8 +134,10 @@ export default {
                  paid :1,
                  mail: this.identity ,
                  payday: d.getDate(), 
-                 paymonth: d.getMonth()+7,
+                 paymonth: d.getMonth()+1,
                  payyear: d.getFullYear(),
+                 expirationmonth : d.getMonth()+7,
+                 expirationday : d.getDate(),
                  expirationdate:d.getFullYear()}
                  );     
 
@@ -147,9 +151,12 @@ export default {
                  paid :1,
                  mail: this.identity ,
                  payday: d.getDate(), 
-                 paymonth: d.getMonth()+2,
+                 paymonth: d.getMonth()+1,
                  payyear: d.getFullYear(),
-                 expirationdate:d.getFullYear()}
+                 expirationmonth : d.getMonth()+2,
+                 expirationday : d.getDate(),
+                 expirationdate:d.getFullYear()
+                 }
                  );     
 
             console.log("PAID"); 
