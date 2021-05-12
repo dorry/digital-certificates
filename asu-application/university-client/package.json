@@ -14,7 +14,7 @@
     "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.4.1",
     "bootstrap-vue": "^2.9.0",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "emailjs-com": "^2.4.1",
     "express": "^4.17.1",
     "firebase": "^7.14.3",
